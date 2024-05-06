@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+:root {
+	--golden_ratio: 1.618;
+}
+
+.speech {
+
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+
+}
+
+.wp-block-search__inside-wrapper { border: 0; }
+
+div.kemosite-grid-area-section,
+div.kemosite-grid-area-footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 3ex 1ch;
+}
+
+.kemosite-grid-area-main .wp-block-post-content {
+	columns: 39ch auto;
+	column-gap: 3ch;
+	margin: 1ex 3ch;
+}
+
+button.wp-block-navigation__responsive-container-open {
+	display: none;
+}

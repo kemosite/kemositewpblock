@@ -1,0 +1,341 @@
+@charset "utf-8";
+/*-------------------------------------------------------------------
+[TYPOGRAPHY: TABLE OF CONTENTS]
+---------------------------------------------------------------------
+
+# Font variables are defined as CSS variables in functions.php
+
+# variables
+# html, body
+# accessibility
+# header
+# navigation
+# content
+# forms
+# media
+# widgets
+# rss
+# search
+# ads
+# footer
+
+-------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------
+[FOVEAL VISION DISCUSSION]
+---------------------------------------------------------------------
+
+# "The foveal region comprises the area 1° on each side of the
+# current fixation point (usually 6–8 letters). In the fovea, visual
+# acuity is greatest and letters can be easily identified."
+# https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2668122/#:~:text=The%20foveal%20region%20comprises%20the,letters%20can%20be%20easily%20identified.
+
+-------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------
+[MONITOR FIELD OF VISION DISCUSSION]
+---------------------------------------------------------------------
+
+# "...for comfortable viewing of images on a computer screen it is
+# reasonable to place the monitor at about 15 degrees (or slightly
+# lower) below the horizontal line. Such a location creates a
+# preferable visual zone of 30 degrees (+ 15 degrees to -15 degrees
+# from the normal line of sight)."
+# https://www.ccohs.ca/oshanswers/ergonomics/office/monitor_positioning.html
+
+-------------------------------------------------------------------*/
+
+/*
+
+*/
+
+:root {
+
+    --kemosite-base-font-size: 1rem; /* Always start from device base size as minimum */
+    --kemosite-foveal-vision-degrees: 1; /* Foveal vision, in degrees, for 3-4 letters. */
+    --kemosite-field-of-view-degrees: 15; /* Ideal field of view variation, in degrees, for computer monitor. */
+    --kemosite-foveal-vision-letters: clamp( 3, 3.5, 4); /* 3-4 letters */
+    --kemosite-foveal-vision-ratio: calc( var(--kemosite-foveal-vision-degrees) / var(--kemosite-field-of-view-degrees) );
+    --kemosite-vmin-ratio: calc( ( 100vmin * var(--kemosite-foveal-vision-ratio) ) / var(--kemosite-foveal-vision-letters) );
+    --kemosite-vmax-ratio: calc( ( 100vmax * var(--kemosite-foveal-vision-ratio) ) / var(--kemosite-foveal-vision-letters) );
+
+    --kemosite-font-size: clamp( var(--kemosite-base-font-size), var(--kemosite-vmin-ratio), var(--kemosite-vmax-ratio) );
+    --kemosite-font-size-adjust: 1ex;
+
+    font-size: var(--kemosite-font-size);
+    font-size-adjust: var(--kemosite-font-size-adjust);
+    widows: 2;
+    orphans: 2;
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: none;
+    font-kerning: auto;
+    hyphens: none;
+
+}
+
+body, body * {
+    font-size: inherit;
+    line-height: 3ex;
+}
+
+/* HEADER GROUPS */
+/* vh units seem to work better than ex units in Google Chrome on Android. */
+h1 { font-size: calc(1em + 3ex); font-weight: normal; } /* [PAGE TITLES] */ 
+h2 { font-size: calc(1em + 2ex); font-weight: normal; } /* [SUBTITLES] */
+h3 { font-size: calc(1em + 1ex); font-weight: normal; } /* [SECTION TITLES+] */
+h4 { font-size: 1em; font-weight: bold; }       /* [Body Copy Size] */
+h5 { font-size: .875em; font-weight: bold; }    /* [Small] */
+h6 { font-size: .75em; font-weight: bold; }     /* [Smaller] */
+
+h1,h2,h3,h4,h5,h6 { 
+    margin-top: 3ex;
+    text-align: center;
+    /* font-family: var(--h1_h6_font_family_name); */
+}
+
+div.kemosite-grid-area-section section h1 {
+    margin: 0;
+}
+
+.product h1, .type-product h1,
+.product h2, .type-product h2,
+.product h3, .type-product h3,
+.product h4, .type-product h4,
+.product h5, .type-product h5,
+.product h6, .type-product h6 {
+    /* text-align: left; */ /*CONSIDER FOR DELETION */
+
+}
+
+.woocommerce-breadcrumb { text-align: center; }
+
+.product .woocommerce-Tabs-panel h1, .product .woocommerce-Tabs-panel--description h1, .type-product .woocommerce-Tabs-panel h1, .type-product .woocommerce-Tabs-panel--description h1,
+.product .woocommerce-Tabs-panel h2, .product .woocommerce-Tabs-panel--description h2, .type-product .woocommerce-Tabs-panel h2, .type-product .woocommerce-Tabs-panel--description h2,
+.product .woocommerce-Tabs-panel h3, .product .woocommerce-Tabs-panel--description h3, .type-product .woocommerce-Tabs-panel h3, .type-product .woocommerce-Tabs-panel--description h3,
+.product .woocommerce-Tabs-panel h4, .product .woocommerce-Tabs-panel--description h4, .type-product .woocommerce-Tabs-panel h4, .type-product .woocommerce-Tabs-panel--description h4,
+.product .woocommerce-Tabs-panel h5, .product .woocommerce-Tabs-panel--description h5, .type-product .woocommerce-Tabs-panel h5, .type-product .woocommerce-Tabs-panel--description h5,
+.product .woocommerce-Tabs-panel h6, .product .woocommerce-Tabs-panel--description h6, .type-product .woocommerce-Tabs-panel h6, .type-product .woocommerce-Tabs-panel--description h6,
+.related.products h1,
+.related.products h2,
+.related.products h3,
+.related.products h4,
+.related.products h5,
+.related.products h6,
+.product-category h1,
+.product-category h2,
+.product-category h3,
+.product-category h4,
+.product-category h5,
+.product-category h6,
+.card-section h1,
+.card-section h2,
+.card-section h3,
+.card-section h4,
+.card-section h5,
+.card-section h6 {
+    text-align: center;
+}
+
+div.section h1,
+div.section h2,
+div.section h3,
+div.section h4,
+div.section h5,
+div.section h6 { 
+    margin: 0;
+}
+
+div.section header h1 { font-size: calc(1rem + 3vh); }
+
+.course-curriculum ul.curriculum-sections .section-header .section-title,
+.course-curriculum ul.curriculum-sections .section-header .section-desc {
+    margin: inherit !important;
+}
+
+.accordion-title { font-size: 1em; }
+
+.media-object h4 {
+    margin-top: 0;
+    text-align: left;
+}
+
+* p, * ul, * ol {
+    margin-top: 3ex;
+    margin-bottom: 0;
+}
+
+* p:first-child, * ul:first-child, * ol:first-child,
+h1 + p, h1 + ul, h1 + ol,
+h2 + p, h2 + ul, h2 + ol,
+h3 + p, h3 + ul, h3 + ol,
+h4 + p, h4 + ul, h4 + ol,
+h5 + p, h5 + ul, h5 + ol,
+h6 + p, h6 + ul, h6 + ol {
+    margin-top: 0;
+}
+
+li { margin-top: 3ex; margin-bottom: 3ex; line-height: 3ex}
+
+td.label {
+  display: table-cell;
+  color: inherit;
+  background: inherit;
+  font-size: inherit;
+  font-weight: 600;
+}
+
+figcaption {
+    text-align: center;
+    font-size: .875em;
+    font-style: oblique;
+}
+
+label.a-form-label { display: inline-block; }
+
+/* [DEFAULT LINK FORMATTING] */
+
+main p > a,
+main li > a:not(.wc-block-grid__product-link),
+a[rel="bookmark"],
+.nav-links a,
+footer a {
+    border-bottom: 1px solid;
+    font-weight: 600;
+}
+
+a[name] {
+    border-bottom: 0;
+}
+
+/* emails */
+a[href^="mailto:"]:after {
+    font-family: 'modern_pictogramsnormal';
+    content: "m";
+    margin-left: .25em;
+}
+
+/* pdfs */
+a[href$=".pdf"]:after {
+    font-family: 'modern_pictogramsnormal';
+    content: "K";
+    margin-left: .25em;
+}
+
+/* highlight links that open in a new window */
+a[target="_blank"]:after,
+a[target="new"]:after {
+    font-family: 'modern_pictogramsnormal';
+    content: "W";
+    margin-left: .25em;
+}
+
+/* Remove pictograms from certain links */
+.jetpack-social-widget-item a[target="_blank"]::after,
+.jetpack-social-widget-item a[target="new"]::after {
+    content: "";
+}
+
+li.categories {
+    list-style: none;
+}
+
+li.jetpack-social-widget-item {
+    list-style: none;
+    display: inline-block;
+}
+
+/*
+p > a:hover,
+li > a:hover,
+h1 > a:hover,
+h2 > a:hover,
+h3 > a:hover,
+h4 > a:hover,
+h5 > a:hover,
+h6 > a:hover {
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) inset, 0px 0.125em 0px rgb(0, 0, 0);
+}
+*/
+
+/* A neat way of styling your blockquotes to add a bit more punch to them. */
+
+blockquote {
+     background:#f9f9f9;
+     border-left:10px solid #ccc;
+     margin:1.5em 10px;
+     padding:.5em 10px;
+     quotes:"\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+     color:#ccc;
+     content:open-quote;
+     font-size:4em;
+     line-height:.1em;
+     margin-right:.25em;
+     vertical-align:-.4em;
+}
+blockquote p {
+     display:inline;
+}
+
+select, input, button, a.button, .button, a.wp-block-button__link,
+.wp-block-button__link.add_to_cart_button,
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button,
+#add_payment_method .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button,
+#add_payment_method table.cart td.actions .coupon .input-text, .woocommerce-cart table.cart td.actions .coupon .input-text, .woocommerce-checkout table.cart td.actions .coupon .input-text, /* WooComerce */
+[type="color"], [type="date"], [type="datetime-local"], [type="datetime"], [type="email"], [type="month"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="time"], [type="url"], [type="week"], textarea { 
+    font-size: 1em;
+    padding: .5em 1em;
+    /* font-family: var(--button_font_family_name); */
+    font-weight: 600;
+}
+
+div.section header h1 {
+    /* font-family: var(--kemosite_wordpress_header_font_family_name); */
+}
+
+div.the.exerpt p {
+    font-size: 1.25rem;
+}
+
+.entry-date.published { display: block; }
+time.updated:before { content: "Updated: "; }
+
+.woocommerce-loop-product__title,
+.WooZone-price-info { 
+    font-size: 1em;
+    display: block;
+}
+
+.related.products .WooZone-price-info { display: none; }
+
+.woocommerce-loop-product__title .price { margin-top: 3ex; }
+.woocommerce-Price-amount { /* font-family: var(--kemosite_wordpress_header_font_family_name); */ }
+.summary .price { font-size: calc(1em + 1vh); }
+p.price { text-align: center; }
+
+.button.small { font-size: .875em; }
+.button.medium { font-size: 1em; }
+.button.large { font-size: calc(1em + 1vh); }
+
+div.columns p {
+    line-height: 3ex;
+    vertical-align: baseline;
+    margin-bottom: 3ex;
+}
+
+.callout * { column-span: none !important; }
+
+div.tag-cloud { font-size: .875rem; }
+
+footer { font-size: 1rem; }
+
+.copyright { 
+    text-align: center;
+}
+
+.mailpoet_form_html * {
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    font-size: inherit !important;
+}

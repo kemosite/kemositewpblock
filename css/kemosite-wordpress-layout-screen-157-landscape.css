@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+:root {
+	--layout: "screen-157-landscape";
+}
+
+.kemosite-grid-layout {
+	grid-template-columns: minmax(39ch, 59ch) minmax(59ch, 1fr) minmax(39ch, 59ch);
+	grid-template-rows: auto minmax(15ex, 33vh) auto auto;
+}
+
+.kemosite-grid-area-main .wp-block-post-content {
+	columns: 59ch auto;
+}

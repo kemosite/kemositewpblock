@@ -1,0 +1,221 @@
+@charset "utf-8";
+
+/*-------------------------------------------------------------------
+[ADS]
+-------------------------------------------------------------------*/
+
+/*
+
+- Wide ads can be used as "small ads" or content separators.
+- Box ads can go at the bottom of the page.
+- Tall ads can display on the side if space permits.
+
+# AD SIZES #
+
+# SMALL/WIDE ADS - Width met & 33% height met #
+# 234 x 60 - Half Banner
+# 320 x 50 - Mobile Leaderboard
+# 320 x 100 - Large Mobile Banner
+# 460 x 60 - Banner
+
+# BIG/SQUARE ADS - Width met & minimum 100% height met #
+# 125 x 125 - Button
+# 180 x 150 - Small Rectangle
+# 200 x 200 - Small Square
+# 250 x 250 - Square
+# 300 x 250 - Medium Rectangle
+# 336 x 280 - Large Rectangle
+# 728 x 90 - Leaderboard
+# 970 x 90 - Large Leaderboard
+# 970 x 250 - Billboard
+
+# TALL ADS - Content + width met & minimum 100% height met #
+# 120 x 240 - Vertical Banner
+# 120 x 600 - Skyscraper
+# 160 x 600 - Wide Skyscraper
+# 300 x 600 - Half Page
+# 300 x 1050 - Portrait
+
+*/
+
+/* COLLAPSE EMPTY ADS */
+.small_ad:empty, .big_ad:empty, .sidebar_ad:empty {
+	height: 0;
+	width: 0;
+	margin: 0;
+}
+
+/* SMALL AD PROPERTIES */
+.small_ad, .big_ad, .sidebar_ad {
+	background-color: transparent; /* #999 */
+	margin: 3ex auto;
+	width: auto;
+	height: auto;
+	align-items: center;
+	overflow: hidden;
+}
+.small_ad, .big_ad {
+	display: flex;
+}
+.sidebar_ad {
+	display: none;
+}
+
+/* ADVANCED AD CLASS */
+div[class*="-small-ad"],
+div[class*="-big-ad"],
+div[class*="-sidebar-ad"]
+{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	flex-flow: column;
+}
+
+/* SMALL/WIDE AD QUERIES */
+@media screen and (min-width: 234px) and (min-height: 60px) {
+	.small_ad {
+		width: 234px;
+		height: 60px;
+	}
+}
+
+@media screen and (min-width: 320px) and (min-height: 50px) {
+	.small_ad {
+		width: 320px;
+		height: 50px;
+	}
+}
+
+@media screen and (min-width: 320px) and (min-height: 100px) {
+	.small_ad {
+		width: 320px;
+		height: 100px;
+	}
+}
+
+@media screen and (min-width: 460px) and (min-height: 60px) {
+	.small_ad {
+		width: 460px;
+		height: 60px;
+	}
+}
+
+/* BIG/BOTTOM AD QUERIES */
+
+@media screen and (min-width: 125px) and (min-height: 125px) {
+	.big_ad {
+		width: 125px;
+		height: 125px;
+	}
+}
+
+@media screen and (min-width: 180px) and (min-height: 150px) {
+	.big_ad {
+		width: 180px;
+		height: 150px;
+	}
+}
+
+@media screen and (min-width: 200px) and (min-height: 200px) {
+	.big_ad {
+		width: 200px;
+		height: 200px;
+	}
+}
+
+@media screen and (min-width: 250px) and (min-height: 250px) {
+	.big_ad {
+		width: 250px;
+		height: 250px;
+	}
+}
+
+@media screen and (min-width: 300px) and (min-height: 250px) {
+	.big_ad {
+		width: 300px;
+		height: 250px;
+	}
+}
+
+@media screen and (min-width: 336px) and (min-height: 280px) {
+	.big_ad {
+		width: 336px;
+		height: 280px;
+	}
+}
+
+@media screen and (min-width: 728px) and (min-height: 90px) {
+	.big_ad {
+		width: 728px;
+		height: 90px;
+	}
+}
+
+@media screen and (min-width: 970px) and (min-height: 90px) {
+	.big_ad {
+		width: 970px;
+		height: 90px;
+	}
+}
+
+@media screen and (min-width: 970px) and (min-height: 250px) {
+	.big_ad {
+		width: 970px;
+		height: 250px;
+	}
+}
+
+/* @supports (-webkit-appearance:none) {} */
+
+/* SIDEBAR AD QUERIES */
+@media screen and (min-width: 120px) and (min-height: 240px) {
+	.sidebar_ad {
+		display: flex;
+		width: 120px;
+		height: 240px;
+	}
+}
+
+@media screen and (min-width: 120px) and (min-height: 600px) {
+	.sidebar_ad {
+		display: flex;
+		width: 120px;
+		height: 600px;
+	}
+}
+
+@media screen and (min-width: 160px) and (min-height: 600px) {
+	.sidebar_ad {
+		display: flex;
+		width: 160px;
+		height: 600px;
+	}
+}
+
+@media screen and (min-width: 300px) and (min-height: 600px) {
+	.sidebar_ad {
+		display: flex;
+		width: 300px;
+		height: 600px;
+	}
+}
+
+@media screen and (min-width: 300px) and (min-height: 1050px) {
+	.sidebar_ad {
+		display: flex;
+		width: 300px;
+		height: 1050px;
+	}
+}
+
+/*
+# TALL ADS - Content + width met & minimum 100% height met #
+# 120 x 240 - Vertical Banner
+# 120 x 600 - Skyscraper
+# 160 x 600 - Wide Skyscraper
+# 300 x 600 - Half Page
+# 300 x 1050 - Portrait
+*/

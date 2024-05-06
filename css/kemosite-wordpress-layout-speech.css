@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+body.speak {
+	speak: auto;
+	voice-family: young male;
+}
+
+.speak.old-male {
+	speak-as: old male;
+}
+
+.speak.child-male {
+	speak-as: child male;
+}
+
+.speak.all-caps {
+	speak-as: spell-out;
+}
+
+.speak.digits {
+	speak-as: digits;
+}
+

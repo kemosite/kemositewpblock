@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+/** 
+ * [GLOBAL CSS VARIABLES]
+ */
+
+/** 
+ * [MASTER STYLESHEET CONTENTS]
+ *
+ * Original idea from Smashing Magazine
+ * https://www.smashingmagazine.com/2008/05/improving-code-readability-with-css-styleguides/
+ * 
+ * Augmented by principles of CSS Guidelines
+ * https://cssguidelin.es/#table-of-contents
+ * 
+ * Organized contents into structure and skin, in the order of:
+ * - Layout display grids
+ * - Blocks: The root of a component (Flexbox).
+ * - Elements: A component part of a Block (Typography, Forms, Buttons).
+ * - Modifier: A variant or extension of a Block (Colours).
+
+/*-------------------------------------------------------------------
+[LAYOUTS]
+-------------------------------------------------------------------*/
+
+/**
+ * [LAYOUT AND FLEXBOX NOTES]
+ * CSS Grids are for LAYOUT, 2 dimensions
+ * Define layout grid containers, then place content areas into them.
+ * Example:
+ * .grid_header 		{ display: grid; grid-template-areas: "grid_header_logo"; }
+ * .grid_header_logo 	{ grid-area: grid_header_logo; }
+ * Layouts can change according to media query.
+ * https://css-tricks.com/snippets/css/complete-guide-grid/
+ * 
+ * CSS Flexbox is for a BOX, either row or column.
+ * Place into a layout grid.
+ * https://medium.com/flexbox-and-grids/how-to-efficiently-master-the-css-grid-in-a-jiffy-585d0c213577
+ */
+
+/**
+ *
+ * [Typography]
+ * 
+ * [VIEWS AND BREAKPOINTS]
+ * - Screen (Layout grids defined here)
+ * 
+ * [Media queries modify layout grids]
+ * - 39 characters wide, portrait mode, thumb navigation at BOTTOM of screen
+ * - 39 characters wide, landscape mode, thumb navigation at BOTTOM of screen
+ * - 39-59 characters wide, portrait mode, thumb navigation at SIDES of screen
+ * - 39-59 characters wide, landscape mode, thumb navigation at BOTTOM of screen
+ * - 59+ characters wide, portrait mode, standard navigation
+ * - 59+ characters wide, landscape mode, standard navigation
+ * 
+ * - Print
+ * - Speech (not yet implemented)
+ * - Ads
+ * - Elements
+ * - Colour
+ * -------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------
+[TYPOGRAPHY]
+-------------------------------------------------------------------*/
+@import "kemosite-wordpress-typography.css" all;
+
+/*-------------------------------------------------------------------
+[COLOURS]
+-------------------------------------------------------------------*/
+@import "kemosite-wordpress-colors.css" all;
+
+/* [ALL] */
+@import "kemosite-wordpress-layout-all.css" all; /* General variables and settings */
+
+/* [SCREEN] */
+@import "kemosite-wordpress-layout-screen.css" screen; /* Screen specific variables and settings */
+
+/* [PRINT] */
+@import "kemosite-wordpress-layout-print.css" print; /* Print specific variables and settings */
+
+/* [SPEECH] */
+@import "kemosite-wordpress-layout-speech.css" speech; /* Speech charactistics */
+
+
+/* [DEVICE, PORTRAIT ORIENTATION] */
+
+/* Single Column */
+@import "kemosite-wordpress-layout-screen-LT98-portrait.css" screen and (max-width: 98ch) and (orientation: portrait);
+@import "kemosite-wordpress-layout-screen-LT98-landscape.css" screen and (max-width: 98ch) and (orientation: landscape);
+
+/* 2-Column, Left Sidebar */
+@import "kemosite-wordpress-layout-screen-98-157-portrait.css" screen and (min-width: 98ch) and (max-width: 157ch) and (orientation: portrait);
+@import "kemosite-wordpress-layout-screen-98-157-landscape.css" screen and (min-width: 98ch) and (max-width: 157ch) and (orientation: landscape);
+
+/* 3-Column, Both Sidebars */
+@import "kemosite-wordpress-layout-screen-157-portrait.css" screen and (min-width: 157ch) and (orientation: portrait);
+@import "kemosite-wordpress-layout-screen-157-landscape.css" screen and (min-width: 157ch) and (orientation: landscape);
+
+/* # ADS # */
+@import "kemosite-wordpress-layout-screen-ads.css" screen;
+
+/* [ELEMENTS] */
+@import "kemosite-wordpress-elements.css" all; /* Common variables and settings */

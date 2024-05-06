@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+:root {
+	--layout: "print";
+	font-size: 12pt;
+}
+
+@page {
+	margin: 0.5in;
+}
+
+body {
+	background: white;
+	color: black;
+	margin: 0;
+}
+
+.kemosite-grid-area-section section {
+	width: 100%;
+	max-width: 59ch;
+	margin: 1ex 3ch 0;
+}
+
+header {
+	border: 1pt solid;
+	padding: 1ex 3ch;
+	width: 100%;
+}
+
+.quick-fact-box {
+	border-right: 3pt solid;
+	padding: 3ex 2ch;
+	color: black;
+	background-color: hsl(0, 0%, 85%) !important;
+}
+
+.details-box {
+	padding-left: 2em;
+	/* padding-right: 1pt; */
+}
+
+h1,h2,h3,h4,h5,h6 {
+	border-bottom: 1pt solid;
+	page-break-after: none;
+}
+
+header h1 {
+	border-bottom: none !important;
+	font-size: 3rem !important;
+}
+
+/* Hide these elements and classes */
+nav,
+.screen-reader-text,
+.skip-link,
+.search-form,
+.menu-container,
+.grid_area_exerpt,
+.navigation,
+.post-navigation,
+.grid-layout-footer,
+.kemosite-grid-layout .kemosite-grid-area-menu,
+.kemosite-grid-layout .kemosite-grid-area-footer
+{
+	display: none;
+}
+
+p {
+	page-break-before: auto;
+}
+
+.wp-block-columns {
+	flex-wrap: nowrap;
+}

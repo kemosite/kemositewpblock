@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+:root {
+	--layout: "screen-98-157-portrait";
+}
+
+.kemosite-grid-layout {
+	grid-template-columns: 39ch minmax( 39ch, 59ch ) 1fr;
+	grid-template-rows: minmax(15ex, 33vh) auto auto 6ex;
+	grid-template-areas:
+		"kemosite-grid-area-section			kemosite-grid-area-section	kemosite-grid-area-section"
+		"kemosite-grid-area-left-sidebar	kemosite-grid-area-main		kemosite-grid-area-right-sidebar"
+		"kemosite-grid-area-footer			kemosite-grid-area-footer	kemosite-grid-area-footer"
+		"kemosite-grid-area-menu			kemosite-grid-area-menu		kemosite-grid-area-menu";
+}
+
+.kemosite-grid-area-menu {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+button.wp-block-navigation__responsive-container-open,
+.kemosite-display-screen-mobile,
+.wp-block-navigation__responsive-container-open:not(.always-shown) {
+	display: flex;
+}
+.kemosite-display-screen-desktop,
+.kemosite-grid-layout .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+	display: none;
+}

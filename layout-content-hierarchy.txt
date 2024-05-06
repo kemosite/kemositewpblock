@@ -1,0 +1,9 @@
+[TEMPLATE PARTS (LAYOUT)]
+- Template parts represent smaller sections of content that can be included in one or more templates.
+- Template parts are generally pieces of the design that are reused within multiple top-level templates
+- Template parts in block themes contain block markup and nothing else.
+
+[BLOCK PATTERNS]
+- Reusable groups of blocks.
+- Used inside of templates, post and page content
+- Access to PHP

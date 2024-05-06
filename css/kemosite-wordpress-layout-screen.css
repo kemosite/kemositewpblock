@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+:root {
+	--layout: "screen-default";
+	scroll-behavior: smooth;
+}
+
+/*
+*::selection {
+	background-color: var(--kemosite-cool-white);
+	color: var(--kemosite-base_black);
+}
+
+*::placeholder {
+	color: var(--kemosite-base_black);
+}
+*/
+
+/* [Define Grid] */
+
+.kemosite-grid-layout {
+	display: grid;
+	margin: 3ex 0;
+	grid-gap: 3ex 2ch;
+	padding: 3ex 0;
+	overflow: clip;
+	grid-template-columns: auto auto auto;
+	grid-template-rows: auto auto auto auto;
+	grid-template-areas:
+		"kemosite-grid-area-menu			kemosite-grid-area-menu		kemosite-grid-area-menu"
+		"kemosite-grid-area-section			kemosite-grid-area-section	kemosite-grid-area-section"
+		"kemosite-grid-area-left-sidebar	kemosite-grid-area-main		kemosite-grid-area-right-sidebar"
+		"kemosite-grid-area-footer			kemosite-grid-area-footer	kemosite-grid-area-footer";
+
+}
+.kemosite-grid-area-menu { grid-area: kemosite-grid-area-menu; }
+.kemosite-grid-area-section { grid-area: kemosite-grid-area-section; }
+.kemosite-grid-area-left-sidebar { grid-area: kemosite-grid-area-left-sidebar; }
+.kemosite-grid-area-main { grid-area: kemosite-grid-area-main; }
+.kemosite-grid-area-right-sidebar { grid-area: kemosite-grid-area-right-sidebar; }
+.kemosite-grid-area-footer { grid-area: kemosite-grid-area-footer; }
+
+.kemosite-grid-layout.no-sidebars {
+	grid-template-columns: 1fr;
+	grid-template-areas:
+		"kemosite-grid-area-menu"
+		"kemosite-grid-area-section"
+		"kemosite-grid-area-main"
+		"kemosite-grid-area-footer";
+}
+
+.kemosite-grid-area-menu menu {
+	padding: 0 2ch;
+}
+
+.kemosite-grid-layout.no-sidebars .kemosite-grid-area-main {
+	margin-left: 3ch;
+	margin-right: 3ch;
+}
+
+.kemosite-grid-area-main .wp-block-post-content h1,
+.kemosite-grid-area-main .wp-block-post-content h2,
+.kemosite-grid-area-main .wp-block-post-content h3,
+.kemosite-grid-area-main .wp-block-post-content h4,
+.kemosite-grid-area-main .wp-block-post-content h5,
+.kemosite-grid-area-main .wp-block-post-content h6,
+.kemosite-grid-area-main .wp-block-post-content figure,
+.kemosite-grid-area-main .wp-block-post-content nav,
+.kemosite-grid-area-main .wp-block-post-content hr,
+.kemosite-grid-area-main .wp-block-post-content canvas,
+.kemosite-grid-area-main .wp-block-post-content table {
+	column-span: all;
+}
+
+/* [Define Menu For Screens] */
+.menu-block {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.menu-block .menu-block-left {
+	margin-right: auto;
+	width: auto;
+	max-width: 100%;
+	flex: 0 1 auto;
+}
+.menu-block .menu-block-right {
+	margin-left: auto;
+	width: auto;
+	max-width: 100%;
+	flex: 0 1 auto;
+}
+
+.wp-block-navigation .has-child:not(.open-on-click):hover > .wp-block-navigation__submenu-container {
+	min-width: 39ch;
+}
+
+.wp-block-post-template {
+	margin-left: 0;
+}
+.wp-block-post-template.is-flex-container {
+	gap: 1ch;
+}
