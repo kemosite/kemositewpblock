@@ -60,7 +60,7 @@ function kemosite_wordpress_enqueue_styles() {
 function kemosite_wordpress_enqueue_styles_sri( $html, $handle ) {
 
 	$sri = array(
-		'kemosite-wp-block' => "sha384-dMO/1Wj3b+7f75OIVri0Pu3OoHWABKOd/KdAlfrd5/oAWo/ffYogtXFw8MCw7F2D",
+		'kemosite-wp-block' => "sha384-dniot2DdYcJJ9W/q2F1V4E2bGhArIctOwIaBRSox/IPHxwkJnVZg7Go4MikVte0c",
 		'foundation' => "sha384-2ZAo6d0r9zxtxn7DvMBmpd3hscGP+LkxQ/kMShaUz/TqqsBPtbtZ1K3+3/CgndDu",
 		'foundation-icons' => "sha384-7bXLCxCHaev6+cHdA4uI++Z62NQccdKvHttwhapeDp4M7A/80ZupYyEwBZOXcdaz",
 		'modern-pictograms' => "sha384-B+1c6f0W8mTBldSZyPVKZtJW/ZobnyN+KsdI+Pwqv04GHYjKiYEdvHkVgexZpLG2",

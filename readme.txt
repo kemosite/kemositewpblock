@@ -12,6 +12,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 6.5.2.2 =
+Corrections to SRI SHA.
+
 = 6.5.2.1 =
 * Initial release
 
