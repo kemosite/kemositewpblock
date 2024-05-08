@@ -444,9 +444,35 @@ if ( !function_exists('kemosite_adjust_hsl_l_contrast') ) :
 	
 	function kemosite_adjust_hsl_l_contrast( $hsl = array(), $eval_contrast = "", $target_contrast = 3, $luminance = 100 ) {
 
+		/*
+		echo "<pre>";
+		print_r( 'eval_contrast' );
+		echo "<br>";
+		print_r( $eval_contrast );
+		echo "<br>";
+		print_r( 'target_contrast' );
+		echo "<br>";
+		print_r( $target_contrast );
+		echo "<br>";
+		print_r( 'luminance' );
+		echo "<br>";
+		print_r( $luminance );
+		echo "<br>";
+		echo "</pre>";
+		*/
+
 		$contrast_adjustment_ratio = kemosite_adjust_contrast( $eval_contrast, $target_contrast);
 		$hsl_lightness_delta = 100 - $hsl[2];
 		$luminance = round( $luminance * 100 );
+
+		/*
+		echo "<pre>";
+		print_r( 'hsl_lightness_delta' );
+		echo "<br>";
+		print_r( $hsl_lightness_delta );
+		echo "<br>";
+		echo "</pre>";
+		*/
 
 		/*
 		if $luminance > $hsl[2], less delta = less contrast
@@ -484,21 +510,73 @@ if ( !function_exists('kemosite_adjust_hsl_l_contrast') ) :
 		):
 
 			$delta_retainment = floor( $contrast_adjustment_ratio * 100 ); // Must decrease delta to increase contrast
-			$delta_adjustment = $delta_retainment - $hsl_lightness_delta;			
+			$delta_adjustment = $delta_retainment - $hsl_lightness_delta;
+
+			/*
+			echo "<pre>";
+			print_r( 'This one.' );	
+			echo "</pre>";
+			*/
 
 		endif;
+
+		/*
+		echo "<br>";
+		print_r( 'luminance' );
+		echo "<br>";
+		print_r( $luminance );
+		echo "<br>";
+		print_r( 'hsl[2]' );
+		echo "<br>";
+		print_r( $hsl[2] );
+		echo "<br>";
+		print_r( 'eval_contrast' );
+		echo "<br>";
+		print_r( $eval_contrast );
+		echo "<br>";
+		print_r( 'target_contrast' );
+		echo "<br>";
+		print_r( $target_contrast );
+		echo "<br>";
+		print_r( 'contrast_adjustment_ratio' );
+		echo "<br>";
+		print_r( $contrast_adjustment_ratio );
+		echo "<br>";
+		print_r( 'delta_retainment' );
+		echo "<br>";
+		print_r( $delta_retainment );
+		echo "<br>";
+		print_r( 'hsl_lightness_delta' );
+		echo "<br>";
+		print_r( $hsl_lightness_delta );
+		echo "<br>";
+		print_r( 'delta_adjustment' );
+		echo "<br>";
+		print_r( $delta_adjustment );
+		echo "<br>";
+		echo "</pre>";
+		*/
 
 		$h = $hsl[0];
 
 		if ( $delta_retainment == 0 ): $l = $hsl[2]; else:
 
-			$l = 100 - $delta_adjustment;
+			$l = $hsl[2] - $delta_adjustment;
 
 		endif;
 
 		$s = $hsl[1];
 
 		$hsl_string = $h .','. $s . ',' . $l;
+
+		/*
+		echo "<pre";
+		print_r( 'hsl_string' );
+		echo "<br>";
+		print_r( $hsl_string );
+		echo "<br>";
+		echo "</pre>";
+		*/
 
 		return $hsl_string;
 		

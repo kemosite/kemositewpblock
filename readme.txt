@@ -12,6 +12,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 6.5.2.3 =
+- Adjustment to contrast adjustment functions
+- Correction to outline button style
+
 = 6.5.2.2 =
 Corrections to SRI SHA.
 

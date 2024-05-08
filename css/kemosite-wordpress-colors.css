@@ -151,11 +151,12 @@ li.product a:hover, li.product a:focus,
 .woocommerce .woocommerce-breadcrumb a:hover, .woocommerce .woocommerce-breadcrumb a:focus,
 ul.wc-tabs li a:hover, ul.wc-tabs li a:focus,
 div a:not(.button):hover, div a:not(.button):focus,
+div a:not(.wp-element-button):hover, div a:not(.wp-element-button):focus,
 .woocommerce-tabs.wc-tabs-wrapper a:hover, .woocommerce-tabs.wc-tabs-wrapper a:focus
 .kemosite-grid-layout .woocommerce .wp-block-woocommerce-product-details ul.tabs.wc-tabs li a:hover, .kemosite-grid-layout .woocommerce .wp-block-woocommerce-product-details ul.tabs.wc-tabs li a:focus
 {
 	background-color: var(--kemosite_wordpress_component_colour);
-	color: var(--kemosite_wordpress_base_black) !important;
+	color: var(--kemosite_wordpress_base_black);
 	/* filter: saturate(50%) brightness(150%); */
 }
 
@@ -249,7 +250,7 @@ div.css-search div.em-search-main .em-search-submit:hover, div.css-search div.em
 .button.hollow,
 .button.hollow.disabled, .button.hollow.disabled:focus, .button.hollow.disabled:hover,
 .button.hollow[disabled], .button.hollow[disabled]:focus, .button.hollow[disabled]:hover,
-.is-style-outline .wp-block-button__link, div.wp-block-button.is-style-outline a.wp-block-button__link, .wp-block-button.is-style-outline /* Block button */ {
+.is-style-outline .wp-block-button__link, div.wp-block-button.is-style-outline a.wp-block-button__link /* Block button */ {
 	background: none;
 	border: 1px solid var(--kemosite_wordpress_component_colour);
 	color: var(--kemosite_wordpress_component_colour);
