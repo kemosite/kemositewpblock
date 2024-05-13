@@ -97,29 +97,41 @@ function kemosite_wordpress_enqueue_scripts() {
 	add_filter('the_generator', 'remove_version_info');
 	*/
 
-	add_filter( 'script_loader_tag', 'kemosite_wordpress_enqueue_scripts_sri', 10, 2 );
+	add_filter( 'script_loader_tag', 'kemosite_wordpress_enqueue_scripts_sri', 10, 3 );
 
 }
 
-function kemosite_wordpress_enqueue_scripts_sri( $html, $handle ) {
+function kemosite_wordpress_enqueue_scripts_sri( $html, $handle, $src ) {
+
+	// Hardcoding values stops working when files are located to another server, line installing the theme.
+	// The values have to be re-calculated for each server location.
+	// For this reason, a PHP function to calculate this every time now makes more sense.
+
+	/*
+	echo "<pre>";
+	print_r( 'hash: ' );
+	print_r( kemosite_wordpress_calculate_sri( $src ) );
+	echo "<br><br>";
+	echo "</pre>";
+	*/
 
 	$sri = array(
-		'jquery' => "sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs",
-		'foundation' => "sha384-aIzMo8wrK01Ha4yHuRC7+ttQyih1mBL9y+g0q06AvY1ZYU+lQpYeOS340JDX0gPM",
-		'foundation-app' => "sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb",
-		'chart-js' => "sha384-e0Ld33+NYCtr348mTKmGXxuXo8Pq1tiaN2zrO6oxfkwrnpuS7qPnLM4BX78E5CaV",
-		'kemosite-wordpress-theme-accessibility' => "sha384-2PX/4v63APKDtWeHFC/+vmmJLDBJRMu8fjkk5vobB4CFP0ig5SKEmEMYiwnq4TFT",
-		'kemosite-wordpress-theme-gtag' => "sha384-6Vl5/q/l+7NKrJUXfnPuS9gu9tHAFTKVK8ZpNpkMaQKOOGY3hXvRjWkl5qMput/W",
-		'chart-js-config' => "sha384-zhfO1pIWyfI9B1PrCbWqkX9j5iy6/KmuKSDvDJv/WxePyKq4rrl09Ok+ICRmzWi9",
-		'kemosite-url-handler' => "sha384-U0Tv7uETrtS4M1SKukSpJKLGJBGlQUfhUDYU7+40+HsBnZWoJ8ZRplprsTPeCBuH",
-		'mediaelement' => "sha384-rbUYuYu+32P4C+iccuLEQM+QAAEM30BcUwPzjmy4SaV5A9ffKR5z0boQW+MDrjbB",
-	  	'kemosite-wordpress-theme-navigation' => "sha384-5+KMzUo/+Cfac+crZz8CNYLqSFupzQjmLzz8xUuneXs8GrMwAF3DoRwby2THar6j",
-	  	'kemosite-wordpress-theme-skip-link-focus-fix' => "sha384-e8jCVY5/XCGnhFgS9HOz0wQIzMB1UrCZW26/lY8+6PtFh5r1cQVRXgqcO297wY+X",
-	  	'foundation-what-input' => "sha384-Pdwt+Fh32egoLW6Sa3WsD60SGn4PhylHf0H9v9CLVkXtv3sNSZqKBQPZAApb8VJY"
+		'jquery',
+		'foundation',
+		'foundation-app',
+		'chart-js',
+		'kemosite-wordpress-theme-accessibility',
+		'kemosite-wordpress-theme-gtag',
+		'chart-js-config',
+		'kemosite-url-handler',
+		'mediaelement',
+	  	'kemosite-wordpress-theme-navigation',
+	  	'kemosite-wordpress-theme-skip-link-focus-fix',
+	  	'foundation-what-input'
 	);
 
-	if ( array_key_exists( $handle, $sri ) ):
-		$html = str_replace( '></script>', ' integrity="' . $sri["$handle"] . '" crossorigin="anonymous"></script>', $html );
+	if ( in_array( $handle, $sri ) ):
+		$html = str_replace( '></script>', ' integrity="' . kemosite_wordpress_calculate_sri( $src ) . '" crossorigin="anonymous"></script>', $html );
 		return $html;
 	else:
 		return $html;

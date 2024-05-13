@@ -53,25 +53,25 @@ function kemosite_wordpress_enqueue_styles() {
 	    wp_enqueue_style( 'learnpress' );
 	endif;
 
-	add_filter( 'style_loader_tag', 'kemosite_wordpress_enqueue_styles_sri', 10, 2 );
+	add_filter( 'style_loader_tag', 'kemosite_wordpress_enqueue_styles_sri', 10, 4 );
 
 }
 
-function kemosite_wordpress_enqueue_styles_sri( $html, $handle ) {
+function kemosite_wordpress_enqueue_styles_sri( $html, $handle, $src, $media ) {
 
 	$sri = array(
-		'kemosite-wp-block' => "sha384-yk+mfGfO6d9l5e5p0haLJF8mp8VZsqhnGqmFCqE2Mm2qJM5ZM2D353yoMBHP9hyT",
-		'foundation' => "sha384-2ZAo6d0r9zxtxn7DvMBmpd3hscGP+LkxQ/kMShaUz/TqqsBPtbtZ1K3+3/CgndDu",
-		'foundation-icons' => "sha384-7bXLCxCHaev6+cHdA4uI++Z62NQccdKvHttwhapeDp4M7A/80ZupYyEwBZOXcdaz",
-		'modern-pictograms' => "sha384-B+1c6f0W8mTBldSZyPVKZtJW/ZobnyN+KsdI+Pwqv04GHYjKiYEdvHkVgexZpLG2",
-		'kemosite-master-styles' => "sha384-d+AhL+XKF2yjoO+JshESVesIKwWBKIBAf/94UiRFEk0e76gkHJ5d9+R7BAx0UHGA",
-		'mediaelement-css' => "sha384-yMPTCKNeqdVDbMfSmKl/Ug2z9XZA4eYi8vI67Ul0BNNH47Nfjbk6FWfTESPuEB3+",
-		'kemosite-woocommerce' => "sha384-ekHC+gfLJ9pPG93dFxFH/fnSNDEXdgTms6Fw+EJ2sfwsJTXnC90JF9DyvvpWBtyM",
-		'learnpress' => "sha384-Dx/vtXUPumpb0x/snikgWb2NdTdrQYsADLC1wUjSebk6Cf+xu8wSS/P5O5fdhpj+"
+		'kemosite-wp-block',
+		'foundation',
+		'foundation-icons',
+		'modern-pictograms',
+		'kemosite-master-styles',
+		'mediaelement-css',
+		'kemosite-woocommerce',
+		'learnpress'
 	);
 
-	if ( array_key_exists( $handle, $sri ) ):
-		$html = str_replace( '<link ', '<link integrity="' . $sri["$handle"] . '" crossorigin="anonymous" ', $html );
+	if ( in_array( $handle, $sri ) ):
+		$html = str_replace( '<link ', '<link integrity="' . kemosite_wordpress_calculate_sri( $src ) . '" crossorigin="anonymous" ', $html );
 		return $html;
 	else:
 		return $html;

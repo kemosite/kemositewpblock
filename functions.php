@@ -125,6 +125,9 @@ add_action( 'widgets_init', 'kemosite_wordpress_theme_widgets_init' );
 // Colour Functions
 require_once get_template_directory() . '/inc/function-helpers/function_helpers_colours.php';
 
+// Calculate SRI
+require_once get_template_directory() . '/inc/function-helpers/kemosite_wordpress_calculate_sri.php';
+
 /**
  * Check to see if the current page is the login/register page.
  *
@@ -169,6 +172,12 @@ require_once get_template_directory() . '/inc/customize_register/customize-regis
 
 // Woocommerce modification functions
 // require_once get_template_directory() . '/inc/woocommerce/functions_woocommerce.php';
+
+// Enqueue theme styles (view) first
+if ( !function_exists( 'kemosite_wordpress_enqueue_styles' ) ) :
+	require_once get_template_directory() . '/inc/wp_enqueue_scripts/kemosite_wordpress_enqueue_styles.php';
+endif;
+add_action( 'wp_enqueue_scripts', 'kemosite_wordpress_enqueue_styles' );
 
 // Enqueue theme styles (view) first
 if ( !function_exists( 'kemosite_wordpress_enqueue_styles' ) ) :
