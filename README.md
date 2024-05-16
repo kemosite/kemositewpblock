@@ -14,7 +14,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
-= 6.5.2.6 =
+= 6.5.2.7 =
 - Trying again to sync with Github.
 
 = 6.5.2.5 =
