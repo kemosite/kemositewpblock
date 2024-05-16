@@ -14,6 +14,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 6.5.2.9 =
+- Add header to style.css to support downloading from GitHub. Duh.
+
 = 6.5.2.8 =
 - Reinstated color filters on menu item hover
 - Fixed footer menu styles
