@@ -198,8 +198,11 @@ main p > a,
 main li > a:not(.wc-block-grid__product-link),
 a[rel="bookmark"],
 .nav-links a,
-footer a {
+footer a,
+footer li a,
+footer li.wp-block-navigation-item a {
     border-bottom: 1px solid;
+    border-radius: 0;
     font-weight: 600;
 }
 

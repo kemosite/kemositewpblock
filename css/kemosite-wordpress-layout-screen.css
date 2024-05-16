@@ -53,7 +53,7 @@
 	padding: 0 2ch;
 }
 
-.kemosite-grid-layout :where(body .is-layout-flow) > * {
+.kemosite-grid-layout :where(body .is-layout-flow) > nav {
 	margin-block-start: 0;
 }
 

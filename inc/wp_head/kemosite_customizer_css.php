@@ -479,7 +479,7 @@ function kemosite_customizer_css() {
 		--kemosite_wordpress_component_success_colour: <?php echo $kemosite_wordpress_component_success_colour_light_mode; ?>;
 		--kemosite_wordpress_component_success_font_colour: <?php echo $kemosite_wordpress_component_success_font_colour_root; ?>;
 		--kemosite_wordpress_component_warning_colour: <?php echo $kemosite_wordpress_component_warning_colour_light_mode; ?>;
-		--kemosite_wordpress_component_warning_font_colour: <?php echo $kemosite_wordpress_component_warning_font_colour_root; ?>;
+		--kemosite_wordpress_component_warning_font_colour: <?php echo $kemosite_wordpress_component_warning_font_colour_light_mode; ?>;
 		--kemosite_wordpress_component_alert_colour: <?php echo $kemosite_wordpress_component_alert_colour_light_mode; ?>;
 		--kemosite_wordpress_component_alert_font_colour: <?php echo $kemosite_wordpress_component_alert_font_colour_root; ?>;
 		--kemosite_wordpress_table_border_colour: <?php echo $kemosite_wordpress_base_black; ?>;

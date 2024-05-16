@@ -147,7 +147,7 @@ ul.wp-block-navigation > li.menu-item > ul.wp-block-navigation-submenu,
 ul.wp-block-navigation-submenu > li.menu-item,
 ul.wp-block-navigation > li.wp-block-navigation-item,
 ul.wp-block-navigation > li.wp-block-navigation-item > ul.wp-block-navigation-submenu,
-ul.wp-block-navigation-submenu > li.wp-block-navigation-item,
+ul.wp-block-navigation-submenu > li.wp-block-navigation-item
 { margin: 0 }
 
 li.menu-item a,

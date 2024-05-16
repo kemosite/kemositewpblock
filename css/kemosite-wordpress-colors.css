@@ -157,7 +157,7 @@ div a:not(.wp-element-button):hover, div a:not(.wp-element-button):focus,
 {
 	background-color: var(--kemosite_wordpress_component_colour);
 	color: var(--kemosite_wordpress_base_black);
-	/* filter: saturate(50%) brightness(150%); */
+	filter: saturate(50%) brightness(150%);
 }
 
 div.wp-block-site-logo a.custom-logo-link:hover {
@@ -200,7 +200,7 @@ ul.wp-block-navigation li.wp-block-navigation-item.is-active > a,
 ul.wp-block-navigation li.wp-block-navigation-item.is-active > a:link {
 	background-color: var(--kemosite_wordpress_component_colour);
 	color: var(--kemosite_wordpress_base_black);
-	/* filter: saturate(50%) brightness(150%); */
+	filter: saturate(50%) brightness(150%);
 }
 
 p a.button, li.product .button, li a.button, li.product a.button, a.button, .button, button, button.button, button.close-button, button.wp-element-button, input.mailpoet_submit, input.pushbutton-wide, a.close-button,
