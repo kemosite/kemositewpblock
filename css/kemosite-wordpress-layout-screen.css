@@ -53,6 +53,10 @@
 	padding: 0 2ch;
 }
 
+.kemosite-grid-layout :where(body .is-layout-flow) > * {
+	margin-block-start: 0;
+}
+
 .kemosite-grid-layout.no-sidebars .kemosite-grid-area-main {
 	margin-left: 3ch;
 	margin-right: 3ch;
@@ -84,12 +88,15 @@
 	width: auto;
 	max-width: 100%;
 	flex: 0 1 auto;
+	display: flex;
+	align-items: center;
 }
 .menu-block .menu-block-right {
 	margin-left: auto;
 	width: auto;
 	max-width: 100%;
 	flex: 0 1 auto;
+	display: flex;
 }
 
 .wp-block-navigation .has-child:not(.open-on-click):hover > .wp-block-navigation__submenu-container {

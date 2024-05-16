@@ -17,6 +17,11 @@
 
 .wp-block-search__inside-wrapper { border: 0; }
 
+div.kemosite-grid-layout .wp-block-site-logo.is-default-size img {
+	height: 96px;
+	width: auto;
+}
+
 div.kemosite-grid-area-section,
 div.kemosite-grid-area-footer {
 	display: flex;

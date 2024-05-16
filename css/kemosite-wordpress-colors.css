@@ -160,6 +160,10 @@ div a:not(.wp-element-button):hover, div a:not(.wp-element-button):focus,
 	/* filter: saturate(50%) brightness(150%); */
 }
 
+div.wp-block-site-logo a.custom-logo-link:hover {
+	background-color: transparent;
+}
+
 a[name]:hover, a[name]:focus {
 	background-color: transparent;
 }

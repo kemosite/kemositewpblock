@@ -120,6 +120,7 @@ ul.accordian li.accordian-item {
 select, input:not([type="checkbox"]):not([type="radio"]), button:not(.wp-block-navigation__submenu-icon), .button, .button.expanded,
 [type="color"], [type="date"], [type="datetime-local"], [type="datetime"], [type="email"], [type="month"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="time"], [type="url"], [type="week"], textarea,
 li.menu-item, li.menu-item a,
+li.wp-block-navigation-item, li.wp-block-navigation-item a,
 a.wp-block-button__link {
 	min-height: 56px;
 	min-width: 80px;
@@ -143,12 +144,18 @@ ul.wp-block-navigation-submenu {
 
 ul.wp-block-navigation > li.menu-item,
 ul.wp-block-navigation > li.menu-item > ul.wp-block-navigation-submenu,
-ul.wp-block-navigation-submenu > li.menu-item
- { margin: 0 }
+ul.wp-block-navigation-submenu > li.menu-item,
+ul.wp-block-navigation > li.wp-block-navigation-item,
+ul.wp-block-navigation > li.wp-block-navigation-item > ul.wp-block-navigation-submenu,
+ul.wp-block-navigation-submenu > li.wp-block-navigation-item,
+{ margin: 0 }
 
 li.menu-item a,
 li.menu-item > a,
 li.menu-item > a:link,
+li.wp-block-navigation-item a,
+li.wp-block-navigation-item > a,
+li.wp-block-navigation-item > a:link,
 div.wp-block-navigation__responsive-container-content > ul.wp-block-navigation__container > li.wp-block-navigation-item > a.wp-block-navigation-item__content {
 	padding: 1ex 1em;
 	display: flex;

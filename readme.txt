@@ -12,6 +12,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 6.5.2.5 =
+- Updates to new menu style classes. This will help ensure that adding custom class names will not be required to use menu styles from the previous theme.
+- Reduced logo size, and removed background color on hover.
+
 = 6.5.2.4 =
 - Fix to SRI to automatically generate for server installation instance.
 

@@ -95,8 +95,8 @@ function kemosite_wordpress_theme_setup() {
 	 * @link https://codex.wordpress.org/Theme_Logo
 	 */
 	add_theme_support( 'custom-logo', array(
-		'height'      => 256,
-		'width'       => 256,
+		'height'      => 96,
+		'width'       => 96,
 		'flex-width'  => true,
 		'flex-height' => true,
 		'header-text' => array( 'site-title', 'site-description' )
