@@ -12,6 +12,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 6.5.2.10 =
+- Improved hover colours and default width for buttons.
+- Fixed bug preventing from theme customizer from saving.
+
 = 6.5.2.9 =
 - Add header to style.css to support downloading from GitHub. Duh.
 

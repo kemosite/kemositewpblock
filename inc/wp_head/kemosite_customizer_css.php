@@ -15,12 +15,14 @@ function kemosite_customizer_css() {
 	/* [GLOBAL COLOUR OPTIONS] */
 	$kemosite_wordpress_base_primary_colour = get_theme_mod('kemosite_wordpress_base_primary_colour', $pantone_coty_colour_this_year_hex );
 	$kemosite_wordpress_base_primary_chroma = kemosite_lum_to_hex( kemosite_hex_to_chroma( $kemosite_wordpress_base_primary_colour ) );
+	$kemosite_wordpress_base_primary_colour_lum = kemosite_hex_to_lum($kemosite_wordpress_base_primary_colour) * 100;
+	$kemosite_wordpress_main_content_font_color = ( $kemosite_wordpress_base_primary_colour_lum >= 50 ) ? $kemosite_base_black : $kemosite_cool_white;
 	$kemosite_wordpress_base_black = $kemosite_base_black;
 
 	/* [HEADER OPTIONS] */
 	$kemosite_wordpress_header_bg_image = get_theme_mod('kemosite_wordpress_header_bg_image');
 	$kemosite_wordpress_header_bg_image_presentation = get_theme_mod('kemosite_wordpress_header_bg_image_presentation');
-	$kemosite_wordpress_header_bg_color = get_theme_mod( 'kemosite_wordpress_header_bg_color', $pantone_coty_colour_this_year_hex );
+	$kemosite_wordpress_header_bg_color = get_theme_mod( 'kemosite_wordpress_header_bg_color', $kemosite_wordpress_base_primary_colour );
 
 	$kemosite_wordpress_header_font_color = ( kemosite_hex_to_lum( $kemosite_wordpress_header_bg_color ) >= 0.5 ) ? $kemosite_base_black : $kemosite_cool_white;
 
@@ -124,9 +126,10 @@ function kemosite_customizer_css() {
 
 	// Component Colour
 
-	$kemosite_wordpress_component_colour_source = get_theme_mod( 'kemosite_wordpress_component_colour', $pantone_coty_colour_this_year_hex );
+	$kemosite_wordpress_component_colour_source = get_theme_mod( 'kemosite_wordpress_component_colour', $kemosite_wordpress_base_primary_colour );
 	$kemosite_wordpress_component_colour_source_hsl = kemosite_hex_to_hsl( $kemosite_wordpress_component_colour_source );
 	$kemosite_wordpress_component_colour_source_hsl_array = explode( ",", $kemosite_wordpress_component_colour_source_hsl );
+	$kemosite_wordpress_component_hover_colour_source_hsl = "$kemosite_wordpress_component_colour_source_hsl_array[0], 100, 51";
 	$kemosite_wordpress_component_colour_source_lum = round( kemosite_hex_to_lum($kemosite_wordpress_component_colour_source) * 100 );
 	
 	// Calculate contrast for selection colour again main background
@@ -162,46 +165,22 @@ function kemosite_customizer_css() {
 			$kemosite_wordpress_component_colour_source_lum
 		);
 
-		/*
-		echo "<pre>";
-		print_r( 'kemosite_wordpress_component_colour_source_hsl_array:' );
-		echo "<br>";
-		print_r( $kemosite_wordpress_component_colour_source_hsl_array );
-		echo "<br>";
-		print_r( 'kemosite_wordpress_component_colour_source_bg_contrast_dark_mode:' );
-		echo "<br>";
-		print_r( $kemosite_wordpress_component_colour_source_bg_contrast_dark_mode );
-		echo "<br>";
-		print_r( 'kemosite_wordpress_component_colour_source_lum:' );
-		echo "<br>";
-		print_r( $kemosite_wordpress_component_colour_source_lum );
-		echo "</pre>";
-		*/
-
 		$kemosite_wordpress_component_colour_dark_mode = kemosite_hsl_to_hex( $kemosite_wordpress_component_colour_hsl_dark_mode );
-
-		/*
-		echo "<pre>";
-		print_r( 'kemosite_wordpress_component_colour_hsl_dark_mode:' );
-		echo "<br>";
-		print_r( $kemosite_wordpress_component_colour_hsl_dark_mode );
-		echo "<br>";
-		print_r( 'kemosite_wordpress_component_colour_dark_mode:' );
-		echo "<br>";
-		print_r( $kemosite_wordpress_component_colour_dark_mode );
-		echo "</pre>";
-		*/
-
 		$kemosite_wordpress_component_colour_lum_dark_mode = kemosite_hex_to_lum($kemosite_wordpress_component_colour_dark_mode) * 100;
 		$kemosite_wordpress_component_font_colour_dark_mode = ( $kemosite_wordpress_component_colour_lum_dark_mode >= 50 ) ? $kemosite_base_black : $kemosite_cool_white;
 
 	endif;
+
+	$kemosite_wordpress_component_hover_colour = kemosite_hsl_to_hex( $kemosite_wordpress_component_hover_colour_source_hsl );
+
+
 
 	// Secondary Colour
 
 	$kemosite_wordpress_secondary_colour_source = get_theme_mod( 'kemosite_wordpress_secondary_colour', $kemosite_base_black );
 	$kemosite_wordpress_secondary_colour_source_hsl = kemosite_hex_to_hsl( $kemosite_wordpress_secondary_colour_source );
 	$kemosite_wordpress_secondary_colour_source_hsl_array = explode( ",", $kemosite_wordpress_secondary_colour_source_hsl );
+	$kemosite_wordpress_secondary_hover_colour_source_hsl = "$kemosite_wordpress_secondary_colour_source_hsl_array[0], 100, 51";
 	$kemosite_wordpress_secondary_colour_source_lum = kemosite_hex_to_lum($kemosite_wordpress_secondary_colour_source) * 100;
 
 	// Calculate contrast for selection colour again main background
@@ -247,10 +226,9 @@ function kemosite_customizer_css() {
 
 	endif;
 
-	// Success, Warning, and Alert Colours
+	$kemosite_wordpress_secondary_hover_colour = kemosite_hsl_to_hex( $kemosite_wordpress_secondary_hover_colour_source_hsl );
 
-	$kemosite_wordpress_component_colour_source_hsl = kemosite_hex_to_hsl( $kemosite_wordpress_component_colour_source );
-	$kemosite_wordpress_component_colour_source_hsl_array = explode( ",", $kemosite_wordpress_component_colour_source_hsl );
+	// Success, Warning, and Alert Colours
 	
 	// Success
 	$kemosite_wordpress_component_success_colour_source_hsl_array 	= 	array( 
@@ -259,6 +237,7 @@ function kemosite_customizer_css() {
 																			$kemosite_wordpress_component_colour_source_hsl_array[2]
 																		);
 	$kemosite_wordpress_component_success_colour_source_hsl = implode( ",", $kemosite_wordpress_component_success_colour_source_hsl_array );
+	$kemosite_wordpress_component_success_hover_colour_source_hsl = "$kemosite_wordpress_component_success_colour_source_hsl_array[0], 100, 51";
 	$kemosite_wordpress_component_success_colour_source_rgb = kemosite_hsl_to_rgb( $kemosite_wordpress_component_success_colour_source_hsl );
 	$kemosite_wordpress_component_success_colour_source_lum = kemosite_rgb_to_lum( $kemosite_wordpress_component_success_colour_source_rgb );
 	$kemosite_wordpress_component_success_colour_source = kemosite_rgb_to_hex( $kemosite_wordpress_component_success_colour_source_rgb );
@@ -309,6 +288,8 @@ function kemosite_customizer_css() {
 
 	endif;
 
+	$kemosite_wordpress_component_success_hover_colour = kemosite_hsl_to_hex( $kemosite_wordpress_component_success_hover_colour_source_hsl );
+
 	// Warning
 	$kemosite_wordpress_component_warning_colour_source_hsl_array =	array( 
 																	60,
@@ -316,6 +297,7 @@ function kemosite_customizer_css() {
 																	$kemosite_wordpress_component_colour_source_hsl_array[2]
 																);
 	$kemosite_wordpress_component_warning_colour_source_hsl = implode( ",", $kemosite_wordpress_component_warning_colour_source_hsl_array );
+	$kemosite_wordpress_component_warning_hover_colour_source_hsl = "$kemosite_wordpress_component_warning_colour_source_hsl_array[0], 100, 51";
 	$kemosite_wordpress_component_warning_colour_source_rgb = kemosite_hsl_to_rgb( $kemosite_wordpress_component_warning_colour_source_hsl );
 	$kemosite_wordpress_component_warning_colour_source_lum = kemosite_rgb_to_lum( $kemosite_wordpress_component_warning_colour_source_rgb );
 	$kemosite_wordpress_component_warning_colour_source = kemosite_rgb_to_hex( $kemosite_wordpress_component_warning_colour_source_rgb );
@@ -330,6 +312,7 @@ function kemosite_customizer_css() {
 
 	$kemosite_wordpress_component_warning_colour_light_mode = $kemosite_wordpress_component_warning_colour_dark_mode = $kemosite_wordpress_component_warning_colour_source;
 	$kemosite_wordpress_component_warning_colour_lum_light_mode = $kemosite_wordpress_component_warning_colour_lum_dark_mode = ( $kemosite_wordpress_component_warning_colour_source_lum >= 50 ) ? $kemosite_base_black : $kemosite_cool_white;
+	$kemosite_wordpress_component_warning_font_colour_light_mode = ( $kemosite_wordpress_component_warning_colour_lum_light_mode >= 50 ) ? $kemosite_base_black : $kemosite_cool_white;
 
 	// Root CSS Colour
 	$kemosite_wordpress_component_warning_font_colour_root = ( $kemosite_wordpress_component_warning_colour_lum_light_mode >= 50 ) ? $kemosite_base_black : $kemosite_cool_white;
@@ -366,6 +349,8 @@ function kemosite_customizer_css() {
 
 	endif;
 
+	$kemosite_wordpress_component_warning_hover_colour = kemosite_hsl_to_hex( $kemosite_wordpress_component_warning_hover_colour_source_hsl );
+
 	// Alert
 	$kemosite_wordpress_component_alert_colour_source_hsl_array =	array( 
 																	0,
@@ -373,6 +358,7 @@ function kemosite_customizer_css() {
 																	$kemosite_wordpress_component_colour_source_hsl_array[2]
 																);
 	$kemosite_wordpress_component_alert_colour_source_hsl = implode( ",", $kemosite_wordpress_component_alert_colour_source_hsl_array );
+	$kemosite_wordpress_component_alert_hover_colour_source_hsl = "$kemosite_wordpress_component_alert_colour_source_hsl_array[0], 100, 51";
 	$kemosite_wordpress_component_alert_colour_source_rgb = kemosite_hsl_to_rgb( $kemosite_wordpress_component_alert_colour_source_hsl );
 	$kemosite_wordpress_component_alert_colour_source_lum = kemosite_rgb_to_lum( $kemosite_wordpress_component_alert_colour_source_rgb );
 	$kemosite_wordpress_component_alert_colour_source = kemosite_rgb_to_hex( $kemosite_wordpress_component_alert_colour_source_rgb );
@@ -421,6 +407,8 @@ function kemosite_customizer_css() {
 		$kemosite_wordpress_component_alert_font_colour_dark_mode = ( $kemosite_wordpress_component_alert_colour_lum_dark_mode >= 50 ) ? $kemosite_base_black : $kemosite_cool_white;
 
 	endif;
+
+	$kemosite_wordpress_component_alert_hover_colour = kemosite_hsl_to_hex( $kemosite_wordpress_component_alert_hover_colour_source_hsl );
 
 	?>
 
@@ -472,15 +460,20 @@ function kemosite_customizer_css() {
 		--kemosite_wordpress_selection_colour: <?php echo $kemosite_wordpress_selection_colour_light_mode; ?>;
 		--kemosite_wordpress_selection_font_colour: <?php echo $kemosite_wordpress_selection_font_colour_light_mode; ?>;
 		--kemosite_wordpress_component_colour: <?php echo $kemosite_wordpress_component_colour_light_mode; ?>;
+		--kemosite_wordpress_component_hover_colour: <?php echo $kemosite_wordpress_component_hover_colour; ?>;
 		--kemosite_wordpress_component_font_colour: <?php echo $kemosite_wordpress_component_font_colour_light_mode; ?>;
 		--kemosite_wordpress_component_shadow_colour: <?php echo $kemosite_wordpress_base_black; ?>;
 		--kemosite_wordpress_secondary_colour: <?php echo $kemosite_wordpress_secondary_colour_light_mode; ?>;
+		--kemosite_wordpress_secondary_hover_colour: <?php echo $kemosite_wordpress_secondary_hover_colour; ?>;
 		--kemosite_wordpress_secondary_font_colour: <?php echo $kemosite_wordpress_secondary_font_colour_light_mode; ?>;
 		--kemosite_wordpress_component_success_colour: <?php echo $kemosite_wordpress_component_success_colour_light_mode; ?>;
+		--kemosite_wordpress_component_success_hover_colour: <?php echo $kemosite_wordpress_component_success_hover_colour; ?>;
 		--kemosite_wordpress_component_success_font_colour: <?php echo $kemosite_wordpress_component_success_font_colour_root; ?>;
 		--kemosite_wordpress_component_warning_colour: <?php echo $kemosite_wordpress_component_warning_colour_light_mode; ?>;
+		--kemosite_wordpress_component_warning_hover_colour: <?php echo $kemosite_wordpress_component_warning_hover_colour; ?>;
 		--kemosite_wordpress_component_warning_font_colour: <?php echo $kemosite_wordpress_component_warning_font_colour_light_mode; ?>;
 		--kemosite_wordpress_component_alert_colour: <?php echo $kemosite_wordpress_component_alert_colour_light_mode; ?>;
+		--kemosite_wordpress_component_alert_hover_colour: <?php echo $kemosite_wordpress_component_alert_hover_colour; ?>;
 		--kemosite_wordpress_component_alert_font_colour: <?php echo $kemosite_wordpress_component_alert_font_colour_root; ?>;
 		--kemosite_wordpress_table_border_colour: <?php echo $kemosite_wordpress_base_black; ?>;
 		--kemosite_wordpress_table_font_colour: <?php echo $kemosite_cool_white; ?>;
@@ -508,6 +501,7 @@ function kemosite_customizer_css() {
 			--kemosite_wordpress_selection_colour: <?php echo $kemosite_wordpress_selection_colour_dark_mode; ?>;
 			--kemosite_wordpress_selection_font_colour: <?php echo $kemosite_wordpress_selection_font_colour_dark_mode; ?>;
 			--kemosite_wordpress_component_colour: <?php echo $kemosite_wordpress_component_colour_dark_mode; ?>;
+			--kemosite_wordpress_component_hover_colour: <?php echo $kemosite_wordpress_component_hover_colour; ?>;
 			--kemosite_wordpress_component_font_colour: <?php echo $kemosite_wordpress_component_font_colour_dark_mode; ?>;
 			--kemosite_wordpress_component_shadow_colour: <?php echo $kemosite_wordpress_base_black; ?>;
 			--kemosite_wordpress_secondary_colour: <?php echo $kemosite_wordpress_secondary_colour_dark_mode; ?>;
@@ -524,7 +518,7 @@ function kemosite_customizer_css() {
 
 	.background.kemosite_wordpress_base_primary_colour {
 		background-color: var(--kemosite_wordpress_base_primary_colour);
-		color:  var(--kemosite_wordpress_placeholder_color);
+		color:  var(--kemosite_wordpress_main_content_font_color);
 	}
 	.background.kemosite_wordpress_base_black {
 		background-color: var(--kemosite_wordpress_base_black);

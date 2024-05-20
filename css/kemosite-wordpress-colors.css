@@ -156,8 +156,7 @@ div a:not(.wp-element-button):hover, div a:not(.wp-element-button):focus,
 .kemosite-grid-layout .woocommerce .wp-block-woocommerce-product-details ul.tabs.wc-tabs li a:hover, .kemosite-grid-layout .woocommerce .wp-block-woocommerce-product-details ul.tabs.wc-tabs li a:focus
 {
 	background-color: var(--kemosite_wordpress_component_colour);
-	color: var(--kemosite_wordpress_base_black);
-	filter: saturate(50%) brightness(150%);
+	color: var(--kemosite_wordpress_component_font_colour)
 }
 
 div.wp-block-site-logo a.custom-logo-link:hover {
@@ -199,8 +198,7 @@ ul.wp-block-navigation li.wp-block-navigation-item a:hover,
 ul.wp-block-navigation li.wp-block-navigation-item.is-active > a,
 ul.wp-block-navigation li.wp-block-navigation-item.is-active > a:link {
 	background-color: var(--kemosite_wordpress_component_colour);
-	color: var(--kemosite_wordpress_base_black);
-	filter: saturate(50%) brightness(150%);
+	color: var(--kemosite_wordpress_component_font_colour);
 }
 
 p a.button, li.product .button, li a.button, li.product a.button, a.button, .button, button, button.button, button.close-button, button.wp-element-button, input.mailpoet_submit, input.pushbutton-wide, a.close-button,
@@ -228,7 +226,7 @@ div.css-search div.em-search-main .em-search-submit, /* Events */
 	border: 0;
 }
 
-p a.button:hover, p a.button:focus, li.product .button:hover, li.product .button:focus, .button:hover, .button:focus, a.button:hover, a.button:focus,
+div a.button:hover, div a.button:focus, p a.button:hover, p a.button:focus, li.product .button:hover, li.product .button:focus, .button:hover, .button:focus, a.button:hover, a.button:focus,
 .wp-block-button__link:hover, .wp-block-button__link:focus, div.wp-block-button a.wp-block-button__link:hover, div.wp-block-button a.wp-block-button__link:focus,
 input.search-submit:hover, input.search-submit:focus,
 button:hover, button:focus, input.mailpoet_submit:hover, input.mailpoet_submit:focus, input.pushbutton-wide:hover, input.pushbutton-wide:focus, button.button:hover, button.button:focus, button.close-button:hover, button.close-button:focus, a.close-button:hover, a.close-button:focus,
@@ -244,9 +242,7 @@ div.css-search div.em-search-main .em-search-submit:hover, div.css-search div.em
 	-webkit-box-shadow: 0 2px 0 var(--kemosite_wordpress_component_shadow_colour);
 	box-shadow: 0 2px 0 var(--kemosite_wordpress_component_shadow_colour);
 	background: none;
-	background-color: var(--kemosite_wordpress_component_colour);
-	filter: saturate(50%) brightness(150%);
-	/* filter: invert(100%); */
+	background-color: var(--kemosite_wordpress_component_hover_colour);
 	color: var(--kemosite_wordpress_base_black);
 }
 
@@ -284,9 +280,8 @@ button.secondary, button.button.secondary,
 a.button.secondary:hover,
 button.secondary:hover, button.button.secondary:hover,
 .wp-block-button.secondary .wp-block-button__link:hover { 
-	background-color: var(--kemosite_wordpress_secondary_colour);
-	color: var(--kemosite_wordpress_base_black);
-	filter: saturate(50%) brightness(150%);
+	background-color: var(--kemosite_wordpress_secondary_hover_colour);
+	color: var(--kemosite_wordpress_secondary_font_colour);
 }
 
 /* success */
@@ -301,9 +296,8 @@ button.success, button.button.success,
 a.button.success:hover,
 button.success:hover, button.button.success:hover,
 .wp-block-button.success .wp-block-button__link:hover { 
-	background-color: var(--kemosite_wordpress_component_success_colour);
+	background-color: var(--kemosite_wordpress_component_success_hover_colour);
 	color: var(--kemosite_wordpress_base_black);
-	filter: saturate(50%) brightness(150%);
 }
 
 /* warning */
@@ -318,9 +312,8 @@ button.warning, button.button.warning,
 a.button.warning:hover,
 button.warning:hover, button.button.warning:hover,
 .wp-block-button.warning .wp-block-button__link:hover { 
-	background-color: var(--kemosite_wordpress_component_warning_colour);
+	background-color: var(--kemosite_wordpress_component_warning_hover_colour);
 	color: var(--kemosite_wordpress_base_black);
-	filter: saturate(50%) brightness(150%);
 }
 
 /* alert */
@@ -335,9 +328,8 @@ button.alert, button.button.alert,
 a.button.alert:hover,
 button.alert:hover, button.button.alert:hover,
 .wp-block-button.alert .wp-block-button__link:hover { 
-	background-color: var(--kemosite_wordpress_component_alert_colour);
+	background-color: var(--kemosite_wordpress_component_alert_hover_colour);
 	color: var(--kemosite_wordpress_base_black);
-	filter: saturate(50%) brightness(150%);
 }
 
 label { color: var(--kemosite_wordpress_component_colour) }
