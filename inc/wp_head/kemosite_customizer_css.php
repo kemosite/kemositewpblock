@@ -526,7 +526,7 @@ function kemosite_customizer_css() {
 	}
 
 	<?php if ( !is_null( $kemosite_wordpress_header_bg_image ) ): ?>
-	div.section.header { 
+	div.kemosite-grid-area-section { 
 		background-image: url(<?php echo $kemosite_wordpress_header_bg_image; ?>);
 		background-position: center; /* Center the image */
 		background-repeat: no-repeat; /* Do not repeat the image */

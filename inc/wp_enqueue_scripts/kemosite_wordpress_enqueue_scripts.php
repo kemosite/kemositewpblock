@@ -8,20 +8,21 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	// Retrieve Custom Fields from post.
 	$custom_fields = get_post_custom();
+	$theme_version = "6.5.3.1";
 
 	// Accessibility enhancements
 	wp_deregister_script('kemosite-wordpress-theme-accessibility');
-	wp_register_script('kemosite-wordpress-theme-accessibility', get_template_directory_uri() . '/js/accessibility.js', array(), '20200525', array( 'footer' => true, 'strategy' => 'defer' ) );
+	wp_register_script('kemosite-wordpress-theme-accessibility', get_template_directory_uri() . '/js/accessibility.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'defer' ) );
 	wp_enqueue_script('kemosite-wordpress-theme-accessibility');
 
 	// URL Handler
 	wp_deregister_script('kemosite-url-handler');
-	wp_register_script('kemosite-url-handler', get_template_directory_uri().'/js/kemosite-url-handler.js', array(), '20220113', array( 'footer' => true, 'strategy' => 'defer' ) );
+	wp_register_script('kemosite-url-handler', get_template_directory_uri().'/js/kemosite-url-handler.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'defer' ) );
 	wp_enqueue_script('kemosite-url-handler');
 
 	// Typography
 	wp_deregister_script('kemosite-typography-orphans');
-	wp_register_script('kemosite-typography-orphans', get_template_directory_uri().'/js/kemosite-typography-orphans.js', array(), '20240426', array( 'footer' => true ) );
+	wp_register_script('kemosite-typography-orphans', get_template_directory_uri().'/js/kemosite-typography-orphans.js', array(), $theme_version, array( 'footer' => true ) );
 	wp_enqueue_script('kemosite-typography-orphans');
 
 	wp_add_inline_script( 'kemosite-typography-orphans', '
@@ -75,16 +76,16 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	// Underscores Navigation
 	wp_deregister_script('kemosite-wordpress-theme-navigation');
-	wp_register_script('kemosite-wordpress-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', array( 'footer' => true, 'strategy' => 'async' ) );
+	wp_register_script('kemosite-wordpress-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'async' ) );
 	wp_enqueue_script('kemosite-wordpress-theme-navigation');
 
 	wp_deregister_script('kemosite-wordpress-theme-skip-link-focus-fix');
-	wp_register_script('kemosite-wordpress-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', array( 'footer' => true, 'strategy' => 'async' ) );
+	wp_register_script('kemosite-wordpress-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'async' ) );
 	wp_enqueue_script('kemosite-wordpress-theme-skip-link-focus-fix');
 
 	// Gtag
 	wp_deregister_script('kemosite-wordpress-theme-gtag');
-	wp_register_script('kemosite-wordpress-theme-gtag', get_template_directory_uri() . '/js/gtag.js', array(), '20210515', array( 'footer' => true, 'strategy' => 'defer' ) );
+	wp_register_script('kemosite-wordpress-theme-gtag', get_template_directory_uri() . '/js/gtag.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'defer' ) );
 	wp_enqueue_script('kemosite-wordpress-theme-gtag');
 		
 	// Add menus

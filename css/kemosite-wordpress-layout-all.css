@@ -30,6 +30,18 @@ div.kemosite-grid-area-footer {
 	padding: 3ex 1ch;
 }
 
+div.kemosite-grid-area-section header {
+	display: flex;
+	flex-direction: column;
+	padding: 2ex 3ch 1ex
+}
+div.kemosite-grid-area-section header h1 {
+	order: 2;
+}
+div.kemosite-grid-area-section header ul.eyebrow-headline {
+	order: 1;
+}
+
 .kemosite-grid-area-main .wp-block-post-content {
 	columns: 39ch auto;
 	column-gap: 3ch;

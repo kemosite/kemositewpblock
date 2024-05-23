@@ -93,6 +93,14 @@ h1,h2,h3,h4,h5,h6 {
     /* font-family: var(--h1_h6_font_family_name); */
 }
 
+ul.eyebrow-headline {
+    list-style-type: none;
+    padding: 0; margin: 0;
+}
+ul.eyebrow-headline li {
+    margin: 0;
+}
+
 div.kemosite-grid-area-section section h1 {
     margin: 0;
 }

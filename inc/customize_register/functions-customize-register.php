@@ -6,8 +6,8 @@ function kemosite_customize_register( $wp_customize ) {
 	/*
 	** [REMOVE UNNEEDED SECTIONS AND CONTROLS] **
 	*/
-	// $wp_customize->remove_control("header_image");
-	// $wp_customize->remove_section("header_image");0
+	$wp_customize->remove_control("header_image"); // replaced with theme function
+	$wp_customize->remove_section("header_image"); // replaced with theme function
 	$wp_customize->remove_control("background_image");
 	$wp_customize->remove_section("background_image");
 	$wp_customize->remove_control("background_color");
@@ -35,7 +35,7 @@ function kemosite_customize_register( $wp_customize ) {
 
 	/* [ADD GLOBAL COLOUR OPTIONS SECTIONS] */
 	$wp_customize->add_section( 'kemosite_wordpress_global_colour_options' , array(
-	  'title' => __( 'Global Colour Options', 'kemosite-wordpress-theme' ),
+	  'title' => __( 'Global Colour Options', 'kemositewpblock' ),
 	  'description' => 'Publish base colour for the theme. Variations and accessibility contrast adjustments will be created after publishing in Colour Variations panel.',
 	  'priority' => 40, // Same as Colour.
 	  'capability' => 'edit_theme_options'
@@ -48,9 +48,9 @@ function kemosite_customize_register( $wp_customize ) {
 	// Present colour variations in a separate panel.
 	/*
 	$wp_customize->add_panel( 'kemosite_wordpress_colour_variations_options', array(
-		'title' => __( 'Colour Variations (Publish Base Colour First)', 'kemosite-wordpress-theme' ),
+		'title' => __( 'Colour Variations (Publish Base Colour First)', 'kemositewpblock' ),
 		'capability'     => 'edit_theme_options',
-		'description' => __( 'After "Base Colour Options" Published, variations will be created automatically', 'kemosite-wordpress-theme' ),
+		'description' => __( 'After "Base Colour Options" Published, variations will be created automatically', 'kemositewpblock' ),
 		'priority' => 41, // After Base Colour Options.
 	) );
 	require_once get_template_directory() . '/inc/customize-register/kemosite_wordpress_colour_variations_options.php';
@@ -58,7 +58,7 @@ function kemosite_customize_register( $wp_customize ) {
 
 	/* [ADD A HEADER OPTIONS SECTIONS] */
 	$wp_customize->add_section( 'kemosite_wordpress_header' , array(
-	  'title' => __( 'Header Options', 'kemosite-wordpress-theme' ),
+	  'title' => __( 'Header Options', 'kemositewpblock' ),
 	  'description' => 'Header options for the theme.',
 	  'priority' => 90, // Before Menus.
 	  'capability' => 'edit_theme_options'
@@ -76,7 +76,7 @@ function kemosite_customize_register( $wp_customize ) {
 
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kemosite_wordpress_header_bg_color', array(
 			'priority' => 10, // Within the section.
-			'label' => __( 'Header Background Colour', 'kemosite-wordpress-theme' ),
+			'label' => __( 'Header Background Colour', 'kemositewpblock' ),
 			'description' => 'Header text will automatically be black/white to maximize contrast with background colour.',
 			'section' => 'kemosite_wordpress_header',
 			'default' => $kemosite_wordpress_base_primary_colour
@@ -94,7 +94,7 @@ function kemosite_customize_register( $wp_customize ) {
 
 		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'kemosite_wordpress_header_bg_image', array(
 		   'priority' => 10, // Within the section.
-		   'label'      => __( 'Header Background Image', 'kemosite-wordpress-theme' ),
+		   'label'      => __( 'Header Background Image', 'kemositewpblock' ),
 		   'section'    => 'kemosite_wordpress_header'
 	    ) ) );
 
@@ -112,7 +112,7 @@ function kemosite_customize_register( $wp_customize ) {
 			'type' => 'radio',
 			'priority' => 10, // Within the section.
 			'section' => 'kemosite_wordpress_header', // Required, core or custom.
-			'label' => __( 'Header Background Image Presentation', 'kemosite-wordpress-theme' ),
+			'label' => __( 'Header Background Image Presentation', 'kemositewpblock' ),
 			'description' => __( 'Should the header image be presented in full-colour, or duotone?' ),
 			'choices' => array(
                 'full-colour' => __( 'Full Colour' ),
@@ -124,7 +124,7 @@ function kemosite_customize_register( $wp_customize ) {
 
     /* [ADD A MAIN CONTENT OPTIONS SECTION] */
 	$wp_customize->add_section( 'kemosite_wordpress_main_content' , array(
-	  'title' => __( 'Main Content Options', 'kemosite-wordpress-theme' ),
+	  'title' => __( 'Main Content Options', 'kemositewpblock' ),
 	  'description' => 'Main content options for the theme.',
 	  'priority' => 105, // Before Menus.
 	  'capability' => 'edit_theme_options'
@@ -142,7 +142,7 @@ function kemosite_customize_register( $wp_customize ) {
 
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kemosite_wordpress_main_content_bg_color_light_mode', array(
 			'priority' => 10, // Within the section.
-			'label' => __( 'Light Mode Main Content Background Colour', 'kemosite-wordpress-theme' ),
+			'label' => __( 'Light Mode Main Content Background Colour', 'kemositewpblock' ),
 			'section' => 'kemosite_wordpress_main_content',
 			'description' => __( 'Default: Cool white (not pure white, to improve cognative accessibility' ),
 			'default' => '#efeff0',
@@ -160,7 +160,7 @@ function kemosite_customize_register( $wp_customize ) {
 
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kemosite_wordpress_main_content_bg_color_dark_mode', array(
 			'priority' => 10, // Within the section.
-			'label' => __( 'Dark Mode Main Content Background Colour', 'kemosite-wordpress-theme' ),
+			'label' => __( 'Dark Mode Main Content Background Colour', 'kemositewpblock' ),
 			'section' => 'kemosite_wordpress_main_content',
 			'description' => __( 'Default: 100% black ink at 60 degrees (no blue light), ' ),
 			'default' => '#242400',
@@ -168,7 +168,7 @@ function kemosite_customize_register( $wp_customize ) {
 
 	/* [ADD A FOOTER OPTIONS SECTION] */
 	$wp_customize->add_section( 'kemosite_wordpress_footer' , array(
-	  'title' => __( 'Footer Options', 'kemosite-wordpress-theme' ),
+	  'title' => __( 'Footer Options', 'kemositewpblock' ),
 	  'description' => 'Footer options for the theme.',
 	  'priority' => 130, // Before Menus.
 	  'capability' => 'edit_theme_options'
@@ -188,14 +188,14 @@ function kemosite_customize_register( $wp_customize ) {
 
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kemosite_wordpress_footer_bg_color', array(
 			'priority' => 10, // Within the section.
-			'label' => __( 'Footer Background Colour', 'kemosite-wordpress-theme' ),
+			'label' => __( 'Footer Background Colour', 'kemositewpblock' ),
 			'section' => 'kemosite_wordpress_footer',
 			'default' => $kemosite_wordpress_base_primary_chroma,
 		) ) );
 
 	/* [COMPONENT STYLE OPTIONS] */
 	$wp_customize->add_section( 'kemosite_wordpress_component_styles' , array(
-	  'title' => __( 'Component Styles', 'kemosite-wordpress-theme' ),
+	  'title' => __( 'Component Styles', 'kemositewpblock' ),
 	  'description' => 'Hue and saturation targets, and font options for the theme components (buttons, callout boxes, alerts, etc.).'.
 	  '<br><br>'.
 	  'Luminance is subject to automatic adjustment to meet an accessibility contrast minimum of 3:1.<br><br>Colours for the header, main, and footer sections of the theme are <em>not</em> set here.',
@@ -215,7 +215,7 @@ function kemosite_customize_register( $wp_customize ) {
 
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kemosite_wordpress_component_colour', array(
 			'priority' => 10, // Within the section.
-			'label' => __( 'Component Colour', 'kemosite-wordpress-theme' ),
+			'label' => __( 'Component Colour', 'kemositewpblock' ),
 			'description' => 'The colour target for all components.',
 			'section' => 'kemosite_wordpress_component_styles',
 			'default' => $kemosite_wordpress_base_primary_colour
@@ -241,6 +241,7 @@ function mytheme_output_mod_options_console() {
 
 	*/
 
+	/*
 	$known_mod_array_keys = array(
 		"custom_css_post_id",
 		"custom_logo",
@@ -269,8 +270,9 @@ function mytheme_output_mod_options_console() {
 		'</script>';
 
 	endif;
+	*/
 
 }
-// add_action( 'after_setup_theme', 'mytheme_output_mod_options_console' );
+add_action( 'after_setup_theme', 'mytheme_output_mod_options_console' );
 
 ?>

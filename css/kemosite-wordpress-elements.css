@@ -420,7 +420,8 @@ div.css-search div.em-search-main .em-search-submit img {
 	width: 100%;
 }
 
-form { text-align: center; }
+/* form { text-align: center; } */
+
 select {
 	padding: 1em !important;
 	background-position:  right 1em center;

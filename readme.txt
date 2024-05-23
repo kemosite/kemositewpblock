@@ -12,6 +12,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 6.5.3.1 =
+- Updated theme for WooCommerce support.
+- Added Eyebrow headline for Posts and Products that contain categories.
+- Fixed header background image function.
+
 = 6.5.2.10 =
 - Improved hover colours and default width for buttons.
 - Fixed bug preventing from theme customizer from saving.
