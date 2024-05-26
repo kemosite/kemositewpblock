@@ -152,7 +152,8 @@ li.product a:hover, li.product a:focus,
 ul.wc-tabs li a:hover, ul.wc-tabs li a:focus,
 div a:not(.button):hover, div a:not(.button):focus,
 div a:not(.wp-element-button):hover, div a:not(.wp-element-button):focus,
-.woocommerce-tabs.wc-tabs-wrapper a:hover, .woocommerce-tabs.wc-tabs-wrapper a:focus
+.woocommerce-tabs.wc-tabs-wrapper a:hover, .woocommerce-tabs.wc-tabs-wrapper a:focus,
+html body .wp-block-woocommerce-product-details.is-style-minimal ul.tabs.wc-tabs li:hover a,
 .kemosite-grid-layout .woocommerce .wp-block-woocommerce-product-details ul.tabs.wc-tabs li a:hover, .kemosite-grid-layout .woocommerce .wp-block-woocommerce-product-details ul.tabs.wc-tabs li a:focus
 {
 	background-color: var(--kemosite_wordpress_component_colour);

@@ -14,6 +14,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 6.5.3.2 =
+- Further updates to WooCommerce support.
+- Toying with big titles, using CSS Clamp
+
 = 6.5.3.1 =
 - Updated theme for WooCommerce support.
 - Added Eyebrow headline for Posts and Products that contain categories.

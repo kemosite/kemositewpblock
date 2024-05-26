@@ -1,7 +1,7 @@
 === kemositewpblock ===
 Contributors: Kevin Montgomery
 Requires at least: 6.0
-Tested up to: 6.5.2
+Tested up to: 6.5.3
 Requires PHP: 5.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,6 +11,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Changelog ==
+
+= 6.5.3.2 =
+- Further updates to WooCommerce support.
+- Toying with big titles, using CSS Clamp
 
 = 6.5.3.1 =
 - Updated theme for WooCommerce support.

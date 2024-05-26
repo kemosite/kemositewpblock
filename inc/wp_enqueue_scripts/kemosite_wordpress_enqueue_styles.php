@@ -7,7 +7,7 @@
 
 function kemosite_wordpress_enqueue_styles() {
 	
-	$theme_version = "6.5.3.1";
+	$theme_version = "6.5.3.2";
 
     /* [Theme Style] */
     wp_deregister_style( 'kemosite-wp-block' );

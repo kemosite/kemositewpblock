@@ -1,43 +1,66 @@
-<!-- wp:group {"className":"kemosite-grid-layout no-sidebars"} -->
-<div class="wp-block-group kemosite-grid-layout no-sidebars"><!-- wp:group {"className":"kemosite-grid-area-menu"} -->
-<div class="wp-block-group kemosite-grid-area-menu"><!-- wp:template-part {"slug":"menu","tagName":"menu","area":"menu"} /--></div>
+<!-- wp:group {"className":"kemosite-grid-layout"} -->
+<div class="wp-block-group kemosite-grid-layout">
+
+<!-- wp:group {"className":"kemosite-grid-area-menu"} -->
+<div class="wp-block-group kemosite-grid-area-menu">
+<!-- wp:template-part {"slug":"menu","tagName":"menu","area":"menu"} /-->
+</div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"kemosite-grid-area-section"} -->
-<div class="wp-block-group kemosite-grid-area-section"><!-- wp:template-part {"slug":"product-section","tagName":"section","area":"Section"} /--></div>
+<div class="wp-block-group kemosite-grid-area-section">
+<!-- wp:template-part {"slug":"product-section","tagName":"section","area":"Section"} /-->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"kemosite-grid-area-left-sidebar"} -->
+<div class="wp-block-group kemosite-grid-area-left-sidebar">
+
+<!-- wp:column -->
+<div class="wp-block-column">
+<!-- wp:woocommerce/product-image-gallery /-->
+</div>
+<!-- /wp:column -->
+
+<!-- wp:template-part {"slug":"left-sidebar","tagName":"left-sidebar","area":"Left Sidebar"} /-->
+
+</div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"kemosite-grid-area-main","layout":{"type":"constrained"}} -->
-<div class="wp-block-group kemosite-grid-area-main"><!-- wp:woocommerce/breadcrumbs {"fontSize":"font-30"} /-->
+<div class="wp-block-group kemosite-grid-area-main">
 
+<!-- wp:woocommerce/breadcrumbs {"fontSize":"font-30"} /-->
 <!-- wp:woocommerce/store-notices /-->
 
 <!-- wp:columns {"align":"wide"} -->
-<div class="wp-block-columns alignwide"><!-- wp:column {"width":"512px"} -->
-<div class="wp-block-column" style="flex-basis:512px"><!-- wp:woocommerce/product-image-gallery /--></div>
-<!-- /wp:column -->
+<div class="wp-block-columns alignwide">
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:post-title {"level":1,"__woocommerceNamespace":"woocommerce/product-query/product-title"} /-->
-
+<div class="wp-block-column">
 <!-- wp:woocommerce/product-rating {"isDescendentOfSingleProductTemplate":true} /-->
-
 <!-- wp:woocommerce/product-price {"isDescendentOfSingleProductTemplate":true,"fontSize":"font-40"} /-->
-
 <!-- wp:post-excerpt {"__woocommerceNamespace":"woocommerce/product-query/product-summary"} /-->
-
 <!-- wp:woocommerce/add-to-cart-form /-->
 
 <!-- wp:woocommerce/product-meta -->
-<div class="wp-block-woocommerce-product-meta"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:woocommerce/product-sku {"isDescendentOfSingleProductTemplate":true} /-->
+<div class="wp-block-woocommerce-product-meta">
 
+<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group">
+<!-- wp:woocommerce/product-sku {"isDescendentOfSingleProductTemplate":true} /-->
 <!-- wp:post-terms {"term":"product_cat","prefix":"Category: "} /-->
+<!-- wp:post-terms {"term":"product_tag","prefix":"Tags: "} /-->
+</div>
+<!-- /wp:group -->
 
-<!-- wp:post-terms {"term":"product_tag","prefix":"Tags: "} /--></div>
-<!-- /wp:group --></div>
-<!-- /wp:woocommerce/product-meta --></div>
-<!-- /wp:column --></div>
+</div>
+<!-- /wp:woocommerce/product-meta -->
+
+</div>
+<!-- /wp:column -->
+
+</div>
 <!-- /wp:columns -->
 
 <!-- wp:woocommerce/product-details {"align":"wide","className":"is-style-minimal"} /-->
@@ -60,6 +83,10 @@
 <!-- /wp:post-template --></div>
 <!-- /wp:query --></div>
 <!-- /wp:woocommerce/related-products --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"kemosite-grid-area-right-sidebar"} -->
+<div class="wp-block-group kemosite-grid-area-right-sidebar"><!-- wp:template-part {"slug":"right-sidebar","tagName":"right-sidebar","area":"Right Sidebar"} /--></div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"kemosite-grid-area-footer"} -->
