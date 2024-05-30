@@ -14,6 +14,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 6.5.3.4 =
+- Adjusted button widths to fit to content.
+- Corrections to show posts correctly.
+
 = 6.5.3.3 =
 - Adjusted button widths to fit to content.
 - Corrections to show posts correctly.

@@ -20,6 +20,8 @@ elseif ( is_front_page() && is_home() ):
 	?><h1 class="has-text-align-center wp-block-site-title"><?php bloginfo('name'); ?></h1><?php
 elseif (  is_home() ):
 	?><h1 class="has-text-align-center wp-block-site-title">Posts</h1><?php
+elseif ( is_category() ):
+	?><h1 class="has-text-align-center wp-block-site-title"><?php single_cat_title(); ?></h1><?php
 elseif ( is_post_type_archive() ):
 	?><h1 class="has-text-align-center wp-block-site-title"><?php post_type_archive_title(); ?></h1><?php
 elseif ( is_archive() ):

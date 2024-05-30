@@ -232,6 +232,12 @@ canvas {
 
 hr.wp-block-separator { column-span: all; }
 
+div.wp-block-spacer {
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	margin-top: 6ex;
+}
+
 ul.page-numbers { text-align: center; }
 
 .callout.secondary {
@@ -507,6 +513,11 @@ ul.wc-tabs li {
     min-height:100%;
     min-width:100%;
     opacity:0
+}
+
+figure.wp-block-post-featured-image {
+	margin: 0ex 3ch 1ex 0;
+	width: clamp( 25%, 100%, 33% );
 }
 
 .wc-block-grid .wc-block-grid__products .wc-block-grid__product .wc-block-grid__product-image img { width: 100%; }

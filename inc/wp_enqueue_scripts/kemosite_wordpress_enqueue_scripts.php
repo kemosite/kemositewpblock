@@ -8,7 +8,7 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	// Retrieve Custom Fields from post.
 	$custom_fields = get_post_custom();
-	$theme_version = "6.5.3.3";
+	$theme_version = "6.5.3.4";
 
 	// Accessibility enhancements
 	wp_deregister_script('kemosite-wordpress-theme-accessibility');
