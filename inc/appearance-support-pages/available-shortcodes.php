@@ -17,25 +17,32 @@
 
 	<tbody>
 		<tr>
-			<td>[accordion]</td>
-			<td><?php echo htmlspecialchars('<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">$content</ul>'); ?></td>
+			<td>kemosite_shortcode_wpautop_fix</td>
+			<td></td>
 		</tr>
 		<tr>
-			<td>[accordion_item],<br>
-			[accordion_full_width]</td>
-			<td><?php echo htmlspecialchars('<li class="accordian-item" data-accordion-item><a href="#" class="accordion-title">$attributes[\'title\']</a><div class="accordion-content" data-tab-content>$content</div></li>'); ?></td>
+			<td>kemosite_shortcode_list</td>
+			<td></td>
 		</tr>
 		<tr>
-			<td>[blockquote]</td>
-			<td><?php echo htmlspecialchars('<blockquote>$content</blockquote>'); ?></td>
+			<td>kemosite_shortcode_tabs</td>
+			<td></td>
 		</tr>
 		<tr>
-			<td>[callout ((primary|secondary|success|warning|alert)="true")]</td>
-			<td><?php echo htmlspecialchars('<div class="callout (primary|secondary|success|warning|alert)">$content</div>'); ?></td>
+			<td>kemosite_shortcode_progress_bars</td>
+			<td></td>
 		</tr>
 		<tr>
-			<td>[dropcap]</td>
-			<td><?php echo htmlspecialchars('<span class="dropcap">$content</span>'); ?></td>
+			<td>kemosite_shortcode_tables</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>kemosite_shortcode_woocommerce_recent_products</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>kemosite_shortcode_latest_post</td>
+			<td></td>
 		</tr>
 	</tbody>
 	

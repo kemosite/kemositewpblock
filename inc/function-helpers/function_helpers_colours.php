@@ -47,8 +47,10 @@ if ( !function_exists('kemosite_calc_lum') ) :
 		$r = ($r_srgb <= 0.03928) ? $r_srgb / 12.92 : pow((($r_srgb + 0.055) / 1.055), 2.4);
 		$g = ($g_srgb <= 0.03928) ? $g_srgb / 12.92 : pow((($g_srgb + 0.055) / 1.055), 2.4);
 		$b = ($b_srgb <= 0.03928) ? $b_srgb / 12.92 : pow((($b_srgb + 0.055) / 1.055), 2.4);
+
+		$lum = (($r * 0.2126) + ($g * 0.7152) + ($b * 0.0722)) * 100;
 		
-		return (($r * 0.2126) + ($g * 0.7152) + ($b * 0.0722)) * 100;
+		return $lum;
 
 	}
 
@@ -87,8 +89,10 @@ if ( !function_exists('kemosite_rgb_to_lum') ) :
 		$r = ($r_srgb <= 0.03928) ? $r_srgb / 12.92 : pow((($r_srgb + 0.055) / 1.055), 2.4);
 		$g = ($g_srgb <= 0.03928) ? $g_srgb / 12.92 : pow((($g_srgb + 0.055) / 1.055), 2.4);
 		$b = ($b_srgb <= 0.03928) ? $b_srgb / 12.92 : pow((($b_srgb + 0.055) / 1.055), 2.4);
+
+		$lum = ( ( $r * 0.2126 ) + ( $g * 0.7152 ) + ( $b * 0.0722 ) );
 		
-		return ( ( $r * 0.2126 ) + ( $g * 0.7152 ) + ( $b * 0.0722 ) );
+		return $lum;
 
 	}
 
@@ -270,6 +274,9 @@ if ( !function_exists('kemosite_rgb_to_hsl') ) :
 	            case $b_srgb:
 
 		            $h = 4 + ( ( $r_srgb - $g_srgb ) / $chroma );
+	            	break;
+
+	            default:
 	            	break;
 
 	        }

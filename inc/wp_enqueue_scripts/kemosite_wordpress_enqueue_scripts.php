@@ -8,7 +8,7 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	// Retrieve Custom Fields from post.
 	$custom_fields = get_post_custom();
-	$theme_version = "6.5.3.4";
+	$theme_version = "6.5.5.1";
 
 	// Accessibility enhancements
 	wp_deregister_script('kemosite-wordpress-theme-accessibility');
@@ -55,7 +55,7 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	if(isset($custom_fields['load-chart-js'][0]) && $custom_fields['load-chart-js'][0] == "true"):
 		
-		$chart_js_version = '4.4.2';
+		$chart_js_version = '4.4.3';
 
 		// Chart JS
 		wp_deregister_script('chart-js');
@@ -98,7 +98,9 @@ function kemosite_wordpress_enqueue_scripts() {
 	add_filter('the_generator', 'remove_version_info');
 	*/
 
-	add_filter( 'script_loader_tag', 'kemosite_wordpress_enqueue_scripts_sri', 10, 3 );
+	if ( KEMOSITE_ENABLE_SRI ):
+		add_filter( 'script_loader_tag', 'kemosite_wordpress_enqueue_scripts_sri', 10, 3 );
+	endif;
 
 }
 

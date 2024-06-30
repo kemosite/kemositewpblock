@@ -55,7 +55,7 @@ ul.products li.product .button {
 	transition: 125ms ease-in-out;
 }
 
-input[type="checkbox"], input[type="submit"], submit {
+input[type="checkbox"], input[type="submit"], button[type="submit"] {
 	cursor: pointer;
 }
 

@@ -3,7 +3,7 @@
 === kemositewpblock ===
 Contributors: Kevin Montgomery
 Requires at least: 6.0
-Tested up to: 6.5.3
+Tested up to: 6.5.5
 Requires PHP: 5.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -14,9 +14,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 6.5.5.1 =
+- Added Modern Pictograms font to theme.
+- Fixes to code thanks to SonarCloud.
+- Removing unnecessary Short Codes, where basically replaced by WordPress Blocks.
+- Implemented a "shut-off" for SRI functions to evaluate performance metrics.
+- Re-implemented Async and Hints for scripts and styles.
+- Chart.js updated to 4.4.3
+
 = 6.5.3.4 =
-- Adjusted button widths to fit to content.
-- Corrections to show posts correctly.
+- Correction to category and archive pages.
 
 = 6.5.3.3 =
 - Adjusted button widths to fit to content.

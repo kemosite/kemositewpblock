@@ -116,12 +116,6 @@ function kemosite_wordpress_resource_hints($hints, $relation_type) {
 
 		case 'prefetch':
 
-			if ( get_theme_mod('custom_logo') ):
-				define("KEMOSITE_THEME_LOGO", wp_get_attachment_image_src(get_theme_mod('custom_logo'))[0] );
-			else:
-				define("KEMOSITE_THEME_LOGO", "" );
-			endif;
-
 			// Prefetch theme logo
 	    	$hints[] = array(
 	    		'as' => 'image',
@@ -149,6 +143,10 @@ function kemosite_wordpress_resource_hints($hints, $relation_type) {
 	    	endforeach;
 
 			break;
+
+		default:
+
+			return;
 
 	}
 

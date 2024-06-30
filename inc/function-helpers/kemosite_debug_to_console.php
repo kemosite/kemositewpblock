@@ -14,7 +14,7 @@ function kemosite_debug_to_console( $input, $error_string, $error_file, $error_l
 
         $data = json_encode( $data_array );
         
-        if( empty( $_POST ) ):
+        if ( empty( $_POST ) && !is_admin() ):
                 echo "<script>console.log(" . $data . ");</script>";
         endif;
 }

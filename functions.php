@@ -20,21 +20,39 @@ define( 'GITHUB_UPDATER_OVERRIDE_DOT_ORG', true );
 if (!defined( 'SAVEQUERIES' )): define( 'SAVEQUERIES', true ); endif;
 define('DISABLE_NAG_NOTICES', true);
 
+if ( get_theme_mod('custom_logo') && !defined( 'KEMOSITE_THEME_LOGO' ) ):
+	define("KEMOSITE_THEME_LOGO", wp_get_attachment_image_src(get_theme_mod('custom_logo'))[0] );
+elseif ( !defined( 'KEMOSITE_THEME_LOGO' ) ):
+	define("KEMOSITE_THEME_LOGO", "" );
+endif;
+
 // Default handling method
 if ( !function_exists('kemosite_debug_to_console') ): require_once get_template_directory() . '/inc/function-helpers/kemosite_debug_to_console.php'; endif;
-set_error_handler("kemosite_debug_to_console");
+// set_error_handler("kemosite_debug_to_console");
 
 // Option to diagnose functions, and report on failures.
 if ( !function_exists('kemosite_try_function') ): require_once get_template_directory() . '/inc/function-helpers/kemosite_try_function.php'; endif;
 
 // Define is_plugin_active
-if ( !function_exists('is_plugin_active') ): include_once(ABSPATH . 'wp-admin/includes/plugin.php'); endif;
+if ( !function_exists('is_plugin_active') ): include_once ABSPATH . 'wp-admin/includes/plugin.php'; endif;
 
 // Check for Woocommerce, Define Woocommerce constant, append appropriate styles
 if (is_plugin_active('woocommerce/woocommerce.php')): define('KEMOSITE_WOOCOMMERCE_ACTIVE', true); else: define('KEMOSITE_WOOCOMMERCE_ACTIVE', false); endif;
 
 // Check for Learnpress, Define Learnpress constant, append appropriate styles
 if (is_plugin_active('learnpress/learnpress.php')): define('KEMOSITE_LEARNPRESS_ACTIVE', true); else: define('KEMOSITE_LEARNPRESS_ACTIVE', false); endif;
+
+/**
+ * Check to see if the current page is the login/register page.
+ *
+ * Use this in conjunction with is_admin() to separate the front-end
+ * from the back-end of your theme.
+ *
+ * @return bool
+ */
+if ( !function_exists( 'is_login_page' ) ):
+	require_once get_template_directory() . '/inc/function-helpers/is_login_page.php';
+endif;
 
 /**
  * [Filter Reference]
@@ -46,17 +64,21 @@ if (is_plugin_active('learnpress/learnpress.php')): define('KEMOSITE_LEARNPRESS_
 require_once get_template_directory() . '/inc/shortcodes/shortcodes.php';
 
 // SRI, Defer and Async external scripts
-/*
-if ( !function_exists( 'kemosite_wordpress_sri_defer_async_scripts' ) ) : 
-	require_once get_template_directory() . '/inc/script_loader_tag/kemosite_wordpress_sri_defer_async_scripts.php';
+
+if ( !function_exists( 'kemosite_wordpress_defer_async_scripts' ) ) : 
+	require_once get_template_directory() . '/inc/script_loader_tag/kemosite_wordpress_defer_async_scripts.php';
 endif;
-add_filter( 'script_loader_tag', 'kemosite_wordpress_sri_defer_async_scripts', 10, 3 );
-*/
+add_filter( 'script_loader_tag', 'kemosite_wordpress_defer_async_scripts', 10, 3 );
+
 
 if ( !function_exists( 'kemosite_wordpress_resource_hints' ) ) : 
 	require_once get_template_directory() . '/inc/style_loader_tag/kemosite_wordpress_resource_hints.php';
 endif;
-add_filter( 'style_loader_tag', 'kemosite_wordpress_resource_hints', 10, 4);
+// Load if not admin page.
+if ( !is_admin() && !is_login_page() ):
+	add_filter( 'wp_resource_hints', 'kemosite_wordpress_resource_hints', 10, 4 );
+endif;
+
 
 /** 
  * [Action Reference]
@@ -127,18 +149,6 @@ require_once get_template_directory() . '/inc/function-helpers/function_helpers_
 
 // Calculate SRI
 require_once get_template_directory() . '/inc/function-helpers/kemosite_wordpress_calculate_sri.php';
-
-/**
- * Check to see if the current page is the login/register page.
- *
- * Use this in conjunction with is_admin() to separate the front-end
- * from the back-end of your theme.
- *
- * @return bool
- */
-if ( !function_exists( 'is_login_page' ) ):
-	require_once get_template_directory() . '/inc/function-helpers/is_login_page.php';
-endif;
 
 /* [Looks in Page "page_excerpt" field for Excerpt data] */
 if ( !function_exists( 'kemosite_custom_excerpt' ) ) : 
@@ -233,10 +243,5 @@ if ( !function_exists( 'kemosite_wordpress_rss_post_thumbnail' ) ) :
 	require_once get_template_directory() . '/inc/the_content_feed/kemosite_wordpress_rss_post_thumbnail.php';
 endif;
 add_filter('the_content_feed', 'kemosite_wordpress_rss_post_thumbnail');
-
-// Not admin page.
-if ( !is_admin() && !is_login_page() ):
-	add_filter( 'wp_resource_hints', 'kemosite_wordpress_resource_hints', 11, 2 );
-endif;
 
 ?>
