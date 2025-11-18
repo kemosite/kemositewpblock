@@ -27,7 +27,7 @@ function kemosite_customizer_css() {
 	
 	/* [COMPONENTS, SELECTIONS, AND SECONDARY COLOUR] */
 	$kemosite_wordpress_component_colour_source = get_theme_mod( 'kemosite_wordpress_component_colour', $kemosite_wordpress_base_primary_colour );
-	$kemosite_wordpress_selection_colour_source = get_theme_mod( 'kemosite_wordpress_component_colour', $pantone_coty_colour_this_year_hex );
+	$kemosite_wordpress_selection_colour_source = get_theme_mod( 'kemosite_wordpress_component_colour', $kemosite_wordpress_base_primary_colour );
 	$kemosite_wordpress_secondary_colour_source = get_theme_mod( 'kemosite_wordpress_secondary_colour', $kemosite_base_black );
 
 	/* [BODY COLOUR] */
@@ -46,6 +46,11 @@ function kemosite_customizer_css() {
 
 	/* Dark Mode */
 	$kemosite_wordpress_main_content_bg_color_dark_mode = get_theme_mod( 'kemosite_wordpress_main_content_bg_color_dark_mode', $kemosite_base_black_minus_blue );
+
+	/* [FOOTER OPTIONS] */
+	$kemosite_wordpress_footer_bg_color = get_theme_mod( 'kemosite_wordpress_footer_bg_color', $kemosite_wordpress_base_primary_colour );
+
+	/* [LASTLY: COMPONENT STYLES, AUTOMATICALLY CONTRAST-ADJUSTED] */
 
 	?>
 
@@ -115,8 +120,8 @@ function kemosite_customizer_css() {
 		--kemosite_wordpress_main_content_font_color_dark_mode:  <?php echo $kemosite_cool_white; ?>;
 
 		/* [FOOTER OPTIONS] */
-		--kemosite_wordpress_footer_bg_color:  <?php echo $kemosite_wordpress_footer_bg_color; ?>;
-		--kemosite_wordpress_footer_font_color:  <?php echo $kemosite_wordpress_footer_font_color; ?>;
+		--kemosite_wordpress_footer_bg_color: <?php echo $kemosite_wordpress_footer_bg_color; ?>;
+		--kemosite_wordpress_footer_font_color: light-dark( var(--kemosite_wordpress_base_black), var(--kemosite_wordpress_cool_white) );
 
 	}
 

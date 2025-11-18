@@ -8,7 +8,7 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	// Retrieve Custom Fields from post.
 	$custom_fields = get_post_custom();
-	$theme_version = "6.5.5.1";
+	$theme_version = "6.8.3.2";
 
 	// Lazy Load Images
 	wp_deregister_script('kemosite-lazy-load-images');
@@ -26,17 +26,17 @@ function kemosite_wordpress_enqueue_scripts() {
 	// wp_enqueue_script('kemosite-url-handler');
 
 	// Typography
-	wp_deregister_script('kemosite-typography-orphans');
-	wp_register_script('kemosite-typography-orphans', get_template_directory_uri().'/js/kemosite-typography-orphans.js', array(), $theme_version, array( 'footer' => true ) );
-	wp_enqueue_script('kemosite-typography-orphans');
+	// wp_deregister_script('kemosite-typography-orphans');
+	// wp_register_script('kemosite-typography-orphans', get_template_directory_uri().'/js/kemosite-typography-orphans.js', array(), $theme_version, array( 'footer' => true ) );
+	// wp_enqueue_script('kemosite-typography-orphans');
 
-	wp_add_inline_script( 'kemosite-typography-orphans', '
+	/* wp_add_inline_script( 'kemosite-typography-orphans', '
 		document.addEventListener("DOMContentLoaded", (event) => {
 			document.fonts.ready.then( function() {
 				kemosite_typography_orphans.init();
 			});
 		});
-	');
+	'); */
 
 	// Foundation JS Files
 	wp_deregister_script('jquery');

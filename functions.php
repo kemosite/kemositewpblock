@@ -28,8 +28,8 @@ elseif ( !defined( 'KEMOSITE_THEME_LOGO' ) ):
 endif;
 
 // Default handling method
-if ( !function_exists('kemosite_debug_to_console') ): require get_template_directory() . '/inc/function-helpers/kemosite_debug_to_console.php'; endif;
-set_error_handler( 'kemosite_debug_to_console' );
+// if ( !function_exists('kemosite_debug_to_console') ): require get_template_directory() . '/inc/function-helpers/kemosite_debug_to_console.php'; endif;
+// set_error_handler( 'kemosite_debug_to_console' );
 
 // Option to diagnose functions, and report on failures.
 if ( !function_exists('kemosite_try_function') ): require get_template_directory() . '/inc/function-helpers/kemosite_try_function.php'; endif;

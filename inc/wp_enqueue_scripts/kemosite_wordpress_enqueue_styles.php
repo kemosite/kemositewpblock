@@ -7,7 +7,7 @@
 
 function kemosite_wordpress_enqueue_styles() {
 	
-	$theme_version = "6.5.5.1";
+	$theme_version = "6.8.3.2";
 
     /* [Theme Style] */
     wp_deregister_style( 'kemosite-wp-block' );
@@ -53,7 +53,7 @@ function kemosite_wordpress_enqueue_styles() {
 	    wp_enqueue_style( 'learnpress' );
 	endif;
 
-	if ( KEMOSITE_ENABLE_SRI ):
+	if ( defined( KEMOSITE_ENABLE_SRI )&& KEMOSITE_ENABLE_SRI == true ):
 		add_filter( 'style_loader_tag', 'kemosite_wordpress_enqueue_styles_sri', 10, 4 );
 	endif;
 

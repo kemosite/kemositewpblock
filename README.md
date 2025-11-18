@@ -14,6 +14,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 6.8.3.2 =
+- Bug fixes
+
 = 6.8.3.1 =
 - Updated to Foundation 6.9
 - Using new CSS colour models
