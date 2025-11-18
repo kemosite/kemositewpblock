@@ -14,6 +14,11 @@ function kemosite_wordpress_enqueue_styles() {
     wp_register_style( 'kemosite-wp-block', get_template_directory_uri() . '/style.css', array(), $theme_version );
     wp_enqueue_style( 'kemosite-wp-block' );
 
+    /* [The New CSS Reset] */
+    wp_deregister_style( 'the-new-css-reset' );
+    wp_register_style( 'the-new-css-reset', get_template_directory_uri() . '/css/reset.css', array(), '1.11.3' );
+	wp_enqueue_style( 'the-new-css-reset' );
+
     /* [Foundation Assets] */
     wp_deregister_style( 'foundation' );
     wp_register_style( 'foundation', get_template_directory_uri() . '/css/foundation.min.css', array(), '6.8.1' );
@@ -58,6 +63,7 @@ function kemosite_wordpress_enqueue_styles_sri( $html, $handle, $src, $media ) {
 
 	$sri = array(
 		'kemosite-wp-block',
+		'the-new-css-reset',
 		'foundation',
 		'foundation-icons',
 		'kemosite-master-styles',

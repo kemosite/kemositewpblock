@@ -64,5 +64,3 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kemo
 	'description' => 'Default: Primary -30 Degrees (Analogous). See the Colour Variations panel for ideas!',
 	'default' => kemosite_hsl_to_hex( $kemosite_wordpress_default_secondary_colour_hsl ),
 ) ) );
-
-?>

@@ -6,11 +6,11 @@
 * using 'navigator.sendBeacon' in browser that support it.
 */
 
-if (gtag === undefined ) { var gtag = null; } else {
+if (gtag === undefined ) { let gtag = null; } else {
 
 	if (gtag !== null && typeof gtag === 'function') {
 	
-		var captureExternalLink = function(url) {
+		let captureExternalLink = function(url) {
 		  gtag('event', 'click', {
 		    'event_category': 'button-product_type_external',
 		    'event_label': url,
@@ -19,27 +19,27 @@ if (gtag === undefined ) { var gtag = null; } else {
 		  });
 		}
 
-		var external_button_links = document.querySelectorAll("a.button.product_type_external");
-		var add_to_cart_buttons = document.querySelectorAll("button.single_add_to_cart_button.button");
-		var tracking_block_buttons = document.querySelectorAll("a.wp-block-button__link.gtag");
+		let external_button_links = document.querySelectorAll("a.button.product_type_external");
+		let add_to_cart_buttons = document.querySelectorAll("button.single_add_to_cart_button.button");
+		let tracking_block_buttons = document.querySelectorAll("a.wp-block-button__link.gtag");
 
 		if (external_button_links) {
 			external_button_links.forEach( function(external_link) {
-				var url = external_link.href;
+				let url = external_link.href;
 				external_link.setAttribute("onclick", "captureExternalLink('" + url + "'); return false;");
 			});
 		}
 
 		if (add_to_cart_buttons) {
 			add_to_cart_buttons.forEach( function(add_to_cart_button) {
-				var url = add_to_cart_button.form.action;
+				let url = add_to_cart_button.form.action;
 				add_to_cart_button.setAttribute("onclick", "captureExternalLink('" + url + "'); return true;");
 			});
 		}
 
 		if (tracking_block_buttons) {
 			tracking_block_buttons.forEach( function(button_link) {
-				var url = button_link.href;
+				let url = button_link.href;
 				button_link.setAttribute("onclick", "captureExternalLink('" + url + "'); return false;");
 			});
 		}

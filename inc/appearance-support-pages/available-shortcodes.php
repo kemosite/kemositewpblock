@@ -12,7 +12,7 @@
 		<tr>
 			<th scope="col" style="text-align: left;">Shortcode</th>
 			<th scope="col" style="text-align: left;">Description</th>
-		</tr>	
+		</tr>
 	</thead>
 
 	<tbody>

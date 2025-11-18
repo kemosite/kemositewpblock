@@ -11,20 +11,6 @@ function kemosite_custom_excerpt( $post_id = null) {
 		$excerpt = the_excerpt();
 	endif;
 
-	/*
-	echo "<pre>";
-	print_r($post_id);
-	print_r($excerpt);
-	print_r($page_excerpt);
-	echo "</pre>";
-	*/
-
-  // endif;
-
-	// $excerpt = "Excerpt received";
-
   return $excerpt;
 
 }
-
-?>

@@ -21,15 +21,9 @@ function kemosite_shortcode_progress_bar( $attributes, $content ) {
 
     $output = "";
 
-    if ($attributes !== NULL):
-        
-        if (is_numeric($attributes['percent_done'])): $output .= '<div class="progress-meter" style="width: '.$attributes['percent_done'].'%"></div>' . "\n"; endif;
-
-    endif;
+    if ($attributes !== null && is_numeric($attributes['percent_done'])): $output .= '<div class="progress-meter" style="width: '.$attributes['percent_done'].'%"></div>' . "\n"; endif;
 
     return $output;
 
 }
 add_shortcode('progress_bar', 'kemosite_shortcode_progress_bar');
-
-?>

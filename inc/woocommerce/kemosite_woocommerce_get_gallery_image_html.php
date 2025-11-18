@@ -11,7 +11,7 @@
  * @return string
  */
 
-function kemosite_woocommerce_get_gallery_image_html( $attachment_id, $main_image = false ) {        
+function kemosite_woocommerce_get_gallery_image_html( $attachment_id, $main_image = false ) {
     $flexslider        = (bool) apply_filters( 'woocommerce_single_product_flexslider_enabled', get_theme_support( 'wc-product-gallery-slider' ) );
     $gallery_thumbnail = wc_get_image_size( 'gallery_thumbnail' );
     $thumbnail_size    = apply_filters( 'woocommerce_gallery_thumbnail_size', array( $gallery_thumbnail['width'], $gallery_thumbnail['height'] ) );
@@ -44,5 +44,3 @@ function kemosite_woocommerce_get_gallery_image_html( $attachment_id, $main_imag
     );
     return '<div data-thumb="' . esc_url( $thumbnail_src[0] ) . '" data-thumb-alt="' . esc_attr( $alt_text ) . '" class="woocommerce-product-gallery__image"><a href="' . esc_url( $full_src[0] ) . '">' . $image . '</a></div>';
 }
-
-?>

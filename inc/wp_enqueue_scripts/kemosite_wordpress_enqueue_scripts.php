@@ -10,15 +10,20 @@ function kemosite_wordpress_enqueue_scripts() {
 	$custom_fields = get_post_custom();
 	$theme_version = "6.5.5.1";
 
+	// Lazy Load Images
+	wp_deregister_script('kemosite-lazy-load-images');
+	wp_register_script('kemosite-lazy-load-images', get_template_directory_uri().'/js/kemosite-lazy-load-images.js', array(), $theme_version );
+	wp_enqueue_script('kemosite-lazy-load-images');
+
 	// Accessibility enhancements
 	wp_deregister_script('kemosite-wordpress-theme-accessibility');
 	wp_register_script('kemosite-wordpress-theme-accessibility', get_template_directory_uri() . '/js/accessibility.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'defer' ) );
 	wp_enqueue_script('kemosite-wordpress-theme-accessibility');
 
 	// URL Handler
-	wp_deregister_script('kemosite-url-handler');
-	wp_register_script('kemosite-url-handler', get_template_directory_uri().'/js/kemosite-url-handler.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'defer' ) );
-	wp_enqueue_script('kemosite-url-handler');
+	// wp_deregister_script('kemosite-url-handler');
+	// wp_register_script('kemosite-url-handler', get_template_directory_uri().'/js/kemosite-url-handler.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'defer' ) );
+	// wp_enqueue_script('kemosite-url-handler');
 
 	// Typography
 	wp_deregister_script('kemosite-typography-orphans');
@@ -126,11 +131,12 @@ function kemosite_wordpress_enqueue_scripts_sri( $html, $handle, $src ) {
 		'kemosite-wordpress-theme-accessibility',
 		'kemosite-wordpress-theme-gtag',
 		'chart-js-config',
-		'kemosite-url-handler',
+		// 'kemosite-url-handler',
 		'mediaelement',
 	  	'kemosite-wordpress-theme-navigation',
 	  	'kemosite-wordpress-theme-skip-link-focus-fix',
-	  	'foundation-what-input'
+	  	'foundation-what-input',
+	  	'kemosite-lazy-load-images'
 	);
 
 	if ( in_array( $handle, $sri ) ):

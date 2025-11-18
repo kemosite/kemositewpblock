@@ -5,17 +5,6 @@
 	scroll-behavior: smooth;
 }
 
-/*
-*::selection {
-	background-color: var(--kemosite-cool-white);
-	color: var(--kemosite-base_black);
-}
-
-*::placeholder {
-	color: var(--kemosite-base_black);
-}
-*/
-
 /* [Define Grid] */
 
 .kemosite-grid-layout {

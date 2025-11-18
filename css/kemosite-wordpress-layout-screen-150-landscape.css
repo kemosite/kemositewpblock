@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+/*
+.cards-container {
+  container-name: cardsContainer;
+  container-type: inline-size;
+}
+
+@container cardsContainer (width < 700px) {
+  .card {
+    background-color: #000;
+  }
+}
+
+<div class="cards-container">
+  <ul class="cards">
+    <li class="card"></li>
+  </ul>
+</div>
+
+*/
+
+:root {
+	--layout: "screen-150-landscape";
+}
+
+.kemosite-grid-layout {
+	grid-template-columns: minmax(45ch, 60ch) minmax(60ch, 1fr) minmax(45ch, 60ch);
+	grid-template-rows: auto minmax(15ex, 33vh) auto auto;
+}
+
+/*
+.kemosite-grid-area-main .wp-block-post-content {
+	columns: 59ch auto;
+}
+*/

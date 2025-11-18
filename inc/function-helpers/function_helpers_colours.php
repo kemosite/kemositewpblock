@@ -4,6 +4,7 @@
 ** HSV and HSB are not the same as HSL!!
 */
 
+define( "STRING_CONSTANT", "string" );
 
 if ( !function_exists('kemosite_grey_to_hex') ) :
 	
@@ -11,9 +12,7 @@ if ( !function_exists('kemosite_grey_to_hex') ) :
 
 		$grey = round(255 - (255 * $percentage));
 		$grey_hex = str_pad( dechex( $grey ), 2, '0', STR_PAD_LEFT);
-		$hex = '#'.$grey_hex.$grey_hex.$grey_hex;
-
-		return $hex;
+		return '#'.$grey_hex.$grey_hex.$grey_hex;
 
 	}
 
@@ -25,9 +24,7 @@ if ( !function_exists('kemosite_lum_to_hex') ) :
 
 		$grey = round(255 * $luminance);
 		$grey_hex = str_pad( dechex( $grey ), 2, '0', STR_PAD_LEFT);
-		$hex = '#'.$grey_hex.$grey_hex.$grey_hex;
-
-		return $hex;
+		return '#'.$grey_hex.$grey_hex.$grey_hex;
 
 	}
 
@@ -48,9 +45,7 @@ if ( !function_exists('kemosite_calc_lum') ) :
 		$g = ($g_srgb <= 0.03928) ? $g_srgb / 12.92 : pow((($g_srgb + 0.055) / 1.055), 2.4);
 		$b = ($b_srgb <= 0.03928) ? $b_srgb / 12.92 : pow((($b_srgb + 0.055) / 1.055), 2.4);
 
-		$lum = (($r * 0.2126) + ($g * 0.7152) + ($b * 0.0722)) * 100;
-		
-		return $lum;
+		return (($r * 0.2126) + ($g * 0.7152) + ($b * 0.0722)) * 100;
 
 	}
 
@@ -60,11 +55,10 @@ if ( !function_exists('kemosite_calc_neutral_sat') ) :
 	
 	function kemosite_calc_neutral_sat ( $colour_hsl_array = 'array', $neutral_tone_hsl_array = 'array' ) {
 
-		$output = floor( 
+		// saturation
+		return floor(
 			$colour_hsl_array[1] * ( ( ( 100 - $neutral_tone_hsl_array[2] ) / 2 ) / 100 )
 		);
-
-		return $output; // saturation
 
 	}
 
@@ -72,7 +66,7 @@ endif;
 
 if ( !function_exists('kemosite_rgb_to_lum') ) :
 	
-	function kemosite_rgb_to_lum ( $rgb_input = 'string' ) {
+	function kemosite_rgb_to_lum ( $rgb_input = STRING_CONSTANT ) {
 
 		// https://www.w3.org/TR/WCAG20/
 
@@ -90,9 +84,8 @@ if ( !function_exists('kemosite_rgb_to_lum') ) :
 		$g = ($g_srgb <= 0.03928) ? $g_srgb / 12.92 : pow((($g_srgb + 0.055) / 1.055), 2.4);
 		$b = ($b_srgb <= 0.03928) ? $b_srgb / 12.92 : pow((($b_srgb + 0.055) / 1.055), 2.4);
 
-		$lum = ( ( $r * 0.2126 ) + ( $g * 0.7152 ) + ( $b * 0.0722 ) );
-		
-		return $lum;
+		return ( ( $r * 0.2126 ) + ( $g * 0.7152 ) + ( $b * 0.0722 ) );
+		// Actually returns "Y" value in XYZ colour space!
 
 	}
 
@@ -100,7 +93,7 @@ endif;
 
 if ( !function_exists('kemosite_rgb_to_chroma') ) :
 	
-	function kemosite_rgb_to_chroma ( $rgb_input = 'string' ) {
+	function kemosite_rgb_to_chroma ( $rgb_input = STRING_CONSTANT ) {
 
 		$rgb_array = explode(',', $rgb_input);
 
@@ -116,9 +109,7 @@ if ( !function_exists('kemosite_rgb_to_chroma') ) :
 		$rgb_min = min($r_srgb, $g_srgb, $b_srgb);
 
 	    // chroma = delta
-	    $chroma = $rgb_max - $rgb_min;
-
-		return $chroma;
+	    return $rgb_max - $rgb_min;
 
 	}
 
@@ -126,12 +117,10 @@ endif;
 
 if ( !function_exists('kemosite_hex_to_chroma') ) :
 	
-	function kemosite_hex_to_chroma ( $hex_input = 'string' ) {
+	function kemosite_hex_to_chroma ( $hex_input = STRING_CONSTANT ) {
 
 		$rgb_string = kemosite_hex_to_rgb( $hex_input );
-		$chroma = kemosite_rgb_to_chroma( $rgb_string );
-
-		return $chroma;
+		return kemosite_rgb_to_chroma( $rgb_string );
 
 	}
 
@@ -139,7 +128,7 @@ endif;
 
 if ( !function_exists('kemosite_rgb_to_value') ) :
 	
-	function kemosite_rgb_to_value ( $rgb_input = 'string' ) {
+	function kemosite_rgb_to_value ( $rgb_input = STRING_CONSTANT ) {
 
 		// See RGB to HSL conversion:
 		// https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model
@@ -155,9 +144,7 @@ if ( !function_exists('kemosite_rgb_to_value') ) :
 		$g_srgb = $g_input / 255;
 		$b_srgb = $b_input / 255;
 
-		$value = max($r_srgb, $g_srgb, $b_srgb);
-
-		return $value;
+		return max($r_srgb, $g_srgb, $b_srgb);
 
 	}
 
@@ -169,9 +156,7 @@ if ( !function_exists('kemosite_calc_contrast') ) :
 
 		// https://www.w3.org/TR/WCAG20/
 
-		$contrast = round( ( max( $l1, $l2 ) + 5 ) / ( min( $l1, $l2 ) + 5 ), 2); // Minimum 4.5 / 7
-
-		return $contrast;
+		return round( ( max( $l1, $l2 ) + 5 ) / ( min( $l1, $l2 ) + 5 ), 1); // Minimum 4.5 / 7
 
 	}
 
@@ -179,7 +164,7 @@ endif;
 
 if ( !function_exists('kemosite_rgb_to_hex') ) :
 	
-	function kemosite_rgb_to_hex ( $rgb_input = 'string' ) {
+	function kemosite_rgb_to_hex ( $rgb_input = STRING_CONSTANT ) {
 
 		$rgb_array = explode(',', $rgb_input);
 
@@ -187,9 +172,7 @@ if ( !function_exists('kemosite_rgb_to_hex') ) :
 		$g = str_pad( dechex( $rgb_array[1] ), 2, '0', STR_PAD_LEFT);
 		$b = str_pad( dechex( $rgb_array[2] ), 2, '0', STR_PAD_LEFT);
 
-		$output = "#". $r . $g . $b;
-
-		return $output;
+		return "#". $r . $g . $b;
 
 	}
 
@@ -205,9 +188,7 @@ if ( !function_exists('kemosite_hex_to_rgb') ) :
 		$primary_parse_g = hexdec( substr($hex, 2, 2) );
 		$primary_parse_b = hexdec( substr($hex, 4, 2) );
 
-		$output = $primary_parse_r.','.$primary_parse_g.','.$primary_parse_b;
-
-		return $output;
+		return $primary_parse_r.','.$primary_parse_g.','.$primary_parse_b;
 
 	}
 
@@ -218,9 +199,7 @@ if ( !function_exists('kemosite_hex_to_lum') ) :
 	function kemosite_hex_to_lum ( $hex_input = "#string" ) {
 
 		$rgb_string = kemosite_hex_to_rgb( $hex_input );
-		$output = round( kemosite_rgb_to_lum( $rgb_string ) );
-
-		return $output;
+		return round( kemosite_rgb_to_lum( $rgb_string ), 4 );
 
 	}
 
@@ -228,7 +207,7 @@ endif;
 
 if ( !function_exists('kemosite_rgb_to_hsl') ) :
 	
-	function kemosite_rgb_to_hsl ( $rgb_input = 'string' ) {
+	function kemosite_rgb_to_hsl ( $rgb_input = STRING_CONSTANT ) {
 
 		// See RGB to HSL conversion:
 		// https://en.wikipedia.org/wiki/HSL_and_HSV#From_RGB
@@ -299,7 +278,7 @@ endif;
 
 if ( !function_exists('kemosite_hsl_to_rgb') ) :
 	
-	function kemosite_hsl_to_rgb ( $hsl_input = 'string' ) {
+	function kemosite_hsl_to_rgb ( $hsl_input = STRING_CONSTANT ) {
 
 		// https://en.wikipedia.org/wiki/HSL_and_HSV#HSV_to_RGB
 		// https://css-tricks.com/converting-color-spaces-in-javascript/
@@ -389,9 +368,7 @@ if ( !function_exists('kemosite_hex_to_hsl') ) :
 
 		$rgb_string = $primary_parse_r.','.$primary_parse_g.','.$primary_parse_b;
 
-		$output = kemosite_rgb_to_hsl( $rgb_string );
-
-		return $output;
+		return kemosite_rgb_to_hsl( $rgb_string );
 
 	}
 
@@ -399,12 +376,10 @@ endif;
 
 if ( !function_exists('kemosite_hsl_to_hex') ) :
 	
-	function kemosite_hsl_to_hex ( $hsl_input = 'string' ) {
+	function kemosite_hsl_to_hex ( $hsl_input = STRING_CONSTANT ) {
 
 		$rgb_string 	= kemosite_hsl_to_rgb ( $hsl_input );
-		$output 		= kemosite_rgb_to_hex ( $rgb_string );
-
-		return $output;
+		return kemosite_rgb_to_hex ( $rgb_string );
 
 	}
 
@@ -439,9 +414,7 @@ if ( !function_exists('kemosite_adjust_contrast') ) :
 
 		$contrast_delta = max( $eval_contrast, $target_contrast ) - min( $eval_contrast, $target_contrast );
 		
-		$contrast_adjustment_ratio = $contrast_delta / 20; // #000 to #FFF is 21:1; 21:1 -> 1:1 is 20 incremental steps.
-
-		return $contrast_adjustment_ratio;
+		return $contrast_delta / 20; // #000 to #FFF is 21:1; 21:1 -> 1:1 is 20 incremental steps.
 
 	}
 
@@ -449,143 +422,39 @@ endif;
 
 if ( !function_exists('kemosite_adjust_hsl_l_contrast') ) :
 	
-	function kemosite_adjust_hsl_l_contrast( $hsl = array(), $eval_contrast = "", $target_contrast = 3, $luminance = 100 ) {
+	function kemosite_adjust_hsl_l_contrast( $hsl = array(), $eval_contrast = "", $target_contrast = 3, $source_luminance = 100, $background_luminance = 0 ) {
 
-		/*
-		echo "<pre>";
-		print_r( 'eval_contrast' );
-		echo "<br>";
-		print_r( $eval_contrast );
-		echo "<br>";
-		print_r( 'target_contrast' );
-		echo "<br>";
-		print_r( $target_contrast );
-		echo "<br>";
-		print_r( 'luminance' );
-		echo "<br>";
-		print_r( $luminance );
-		echo "<br>";
-		echo "</pre>";
-		*/
-
-		$contrast_adjustment_ratio = kemosite_adjust_contrast( $eval_contrast, $target_contrast);
+		$contrast_adjustment_ratio = kemosite_adjust_contrast( $eval_contrast, $target_contrast); // Ratio of 20 incremental steps from 1:1 to 21:1
 		$hsl_lightness_delta = 100 - $hsl[2];
-		$luminance = round( $luminance * 100 );
+		$source_luminance = round( $source_luminance );
+		$background_luminance = round( $background_luminance );
 
 		/*
-		echo "<pre>";
-		print_r( 'hsl_lightness_delta' );
-		echo "<br>";
-		print_r( $hsl_lightness_delta );
-		echo "<br>";
-		echo "</pre>";
+		if $source_luminance > $background_luminance, dark background, brighten result
+		if $source_luminance < $background_luminance, light background, darken result
 		*/
 
-		/*
-		if $luminance > $hsl[2], less delta = less contrast
-		if $luminance < $hsl[2], less delta = more contrast
-		*/
-
-		// Thought: Adjustment depends on whether we're adding or removing contrast from a darker or lighter colour!!
-		if ( 
-			$luminance >= $hsl[2] && // white
-			$eval_contrast >= $target_contrast // contrast reduction
+		// Adjustment depends on whether we're adding or removing contrast from a darker or lighter colour!!
+		if (
+			$source_luminance >= $background_luminance // element is the same or brighter luminance than darker background. Make brighter to increase contrast.
 		):
 
-			$delta_retainment = floor( $contrast_adjustment_ratio * 100 );
-			$delta_adjustment = $delta_retainment - $hsl_lightness_delta;
+			$delta_adjustment = $hsl_lightness_delta * $contrast_adjustment_ratio;
+			$l = $hsl[2] + $delta_adjustment;
 
-		elseif (
-			$luminance >= $hsl[2] && // white
-			$eval_contrast < $target_contrast // contrast increase
+		elseif ( 
+			$source_luminance < $background_luminance // element is darker luminance than brighter background. Make darker to increase contrast.
 		):
 
-			$delta_retainment = ceil( $contrast_adjustment_ratio * 100 );
-			$delta_adjustment = $hsl_lightness_delta + $delta_retainment;
-
-		elseif (
-			$luminance < $hsl[2] && // black
-			$eval_contrast >= $target_contrast // contrast reduction
-		):
-
-			$delta_retainment = ceil( $contrast_adjustment_ratio * 100 );
-			$delta_adjustment = $hsl_lightness_delta + $delta_retainment;
-
-		elseif (
-			$luminance < $hsl[2] && // black
-			$eval_contrast < $target_contrast // contrast increase
-		):
-
-			$delta_retainment = floor( $contrast_adjustment_ratio * 100 ); // Must decrease delta to increase contrast
-			$delta_adjustment = $delta_retainment - $hsl_lightness_delta;
-
-			/*
-			echo "<pre>";
-			print_r( 'This one.' );	
-			echo "</pre>";
-			*/
-
-		endif;
-
-		/*
-		echo "<br>";
-		print_r( 'luminance' );
-		echo "<br>";
-		print_r( $luminance );
-		echo "<br>";
-		print_r( 'hsl[2]' );
-		echo "<br>";
-		print_r( $hsl[2] );
-		echo "<br>";
-		print_r( 'eval_contrast' );
-		echo "<br>";
-		print_r( $eval_contrast );
-		echo "<br>";
-		print_r( 'target_contrast' );
-		echo "<br>";
-		print_r( $target_contrast );
-		echo "<br>";
-		print_r( 'contrast_adjustment_ratio' );
-		echo "<br>";
-		print_r( $contrast_adjustment_ratio );
-		echo "<br>";
-		print_r( 'delta_retainment' );
-		echo "<br>";
-		print_r( $delta_retainment );
-		echo "<br>";
-		print_r( 'hsl_lightness_delta' );
-		echo "<br>";
-		print_r( $hsl_lightness_delta );
-		echo "<br>";
-		print_r( 'delta_adjustment' );
-		echo "<br>";
-		print_r( $delta_adjustment );
-		echo "<br>";
-		echo "</pre>";
-		*/
-
-		$h = $hsl[0];
-
-		if ( $delta_retainment == 0 ): $l = $hsl[2]; else:
-
+			$delta_adjustment = $hsl_lightness_delta * $contrast_adjustment_ratio;
 			$l = $hsl[2] - $delta_adjustment;
 
 		endif;
 
+		$h = $hsl[0];
 		$s = $hsl[1];
 
-		$hsl_string = $h .','. $s . ',' . $l;
-
-		/*
-		echo "<pre";
-		print_r( 'hsl_string' );
-		echo "<br>";
-		print_r( $hsl_string );
-		echo "<br>";
-		echo "</pre>";
-		*/
-
-		return $hsl_string;
+		return $h .','. $s . ',' . $l;
 		
 	}
 
@@ -600,5 +469,3 @@ if ( !function_exists('kemosite_create_thumbnail_for_post') ) :
 	}
 
 endif;
-
-?>

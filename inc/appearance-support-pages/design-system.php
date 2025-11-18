@@ -21,4 +21,7 @@
 	<li>Charts (using <a href="https://www.chartjs.org/" target="graph_documentation">graph.js</a>). Use custom field load-chart-js = true.</li>
 </ul>
 
+<h2>Accessibility</h2>
+
+
 <p><a href="<?php echo admin_url( 'themes.php?page=kemosite-howtouse-description', 'https' ); ?>">How To Use This Theme</a></p>

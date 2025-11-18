@@ -11,7 +11,7 @@ function kemosite_customize_register( $wp_customize ) {
 	$wp_customize->remove_control("background_image");
 	$wp_customize->remove_section("background_image");
 	$wp_customize->remove_control("background_color");
-	$wp_customize->remove_section("colors");	
+	$wp_customize->remove_section("colors");
 
  	/* [SECTIONS] *
  	// https://developer.wordpress.org/themes/customize-api/customizer-objects/
@@ -28,10 +28,10 @@ function kemosite_customize_register( $wp_customize ) {
 	*/
 
 	// Include Pantone COTY history
-	require_once get_template_directory() . '/inc/customize_register/customize-register-coty.php'; // returns $pantone_coty_colours
+	require get_template_directory() . '/inc/customize_register/customize-register-coty.php'; // returns $pantone_coty_colours
 
 	// Include Universal Colours
-	require_once get_template_directory() . '/inc/customize_register/customize-register-universal-colours.php'; // returns $kemosite_wordpress_universal_colours
+	require get_template_directory() . '/inc/customize_register/customize-register-universal-colours.php'; // returns $kemosite_wordpress_universal_colours
 
 	/* [ADD GLOBAL COLOUR OPTIONS SECTIONS] */
 	$wp_customize->add_section( 'kemosite_wordpress_global_colour_options' , array(
@@ -40,21 +40,7 @@ function kemosite_customize_register( $wp_customize ) {
 	  'priority' => 40, // Same as Colour.
 	  'capability' => 'edit_theme_options'
 	) );
-	require_once get_template_directory() . '/inc/customize_register/kemosite_wordpress_global_colour_options.php';
-
-
-
-	
-	// Present colour variations in a separate panel.
-	/*
-	$wp_customize->add_panel( 'kemosite_wordpress_colour_variations_options', array(
-		'title' => __( 'Colour Variations (Publish Base Colour First)', 'kemositewpblock' ),
-		'capability'     => 'edit_theme_options',
-		'description' => __( 'After "Base Colour Options" Published, variations will be created automatically', 'kemositewpblock' ),
-		'priority' => 41, // After Base Colour Options.
-	) );
-	require_once get_template_directory() . '/inc/customize-register/kemosite_wordpress_colour_variations_options.php';
-	*/
+	require get_template_directory() . '/inc/customize_register/kemosite-wordpress-global-colour-options.php';
 
 	/* [ADD A HEADER OPTIONS SECTIONS] */
 	$wp_customize->add_section( 'kemosite_wordpress_header' , array(
@@ -230,49 +216,5 @@ function mytheme_output_mod_options_console() {
 
 	remove_theme_mod('kemosite_wordpress_fonts_buttons');
 
-	/*
-
-	// Remove depricated colour variations
-	
-	remove_theme_mod('kemosite_wordpress_colours_dark_primary');
-	remove_theme_mod('kemosite_wordpress_colours_invert_primary');
-	remove_theme_mod('kemosite_wordpress_colours_bright_invert');
-	remove_theme_mod('kemosite_wordpress_colours_dark_invert');
-
-	*/
-
-	/*
-	$known_mod_array_keys = array(
-		"custom_css_post_id",
-		"custom_logo",
-		"kemosite_wordpress_fonts_body",
-		"kemosite_wordpress_fonts_buttons",
-		"kemosite_wordpress_fonts_h1_h6",
-		"kemosite_wordpress_header_bg_color",
-		"kemosite_wordpress_header_bg_image",
-		"kemosite_wordpress_header_font"
-	);
-
-	$theme_mod_diffs = array_diff( $known_mod_array_keys, array_keys( get_theme_mods() ) );
-
-	if ( count( $theme_mod_diffs) > 0 ) :
-
-		echo '<script>' . 
-		'console.log("theme_mod_diffs: ");'.
-		'console.log(' . json_encode( $theme_mod_diffs ) . ');' .
-		'alert("Please review the console for [theme_mod_diffs]");'.
-		'</script>';
-
-	else:
-
-		echo '<script>' . 
-		'alert("Do not forget to comment out [after_setup_theme] in [functions-customize-register.php]");'.
-		'</script>';
-
-	endif;
-	*/
-
 }
 add_action( 'after_setup_theme', 'mytheme_output_mod_options_console' );
-
-?>

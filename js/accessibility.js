@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	try {
 
-		var a_elements = document.querySelectorAll("a");
+		let a_elements = document.querySelectorAll("a");
 
 		if (a_elements) {
 			a_elements.forEach( function(a_element) {

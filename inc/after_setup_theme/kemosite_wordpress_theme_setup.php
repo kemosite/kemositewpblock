@@ -15,11 +15,10 @@ function kemosite_wordpress_theme_setup() {
 	 * If you're building a theme based on kemosite-wordpress-theme, use a find and replace
 	 * to change 'kemosite-wordpress-theme' to the name of your theme in all the template files.
 	 */
-	// load_theme_textdomain( 'kemosite-wordpress-theme', get_template_directory() . '/languages' );
 
 	// This feature enables Post Formats support for a theme
 	add_theme_support(
-		'post-formats', array( 
+		'post-formats', array(
 			'aside',
 			'gallery',
 			'link',
@@ -102,4 +101,3 @@ function kemosite_wordpress_theme_setup() {
 		'header-text' => array( 'site-title', 'site-description' )
 	) );
 }
-?>

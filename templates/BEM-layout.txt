@@ -1,0 +1,13 @@
+kemosite-grid-layout
+    kemosite-grid-area-menu (template-part:menu.html)
+        logo
+        navigation
+        search
+    kemosite-grid-area-section (template-part: page-section.html)
+        section-title
+    kemosite-grid-area-left-sidebar (template-part: left-sidebar)
+    kemosite-grid-area-main (template-part: part-main.html)
+        post-content
+    kemosite-grid-area-right-sidebar (template-part: right-sidebar)
+    kemosite-grid-area-footer
+        navigation

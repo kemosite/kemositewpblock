@@ -6,7 +6,7 @@
 
 function kemosite_shortcode_list( $attributes, $content ) {
 
-    if (@$attributes['list_id'] && @$attributes['list_id'] !== NULL): @$list_id = $attributes['list_id']; endif;
+    if (@$attributes['list_id'] && @$attributes['list_id'] !== null): @$list_id = $attributes['list_id']; endif;
     @$columns = ($attributes['columns'] > 1) ? $attributes['columns'] : 1;
 
     $output = "";
@@ -29,5 +29,3 @@ function kemosite_shortcode_list( $attributes, $content ) {
 }
 add_shortcode('unordered_list', 'kemosite_shortcode_list');
 add_shortcode('ordered_list', 'kemosite_shortcode_list');
-
-?>

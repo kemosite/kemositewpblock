@@ -5,8 +5,6 @@
  */
 
 function kemosite_wordpress_add_woocommerce_support() {
-	
-    // add_theme_support( 'woocommerce' );
 
     add_theme_support( 'woocommerce', array(
 		'thumbnail_image_width' => 256,
@@ -28,5 +26,3 @@ function kemosite_wordpress_add_woocommerce_support() {
     add_theme_support( 'wc-product-gallery-slider' );
     
 }
-
-?>

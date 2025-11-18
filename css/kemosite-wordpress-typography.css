@@ -22,43 +22,111 @@
 -------------------------------------------------------------------*/
 
 /*-------------------------------------------------------------------
-[FOVEAL VISION DISCUSSION]
+[FOVEAL VISION AND SACCADE DISCUSSION]
 ---------------------------------------------------------------------
 
+# Eye Movements and the Use of Parafoveal Word Length Information
+# in Reading
 # "The foveal region comprises the area 1° on each side of the
 # current fixation point (usually 6–8 letters). In the fovea, visual
-# acuity is greatest and letters can be easily identified."
-# https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2668122/#:~:text=The%20foveal%20region%20comprises%20the,letters%20can%20be%20easily%20identified.
+# acuity is greatest and letters can be easily identified.
+# In the fovea, visual acuity is greatest and letters can be
+# easily identified. Visual acuity drops off markedly outside of
+# the fovea, and letters are hard to identify..."
+# https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2668122/
+# 
+# Fovea centralis
+# "The fovea sees only the central two degrees of the visual field"
+# https://en.wikipedia.org/wiki/Fovea_centralis
+#
+# Eye movement in reading
+# https://en.wikipedia.org/wiki/Eye_movement_in_reading
+#
+# Saccade
+# "One reason for the saccadic movement of the human eye is that the
+# central part of the retina—known as the fovea—which provides the
+# high-resolution portion of vision is very small in humans,
+# only about 1–2 degrees of vision, but it plays a critical role
+# in resolving objects."
+#
+# "The distance the eye moves in each saccade (or short rapid movement)
+# is between 1 and 20 characters with the average being 7–9 characters."
+# https://en.wikipedia.org/wiki/Saccade
+# 
+# "A line of text shouldn’t be longer than 80 characters"
+# https://www.w3.org/WAI/tutorials/page-structure/styling/
 
 -------------------------------------------------------------------*/
 
 /*-------------------------------------------------------------------
-[MONITOR FIELD OF VISION DISCUSSION]
+[DEVICE FIELD OF VISION DISCUSSION]
 ---------------------------------------------------------------------
 
+# Office Ergonomics - Positioning the Monitor
 # "...for comfortable viewing of images on a computer screen it is
 # reasonable to place the monitor at about 15 degrees (or slightly
 # lower) below the horizontal line. Such a location creates a
 # preferable visual zone of 30 degrees (+ 15 degrees to -15 degrees
 # from the normal line of sight)."
 # https://www.ccohs.ca/oshanswers/ergonomics/office/monitor_positioning.html
+#
+# Clinical Methods: The History, Physical, and Laboratory Examinations.
+# 3rd edition.
+# "The monocular visual field consists of central vision,
+# which includes the inner 30 degrees of vision and central fixation..."
+# https://www.ncbi.nlm.nih.gov/books/NBK220/
+#
+# Humphrey Visual Field
+# "The extent of a uniocular visual field was given by Thomas Young.[2]
+# This consists of the central 30 degrees field and extends to
+# 60 degrees superiorly and medially."
+# https://www.ncbi.nlm.nih.gov/books/NBK585112/
+#
+# Visual acuity
+# "To see detail, two sets of receptors must be intervened by a
+# middle set. The maximum resolution is that 30 seconds of arc,
+# corresponding to the foveal cone diameter or the angle subtended at
+# the nodal point of the eye."
+# https://en.wikipedia.org/wiki/Visual_acuity
 
 -------------------------------------------------------------------*/
-
-/*
-
-*/
 
 :root {
 
     --kemosite-base-font-size: 1rem; /* Always start from device base size as minimum */
     --kemosite-foveal-vision-degrees: 1; /* Foveal vision, in degrees, for 3-4 letters. */
     --kemosite-field-of-view-degrees: 15; /* Ideal field of view variation, in degrees, for computer monitor. */
-    --kemosite-foveal-vision-letters: clamp( 3, 3.5, 4); /* 3-4 letters */
+    /* --kemosite-foveal-vision-letters: clamp( 3, 3.5, 4); /* 3-4 letters */ 
+    --kemosite-min-line-length: calc( var(--kemosite-field-of-view-degrees) * 3ch );
+    --kemosite-ideal-line-length: calc( var(--kemosite-field-of-view-degrees) * 4ch );
+    --kemosite-max-line-length: 80ch;
+    --kemosite-border-size: .11em; /* Rule of thirds: font size / 3 (0.33), further devided by 3 (0.11) to accomodate a margin around the border.  */
+    --kemosite-border: solid;
+
+}
+
+@media screen and (prefers-contrast: more) {
+    
+    :root {
+        --kemosite-foveal-vision-letters: 2; /* 2 letters */
+        --kemosite-border-size: .22em; /* Double standard border size  */
+    }
+    
+}
+
+@media screen and (prefers-contrast: less) {
+    :root {
+        --kemosite-border: dashed;
+    }
+
+}
+
+:root {
+
+    --kemosite-foveal-vision-letters: 3; /* 3 letters */
     --kemosite-foveal-vision-ratio: calc( var(--kemosite-foveal-vision-degrees) / var(--kemosite-field-of-view-degrees) );
     --kemosite-vmin-ratio: calc( ( 100vmin * var(--kemosite-foveal-vision-ratio) ) / var(--kemosite-foveal-vision-letters) );
     --kemosite-vmax-ratio: calc( ( 100vmax * var(--kemosite-foveal-vision-ratio) ) / var(--kemosite-foveal-vision-letters) );
-
     --kemosite-font-size: clamp( var(--kemosite-base-font-size), var(--kemosite-vmin-ratio), var(--kemosite-vmax-ratio) );
     --kemosite-font-size-adjust: 1ex;
 
@@ -73,16 +141,42 @@
 
 }
 
+html body {
+    font-family: var(--wp--preset--font-family--open-sans), Arial, sans-serif;
+}
+
 body, body * {
     font-size: inherit;
     line-height: 3ex;
 }
 
+.kemosite-container-section {
+    container-name: kemosite-container-section;
+    container-type: inline-size;
+}
+
+@container kemosite-container-section ( width > 80ch ) {
+    /* main { columns: 59ch auto; } */
+    main { font-size: calc( 1em + 1.25cqw); } /* 100% / 80ch = 1.25% per character. */
+
+}
+
+.kemosite-container-main {
+    container-name: kemosite-container-main;
+    container-type: inline-size;
+}
+
+@container kemosite-container-main ( width > 80ch ) {
+    /* main { columns: 59ch auto; } */
+    main { font-size: calc( 1em + 1.25cqw); } /* 100% / 80ch = 1.25% per character. */
+
+}
+
 /* HEADER GROUPS */
 /* vh units seem to work better than ex units in Google Chrome on Android. */
-h1 { font-size: clamp( 7vh, calc(1em + 3ex), 33vh ); font-weight: normal; } /* [PAGE TITLES] */ 
-h2 { font-size: clamp( 3vh, calc(1em + 2ex), 6vh ); font-weight: normal; } /* [SUBTITLES] */
-h3 { font-size: clamp( 2vh, calc(1em + 1ex), 4vh ); font-weight: normal; } /* [SECTION TITLES+] */
+h1 { font-size: clamp( 3.75vh, calc(3.75vh + 3.75vw), 30vh ); font-weight: normal; } /* [PAGE TITLES] */ 
+h2 { font-size: clamp( 3vh, calc(3vh + 3vw), 6vh ); font-weight: normal; } /* [SUBTITLES] */
+h3 { font-size: clamp( 2vh, calc(2vh + 2vw), 4vh ); font-weight: normal; } /* [SECTION TITLES+] */
 h4 { font-size: 1em; font-weight: bold; }       /* [Body Copy Size] */
 h5 { font-size: .875em; font-weight: bold; }    /* [Small] */
 h6 { font-size: .75em; font-weight: bold; }     /* [Smaller] */
@@ -90,29 +184,23 @@ h6 { font-size: .75em; font-weight: bold; }     /* [Smaller] */
 h1,h2,h3,h4,h5,h6 { 
     margin-top: 3ex;
     text-align: center;
-    /* font-family: var(--h1_h6_font_family_name); */
+    font-family: var(--wp--preset--font-family--roboto-condensed), Arial, sans-serif;
 }
 
 ul.eyebrow-headline {
     list-style-type: none;
     padding: 0; margin: 0;
 }
-ul.eyebrow-headline li {
+ul.eyebrow-headline li:first-child {
     margin: 0;
+    display: block;
+}
+ul.eyebrow-headline li {
+    display: none;
 }
 
 div.kemosite-grid-area-section section h1 {
     margin: 0;
-}
-
-.product h1, .type-product h1,
-.product h2, .type-product h2,
-.product h3, .type-product h3,
-.product h4, .type-product h4,
-.product h5, .type-product h5,
-.product h6, .type-product h6 {
-    /* text-align: left; */ /*CONSIDER FOR DELETION */
-
 }
 
 .woocommerce-breadcrumb { text-align: center; }
@@ -255,19 +343,6 @@ li.jetpack-social-widget-item {
     display: inline-block;
 }
 
-/*
-p > a:hover,
-li > a:hover,
-h1 > a:hover,
-h2 > a:hover,
-h3 > a:hover,
-h4 > a:hover,
-h5 > a:hover,
-h6 > a:hover {
-    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) inset, 0px 0.125em 0px rgb(0, 0, 0);
-}
-*/
-
 /* A neat way of styling your blockquotes to add a bit more punch to them. */
 
 blockquote {
@@ -297,12 +372,7 @@ select, input, button, a.button, .button, a.wp-block-button__link,
 [type="color"], [type="date"], [type="datetime-local"], [type="datetime"], [type="email"], [type="month"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="time"], [type="url"], [type="week"], textarea { 
     font-size: 1em;
     padding: .5em 1em;
-    /* font-family: var(--button_font_family_name); */
     font-weight: 600;
-}
-
-div.section header h1 {
-    /* font-family: var(--kemosite_wordpress_header_font_family_name); */
 }
 
 div.the.exerpt p {
@@ -321,7 +391,6 @@ time.updated:before { content: "Updated: "; }
 .related.products .WooZone-price-info { display: none; }
 
 .woocommerce-loop-product__title .price { margin-top: 3ex; }
-.woocommerce-Price-amount { /* font-family: var(--kemosite_wordpress_header_font_family_name); */ }
 .summary .price { font-size: calc(1em + 1vh); }
 p.price { text-align: center; }
 

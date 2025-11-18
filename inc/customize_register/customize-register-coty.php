@@ -6,6 +6,7 @@
 
 // sRGB under D65 "C" (TCX) Simulation, https://connect.pantone.com
 $pantone_coty_colours = array(
+	'164,123,103' => 'Mocha Mousse (2025)',
 	'255,190,152' => 'Peach Fuzz (2024)',
 	'240,240,241' => 'Viva Magenta (2023)',
 	'102,103,171' => 'Very Peri (2022)',
@@ -37,6 +38,4 @@ $pantone_coty_colours = array(
 
 $pantone_coty_colours_rgb_array 		=	array_keys( $pantone_coty_colours );
 $pantone_coty_colour_this_year_rgb 		=	$pantone_coty_colours_rgb_array[0];
-$pantone_coty_colour_this_year_hex 		=	kemosite_rgb_to_hex( $pantone_coty_colour_this_year_rgb );
-
-?>
+$pantone_coty_colour_this_year_hex 		=	kemosite_rgb_to_hex( $pantone_coty_colour_this_year_rgb ); // HEX values are needed for Wordpress defaults

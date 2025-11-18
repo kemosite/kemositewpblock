@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+:root {
+	--touch-target-size: 48px;
+	--touch-target-separation: 8px;
+}
+
 html {
 	scroll-behavior: smooth;
 }
@@ -14,6 +19,12 @@ body {
 
 /* apply a natural box layout model to all elements */
 *, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+/* Lazy load assets */
+*.lazy {
+	background-image: none;
+	background-color: var( --kemosite-base_black );
+}
 
 .mobile.logo.position {
 	display: flex;
@@ -39,11 +50,9 @@ body {
 	width: inherit;
 }
 
-.is-dropdown-submenu-parent.opens-right > .is-dropdown-submenu {
-	/*
-	left: 0;
-	top: 100%;
-	*/
+table thead th {
+	position: sticky;
+	top: 0;
 }
 
 a, a:link, a:hover, a:focus, a:active,
@@ -57,6 +66,71 @@ ul.products li.product .button {
 
 input[type="checkbox"], input[type="submit"], button[type="submit"] {
 	cursor: pointer;
+}
+
+/*----------------------------------------------------------------------------*\
+	[TOOLTIPS]
+	https://blog.logrocket.com/creating-beautiful-tooltips-with-only-css/
+\*----------------------------------------------------------------------------*/
+
+.tooltip:before {
+  content: attr(data-text); /* here's the magic */
+  position:absolute;
+  
+  /* vertically center */
+  top:50%;
+  transform:translateY(-50%);
+  
+  /* move to right */
+  left:100%;
+  margin-left:15px; /* and add a small left margin */
+  
+  /* basic styles */
+  width:200px;
+  padding:10px;
+  border-radius:10px;
+  background:#000;
+  color: #fff;
+  text-align:center;
+
+  display:none; /* hide by default */
+
+}
+
+.tooltip:hover:before {
+  display:block;
+}
+
+.tooltip.left:before {
+  /* reset defaults */
+  left:initial;
+  margin:initial;
+
+  /* set new values */
+  right:100%;
+  margin-right:15px;
+}
+
+.tooltip:after {
+  content: "";
+  position:absolute;
+  
+  /* position tooltip correctly */
+  left:100%;
+  margin-left:-5px;
+ 
+  /* vertically center */
+  top:50%;
+  transform:translateY(-50%);
+ 
+  /* the arrow */
+  border:10px solid #000;
+  border-color: transparent black transparent transparent;
+  
+  display:none;
+}
+.tooltip:hover:before, .tooltip:hover:after {
+  display:block;
 }
 
 .wc-block-grid__products {
@@ -86,7 +160,6 @@ a.button, a.button:link, a.button:hover, a.button:focus, a.button:active {
 }
 
 .cell { 
-	/* padding: 0 1em; */
 	flex: 0 1 auto;
 	width: auto;
 }
@@ -101,15 +174,6 @@ ul.accordian li.accordian-item {
 	padding-left: 0 !important;
 }
 
-/* Might be depricated
-.wp-block-button {
-	min-height: 56px;
-	min-width: 80px;
-	height: auto;
-	border-radius: .25em;
-}
-*/
-
 .wc-block-grid.has-aligned-buttons .wc-block-grid__product > :last-child { padding-bottom: 0; }
 
 .select2-container .select2-selection--single,
@@ -122,12 +186,12 @@ select, input:not([type="checkbox"]):not([type="radio"]), button:not(.wp-block-n
 li.menu-item, li.menu-item a,
 li.wp-block-navigation-item, li.wp-block-navigation-item a,
 a.wp-block-button__link {
-	min-height: 56px;
-	min-width: 80px;
+	min-height: var(--touch-target-size);
+	min-width: var(--touch-target-size);
 	padding: 1ex 1em;
 	border-radius: .25em;
 	height: auto;
-	margin: 1ex 1ch;
+	margin: minmax( var(--touch-target-separation), 1ex ) minmax( var(--touch-target-separation), 1ch );
 	display: flex;
 	align-items: center;
 }
@@ -161,16 +225,6 @@ div.wp-block-navigation__responsive-container-content > ul.wp-block-navigation__
 	display: flex;
 	align-items: center;
 }
-
-/*
-li.menu-item a:hover,
-li.menu-item.is-active > a,
-li.menu-item.is-active > a:link {
-	background-color: black !important;
-	color: white !important;
-	filter: saturate(50%) brightness(150%);
-}
-*/
 
 /* Consolidate Wordpress and Foundation button class styles */
 div.wp-block-buttons > div.wp-block-button.button { padding: 0; }
@@ -275,7 +329,6 @@ div.tag-cloud {
 
 /* [Mobile Menu] */
 .main_mobile_menu {
-	/* position: fixed; */
 	width: 100vw;
 	background-color: white;
 	z-index: 10;
@@ -286,7 +339,6 @@ div.tag-cloud {
 /* [Screen Menu] */
 .main_screen_menu {
 	width: 100%;
-	/* z-index: 1; */
 	top: 0;
 }
 
@@ -294,8 +346,8 @@ div.tag-cloud {
 
 .section {
 	display: flex;
+	align-items: center;
 }
-.section { align-items: center; }
 .section h1 {
 	text-align: center;
 	font-weight: bold;
@@ -312,10 +364,6 @@ ul.curriculum-sections li.section {
 
 /* [Desktop Menu] */
 .dropdown.menu,
-.submenu.menu
-{ 
-	/* margin: 0; */
-}
 .menu.nested {margin-left: 0 }
 .menu li {
 	font-weight: bold;
@@ -339,8 +387,9 @@ ul.curriculum-sections li.section {
     max-width: 100%;
     max-height: 100%;
     background-size: cover;
-    min-height: 56px;
-	min-width: 80px;
+    min-height: var(--touch-target-size);
+	min-width: var(--touch-target-size);
+	margin: minmax( var(--touch-target-separation), 1ex ) minmax( var(--touch-target-separation), 1ch );
 }
 .media-object .thumbnail img { 
 	min-height:100%;
@@ -356,35 +405,6 @@ div.product_meta span {
 }
 
 iframe.youtube-player { width: 100%; }
-
-/* [Foundation Top-Bar Menu Example] *
-**
-.menu .menu-text { padding: 0; }
-.sub-menu {
-	display: none;
-	transition-delay: 5s;
-}
-
-.home.url.item  a {
-	padding: .7rem 1rem;
-}
-
-.dropdown.menu > li.menu-item-has-children:hover > a + .sub-menu,
-.dropdown.menu > li.menu-item-has-children > a:hover + .sub-menu,
-.dropdown.menu > li.menu-item-has-children > .sub-menu:hover
-{
-	display: flex;
-	list-style: none;
-	position: absolute;
-	z-index: 1;
-	border: 1px solid #cacaca;
-	left: 0;
-	right: 1em;
-	top: auto;
-	margin: 0;
-	transition-delay: 5s;
-}
-*/
 
 /* [Sharedaddy and Comments Alignment] */
 .sharedaddy {
@@ -425,8 +445,6 @@ div.css-search div.em-search-main .em-search-submit img {
 .has-sidebar.woocommerce-page:not(.error404) #primary { 
 	width: 100%;
 }
-
-/* form { text-align: center; } */
 
 select {
 	padding: 1em !important;

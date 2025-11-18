@@ -21,5 +21,3 @@ function kemosite_widgets_init() {
 	) );
 
 }
-
-?>

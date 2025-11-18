@@ -15,5 +15,3 @@ function kemosite_register_menus() {
 	
 
 }
-
-?>

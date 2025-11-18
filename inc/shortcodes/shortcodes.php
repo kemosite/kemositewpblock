@@ -32,5 +32,3 @@ require_once "kemosite_shortcode_woocommerce_recent_products.php";
 
 // kemosite_shortcode_latest_post
 require_once "kemosite_shortcode_latest_post.php";
-
-?>

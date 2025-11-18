@@ -9,5 +9,3 @@ function is_login_page() {
     );
 
 }
-
-?>

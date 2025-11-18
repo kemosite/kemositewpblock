@@ -3,7 +3,7 @@
 === kemositewpblock ===
 Contributors: Kevin Montgomery
 Requires at least: 6.0
-Tested up to: 6.5.5
+Tested up to: 6.8.3
 Requires PHP: 5.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -13,6 +13,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Changelog ==
+
+= 6.8.3.1 =
+- Updated to Foundation 6.9
+- Using new CSS colour models
+- Updated ideal line length (45-60 characters) based on WCAC guidance (80 characters max), and better understanding of saccadic movement
+- Add new CSS reset 1.11.3
+- Updated to Chart.js 4.5.1
+- 
 
 = 6.5.5.1 =
 - Added Modern Pictograms font to theme.

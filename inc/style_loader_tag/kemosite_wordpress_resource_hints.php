@@ -7,25 +7,9 @@
 
 
 function kemosite_wordpress_resource_hints($hints, $relation_type) {
-
-	// Do not load scripts if AMP is detected.
-	// Consider whether an AMP version is possible, or even necessary.
-	// This is breaking WordPress styles. Re-evaluate.
-	/*
-	if ( is_amp_detected() ) {
-        return $hints = array();
-    }
-    */
 	
 	global $wp_styles;
 	global $wp_scripts;
-
-	/*
-	kemosite_debug_to_console( "wp_styles:" );
-	kemosite_debug_to_console( $wp_styles );
-	kemosite_debug_to_console( "wp_scripts:" );
-	kemosite_debug_to_console( $wp_scripts );
-	*/
 
 	/* IN ORDER OF COMMITMENT */
 	// dns-prefetch - used to indicate an origin that will be used to fetch required resources, and that the user agent SHOULD resolve as early as possible. Helpful when you know you’ll connect to a domain soon, and you want to speed up the initial connection.
@@ -54,29 +38,29 @@ function kemosite_wordpress_resource_hints($hints, $relation_type) {
 	<link rel="prerender" href="//example.com/next-page.html">
 	*/
 
-    $dns_prefetch_domains = array( 
+    $dns_prefetch_domains = array(
     	// 'https://fonts.googleapis.com'
 	);
 
-	$preconnect_domains = array( 
+	$preconnect_domains = array(
     	//'https://fonts.googleapis.com'
 	);
 
-	$preconnect_domains_cors = array( 
+	$preconnect_domains_cors = array(
     	// 'https://fonts.gstatic.com'
 	);
 
-    $prefetch_style = array( 
+    $prefetch_style = array(
+    	'the-new-css-reset',
     	'foundation',
-    	// 'foundation-icons',
 		'kemosite-master-styles',
 	);
 
     // Make sure JS declarations are not already declared assets for deferred or async loading.
-	$prefetch_script = array( 
+	$prefetch_script = array(
     	'jquery',
     	'foundation',
-    	'kemosite-url-handler',
+    	// 'kemosite-url-handler',
 	);
 
 	switch ($relation_type) {
@@ -146,19 +130,10 @@ function kemosite_wordpress_resource_hints($hints, $relation_type) {
 
 		default:
 
-			return;
+			break;
 
 	}
-
-    /*
-    echo "<pre>";
-    print_r($hints);
-    print_r($relation_type);
-    echo "</pre>";
-    */
 
     return $hints;
 
 }
-
-?>

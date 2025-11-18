@@ -77,7 +77,7 @@
             "lineHeight": "3ex"
         },
         "layout": {
-            "contentSize": "59ch",
+            "contentSize": "80ch",
             "wideSize": "100vw"
         },
         "lightbox": {
@@ -180,17 +180,17 @@
                 },
                 {
                     "name": "Size 4",
-                    "size": "calc(1em + 1vh)",
+                    "size": "calc(2vw + 2vh)",
                     "slug": "spacing-40"
                 },
                 {
                     "name": "Size 5",
-                    "size": "calc(1em + 2vh)",
+                    "size": "calc(3vw + 3vh)",
                     "slug": "spacing-50"
                 },
                 {
                     "name": "Size 6",
-                    "size": "calc(1em + 3vh)",
+                    "size": "calc(3.75 + 3.75vh)",
                     "slug": "spacing-60"
                 }
             ],
@@ -756,29 +756,29 @@
                 },
                 {
                     "fluid": {
-                        "max": "calc(1em + 2vh)",
-                        "min": "1em"
+                        "max": "4vh",
+                        "min": "2vh"
                     },
                     "name": "Size 4",
-                    "size": "calc(1em + 1vh)",
+                    "size": "calc(2vh + 2vw)",
                     "slug": "font-40"
                 },
                 {
                     "fluid": {
-                        "max": "calc(1em + 3vh)",
-                        "min": "calc(1em + 1vh)"
+                        "max": "6vh",
+                        "min": "3vh"
                     },
                     "name": "Size 5",
-                    "size": "calc(1em + 2vh)",
+                    "size": "calc(3vh + 3vw)",
                     "slug": "font-50"
                 },
                 {
                     "fluid": {
-                        "max": "calc(1em + 3vh)",
-                        "min": "calc(1em + 2vh)"
+                        "max": "30vh",
+                        "min": "3.75vh"
                     },
                     "name": "Size 6",
-                    "size": "calc(1em + 3vh)",
+                    "size": "calc(3.75vh + 3.75vw)",
                     "slug": "font-60"
                 }
             ],

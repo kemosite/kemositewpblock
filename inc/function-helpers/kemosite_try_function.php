@@ -6,4 +6,3 @@ function kemosite_try_function( $function ) {
 	   kemosite_debug_to_console( $e->getMessage() );
 	}
 }
-?>

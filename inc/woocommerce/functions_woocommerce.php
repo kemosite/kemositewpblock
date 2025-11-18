@@ -24,11 +24,11 @@ endif;
 add_action( 'woocommerce_before_shop_loop_item_title', 'kemosite_wordpress_woocommerce_template_loop_add_to_cart', 10 );
 
 // CUSTOM WOOCOMMERCE ADJUSTMENTS]
-if ( !function_exists( 'kemosite_woocommerce_subcategory_thumbnail' ) ):
-    require_once "woocommerce_before_subcategory_title/kemosite_woocommerce_subcategory_thumbnail.php";
+if ( !function_exists( 'kemositeWoocommerceSubcategoryThumbnail' ) ):
+    require_once "woocommerce_before_subcategory_title/kemositeWoocommerceSubcategoryThumbnail.php";
 endif;
 remove_action( 'woocommerce_before_subcategory_title', 'woocommerce_subcategory_thumbnail', 10);
-add_action( 'woocommerce_before_subcategory_title', 'kemosite_woocommerce_subcategory_thumbnail', 10 );
+add_action( 'woocommerce_before_subcategory_title', 'kemositeWoocommerceSubcategoryThumbnail', 10 );
 
 // Show the subcategory title in the product loop.
 if ( !function_exists( 'kemosite_woocommerce_template_loop_category_title' ) ):
@@ -53,5 +53,3 @@ endif;
 /**
  * [END WOOCOMMERCE ADJUSTMENTS]
  */
-
-?>

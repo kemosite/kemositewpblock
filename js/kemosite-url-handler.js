@@ -8,18 +8,23 @@ window.addEventListener("DOMContentLoaded", function() {
 	    	// Add a listener to all links
 			link.addEventListener("click", function(event) {
 
+				
+				console.log( "Event" );
+				console.log( event );
+				console.log( event.srcElement.href );
+
+
 				// Prevent default behaviour -- namely clicking
 				event.preventDefault();
 
 				// Get link properties.
-				if ( link.getAttribute("href") ) { var url = link.getAttribute("href"); }
+				if ( event.srcElement.href ) {
 
-				// Take action is a URL is defined
-				if (url) {
-					
+					let url = event.srcElement.href;
+
 					// Look for local link
 					if (url.substr(0,1) == "#") {
-						var local_link = document.querySelector("a[name='"+url.substr(1)+"']");
+						let local_link = document.querySelector("a[name='"+url.substr(1)+"']");
 						window.scrollTo({
 						  top: local_link.offsetTop,
 						  behavior: 'smooth'

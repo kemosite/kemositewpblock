@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 /*-------------------------------------------------------------------
 [COLOUR: TABLE OF CONTENTS]
 ---------------------------------------------------------------------
@@ -27,13 +28,50 @@
 
 /* No preferences */
 :root {
+
 	--transition-time: 125ms;
-	--kemosite-cool-white: "#efeff0";
-	--kemosite-base_black: "#242424";
-	--kemosite-base-black-minus-blue: "#242400";
+
+	/* Characterized Reference Printing Condition 7, Universal Extra Large, https://www.color.org/chardata/CGATS21-2-CRPC7.xalter */
+	--kemosite-cool-white-lab: rgb(from lab(97% 1 -4) r g b); /* Reference White Point */
+	--kemosite-cool-black-lab: rgb(from lab(4.41%  -0.16  2.77) r g b); /* Reference Black Point */
+	--kemosite-cyan-lab: rgb(from lab(54% -42 -54) r g b); /* Cyan */
+	--kemosite-magenta-lab: rgb(from lab(47% 78 -10) r g b);  /* Magenta */
+	--kemosite-yellow-lab: rgb(from lab(90% -4 103) r g b); /* Yellow */
+	--kemosite-key-lab: rgb(from lab(14% 0 0) r g b); /* Key/Black */
+	--kemosite-blue-lab: rgb(from lab(20% 26 -53) r g b); /* Blue */
+	--kemosite-green-lab: rgb(from lab(50% -72 29) r g b); /* Green */
+	--kemosite-red-lab: rgb(from lab(47% 75 54) r g b); /* Red */
+
+	/* Derivatives of Lab */
+	--kemosite-cool-black-minue-blue-lab: rgb(from lab(4.41%  -0.16  2.77) r g 0);
+	--kemosite-blue-rgb: color-mix(in hsl shorter hue, var(--kemosite-cyan-lab) 100%, var(--kemosite-magenta-lab) 100% ); /* Blue */
+	--kemosite-green-rgb: color-mix(in hsl shorter hue, var(--kemosite-cyan-lab) 100%, var(--kemosite-yellow-lab) 100% ); /* Green */
+	--kemosite-red-rgb: color-mix(in hsl shorter hue, var(--kemosite-magenta-lab) 100%, var(--kemosite-yellow-lab) 100% ); /* Red */
+
+	/* Low contrast LCH of RGB */
+	--kemosite-red-lch: oklch(from rgb(255 0 0) l 50% h); /* Red */
+	--kemosite-green-lch: oklch(from rgb(0 255 0) l 50% h); /* Green */
+	--kemosite-blue-lch: oklch(from rgb(0 0 255) l 50% h); /* Blue */
+
+	/* Hardcoded HEX */
+	--kemosite-cool-white: "#f6f6fe"; /* hex eyedrop of lab */
+	--kemosite-base_black: "#110f09"; /* hex eyedrop of lab */
+	--kemosite-base-black-minus-blue: "#110f00"; /* hex eyedrop of lab */
 	--kemosite-success: "#40bf40";
 	--kemosite-alert: "#bf4040";
 	--kemosite-warning: "#bfbf40";
+}
+
+@media screen and (prefers-contrast: more) and (forced-colors: none) {
+	
+	:root {}
+
+}
+
+@media screen and (prefers-contrast: less) {
+	
+	:root {}
+	
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -46,6 +84,7 @@
 
 body,
 .help-text {
+	color-adjust: economy;
 	background-color: var(--kemosite_wordpress_body_background_color);
 	color: var(--kemosite_wordpress_body_color);
 }
@@ -60,7 +99,6 @@ body,
 }
 
 .off-canvas {
-	/* filter: brightness(120%); */
 	background-color: var(--kemosite_wordpress_placeholder_color);
 }
 
@@ -85,9 +123,11 @@ body,
 	border: 1px solid var(--kemosite_wordpress_component_colour);
 }
 
+/*
 div.kemosite-grid-area-menu { 
 	background-color: var(--kemosite_wordpress_placeholder_color);
 }
+*/
 
 div.kemosite-grid-area-section { 
 	color: var(--kemosite_wordpress_header_font_color);
@@ -208,7 +248,6 @@ input.search-submit,
 .onsale, .woocommerce-pagination span.page-numbers, .woocommerce-pagination a.page-numbers, .woocommerce-pagination a.next.page-numbers, .woocommerce-pagination a.prev.page-numbers,
 .woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, /* WooCommerce */
 .woocommerce #respond input#submit.alt, .woocommerce a.button.wc-backward, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt, /* WooCommerce */
-.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, /*WooCommerce */
 /* .wc-tabs a, .wc-tabs a:link, */ /* WooCommerce Tabs */
 div.css-search div.em-search-main .em-search-submit, /* Events */
 .woocommerce span.onsale /* WooCommerce On Sale Button */
@@ -236,8 +275,6 @@ button:hover, button:focus, input.mailpoet_submit:hover, input.mailpoet_submit:f
 .woocommerce #respond input#submit:focus, .woocommerce a.button:focus, .woocommerce button.button:focus, .woocommerce input.button:focus, /* WooCommerce */
 .woocommerce #respond input#submit.alt:hover, .woocommerce a.button.wc-backward:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover, /* WooCommerce */
 .woocommerce #respond input#submit.alt:focus, .woocommerce a.button.wc-backward:focus, .woocommerce a.button.alt:focus, .woocommerce button.button.alt:focus, .woocommerce input.button.alt:focus, /* WooCommerce */
-.woocommerce #respond input#submit:hover, .woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover, /*WooCommerce */
-.woocommerce #respond input#submit:focus, .woocommerce a.button:focus, .woocommerce button.button:focus, .woocommerce input.button:focus, /*WooCommerce */
 .wc-tabs a:hover, .wc-tabs a:focus, /* WooCommerce Tabs */
 div.css-search div.em-search-main .em-search-submit:hover, div.css-search div.em-search-main .em-search-submit:focus /* Events */ {
 	-webkit-box-shadow: 0 2px 0 var(--kemosite_wordpress_component_shadow_colour);

@@ -1,3 +1,4 @@
+
 <?php
 
 /**
@@ -27,14 +28,14 @@ elseif ( !defined( 'KEMOSITE_THEME_LOGO' ) ):
 endif;
 
 // Default handling method
-if ( !function_exists('kemosite_debug_to_console') ): require_once get_template_directory() . '/inc/function-helpers/kemosite_debug_to_console.php'; endif;
-// set_error_handler("kemosite_debug_to_console");
+if ( !function_exists('kemosite_debug_to_console') ): require get_template_directory() . '/inc/function-helpers/kemosite_debug_to_console.php'; endif;
+set_error_handler( 'kemosite_debug_to_console' );
 
 // Option to diagnose functions, and report on failures.
-if ( !function_exists('kemosite_try_function') ): require_once get_template_directory() . '/inc/function-helpers/kemosite_try_function.php'; endif;
+if ( !function_exists('kemosite_try_function') ): require get_template_directory() . '/inc/function-helpers/kemosite_try_function.php'; endif;
 
 // Define is_plugin_active
-if ( !function_exists('is_plugin_active') ): include_once ABSPATH . 'wp-admin/includes/plugin.php'; endif;
+if ( !function_exists('is_plugin_active') ): include ABSPATH . 'wp-admin/includes/plugin.php'; endif;
 
 // Check for Woocommerce, Define Woocommerce constant, append appropriate styles
 if (is_plugin_active('woocommerce/woocommerce.php')): define('KEMOSITE_WOOCOMMERCE_ACTIVE', true); else: define('KEMOSITE_WOOCOMMERCE_ACTIVE', false); endif;
@@ -51,7 +52,7 @@ if (is_plugin_active('learnpress/learnpress.php')): define('KEMOSITE_LEARNPRESS_
  * @return bool
  */
 if ( !function_exists( 'is_login_page' ) ):
-	require_once get_template_directory() . '/inc/function-helpers/is_login_page.php';
+	require get_template_directory() . '/inc/function-helpers/is_login_page.php';
 endif;
 
 /**
@@ -61,18 +62,17 @@ endif;
  */
 
 // Shortcodes (behave similarly to filters)
-require_once get_template_directory() . '/inc/shortcodes/shortcodes.php';
+require get_template_directory() . '/inc/shortcodes/shortcodes.php';
 
 // SRI, Defer and Async external scripts
 
-if ( !function_exists( 'kemosite_wordpress_defer_async_scripts' ) ) : 
-	require_once get_template_directory() . '/inc/script_loader_tag/kemosite_wordpress_defer_async_scripts.php';
+if ( !function_exists( 'kemosite_wordpress_defer_async_scripts' ) ):
+	require get_template_directory() . '/inc/script_loader_tag/kemosite_wordpress_defer_async_scripts.php';
 endif;
 add_filter( 'script_loader_tag', 'kemosite_wordpress_defer_async_scripts', 10, 3 );
 
-
-if ( !function_exists( 'kemosite_wordpress_resource_hints' ) ) : 
-	require_once get_template_directory() . '/inc/style_loader_tag/kemosite_wordpress_resource_hints.php';
+if ( !function_exists( 'kemosite_wordpress_resource_hints' ) ):
+	require get_template_directory() . '/inc/style_loader_tag/kemosite_wordpress_resource_hints.php';
 endif;
 // Load if not admin page.
 if ( !is_admin() && !is_login_page() ):
@@ -80,7 +80,7 @@ if ( !is_admin() && !is_login_page() ):
 endif;
 
 
-/** 
+/**
  * [Action Reference]
  * @link https://codex.wordpress.org/Plugin_API/Action_Reference
  */
@@ -89,35 +89,35 @@ endif;
  * after_setup_theme
  * Generally used to initialize theme settings/options.
  * This is the first action hook available to themes, triggered immediately after the active theme's functions.php file is loaded.
- * add_theme_support() should be called here 
+ * add_theme_support() should be called here
  */
 
-if ( ! function_exists( 'kemosite_wordpress_theme_setup' ) ) : 
-	require_once get_template_directory() . '/inc/after_setup_theme/kemosite_wordpress_theme_setup.php';
+if ( ! function_exists( 'kemosite_wordpress_theme_setup' ) ):
+	require get_template_directory() . '/inc/after_setup_theme/kemosite_wordpress_theme_setup.php';
 endif;
 add_action( 'after_setup_theme', 'kemosite_wordpress_theme_setup' );
 
 // Menus
 if ( ! function_exists( 'kemosite_register_menus' ) ):
-	require_once get_template_directory() . '/inc/after_setup_theme/kemosite_register_menus.php';
+	require get_template_directory() . '/inc/after_setup_theme/kemosite_register_menus.php';
 endif;
 add_action( 'after_setup_theme', 'kemosite_register_menus' );
 
 // Declare WooCommerce Support
 if ( ! function_exists( 'kemosite_wordpress_add_woocommerce_support' ) ):
-    require_once get_template_directory() . '/inc/after_setup_theme/kemosite_wordpress_add_woocommerce_support.php';
+    require get_template_directory() . '/inc/after_setup_theme/kemosite_wordpress_add_woocommerce_support.php';
 endif;
 add_action( 'after_setup_theme', 'kemosite_wordpress_add_woocommerce_support' );
 
 // Set up Widgets
 if ( ! function_exists( 'kemosite_widgets_init' ) ):
-	require_once get_template_directory() . '/inc/widgets_init/kemosite_widgets_init.php';
+	require get_template_directory() . '/inc/widgets_init/kemosite_widgets_init.php';
 endif;
 add_action( 'widgets_init', 'kemosite_widgets_init' );
 
 /* [Add kemosite-wordpress-theme class to body tag ] */
 if ( !function_exists('kemosite_wordpress_theme_class') ) :
-	require_once get_template_directory() . '/inc/function-helpers/kemosite_wordpress_theme_class.php';
+	require get_template_directory() . '/inc/function-helpers/kemosite_wordpress_theme_class.php';
 endif;
 
 /**
@@ -145,53 +145,41 @@ add_action( 'widgets_init', 'kemosite_wordpress_theme_widgets_init' );
  */
 
 // Colour Functions
-require_once get_template_directory() . '/inc/function-helpers/function_helpers_colours.php';
+require get_template_directory() . '/inc/function-helpers/function_helpers_colours.php';
 
 // Calculate SRI
-require_once get_template_directory() . '/inc/function-helpers/kemosite_wordpress_calculate_sri.php';
+require get_template_directory() . '/inc/function-helpers/kemosite_wordpress_calculate_sri.php';
 
 /* [Looks in Page "page_excerpt" field for Excerpt data] */
 if ( !function_exists( 'kemosite_custom_excerpt' ) ) : 
-	require_once get_template_directory() . '/inc/function-helpers/kemosite_custom_excerpt.php';
+	require get_template_directory() . '/inc/function-helpers/kemosite_custom_excerpt.php';
 endif;
-
-/*
-function kemosite_check_post_for_thumbnail( $post_id ) {
-
-	// If post has no thumbnail defined
-
-	// create one, save to media, and append to post.
-	// kemosite_create_thumbnail_for_post();
-
-}
-add_action( 'save_post', 'kemosite_check_post_for_thumbnail' );
-*/
 
 /**
  * [Theme Customization API]
  */
-require_once get_template_directory() . '/inc/customize_register/functions-customize-register.php';
-require_once get_template_directory() . '/inc/customize_register/functions-customize-sections.php';
+require get_template_directory() . '/inc/customize_register/functions-customize-register.php';
+require get_template_directory() . '/inc/customize_register/functions-customize-sections.php';
 
 /**
  * [Enqueue scripts and styles]
  */
 
 // Universal theme colours, returns $kemosite_wordpress_universal_colours. Possibly depricated
-require_once get_template_directory() . '/inc/customize_register/customize-register-universal-colours.php';
+require get_template_directory() . '/inc/customize_register/customize-register-universal-colours.php';
 
 // Woocommerce modification functions
-// require_once get_template_directory() . '/inc/woocommerce/functions_woocommerce.php';
+// require get_template_directory() . '/inc/woocommerce/functions_woocommerce.php';
 
 // Enqueue theme styles (view) first
 if ( !function_exists( 'kemosite_wordpress_enqueue_styles' ) ) :
-	require_once get_template_directory() . '/inc/wp_enqueue_scripts/kemosite_wordpress_enqueue_styles.php';
+	require get_template_directory() . '/inc/wp_enqueue_scripts/kemosite_wordpress_enqueue_styles.php';
 endif;
 add_action( 'wp_enqueue_scripts', 'kemosite_wordpress_enqueue_styles' );
 
 // Then enqueue theme scripts (controller)
 if ( !function_exists( 'kemosite_wordpress_enqueue_scripts' ) ) :
-	require_once get_template_directory() . '/inc/wp_enqueue_scripts/kemosite_wordpress_enqueue_scripts.php';
+	require get_template_directory() . '/inc/wp_enqueue_scripts/kemosite_wordpress_enqueue_scripts.php';
 endif;
 add_action( 'wp_enqueue_scripts', 'kemosite_wordpress_enqueue_scripts' );
 
@@ -201,17 +189,17 @@ add_action( 'wp_enqueue_scripts', 'kemosite_wordpress_enqueue_scripts' );
 
 // Load Site Description
 if ( !function_exists( 'kemosite_site_description' ) ) :
-	require_once get_template_directory() . '/inc/wp_head/kemosite_site_description.php';
+	require get_template_directory() . '/inc/wp_head/kemosite_site_description.php';
 endif;
 add_action('wp_head', 'kemosite_site_description');
 
 /* [ADD CUSTOMIZER CSS] */
-if ( ! function_exists( 'kemosite_customizer_css' ) ): require_once get_template_directory() . '/inc/wp_head/kemosite_customizer_css.php'; endif;
+if ( ! function_exists( 'kemosite_customizer_css' ) ): require get_template_directory() . '/inc/wp_head/kemosite_customizer_css.php'; endif;
 add_action( 'wp_head', 'kemosite_customizer_css');
 
 // Load Favicon
 if ( !function_exists( 'kemosite_wordpress_load_favicon' ) ) :
-	require_once get_template_directory() . '/inc/wp_head/load_favicon.php';
+	require get_template_directory() . '/inc/wp_head/load_favicon.php';
 endif;
 add_action('wp_head', 'kemosite_wordpress_load_favicon');
 
@@ -224,13 +212,13 @@ remove_action('wp_head', 'wp_generator');
 
 // Admin Footer
 if ( !function_exists( 'kemosite_wordpress_admin_footer' ) ) :
-	require_once get_template_directory() . '/inc/admin_footer/kemosite_admin_footer_function.php';
+	require get_template_directory() . '/inc/admin_footer/kemosite_admin_footer_function.php';
 endif;
 add_action('admin_footer', 'kemosite_wordpress_admin_footer');
 
 // Register Dashboard Widget
 if ( !function_exists( 'kemosite_wordpress_dashboard_widget' ) ) :
-	require_once get_template_directory() . '/inc/wp_dashboard_setup/register_kemosite_dashboard_widget.php';
+	require get_template_directory() . '/inc/wp_dashboard_setup/register_kemosite_dashboard_widget.php';
 endif;
 add_action( 'wp_dashboard_setup', 'kemosite_wordpress_dashboard_widget' );
 
@@ -240,8 +228,6 @@ add_action( 'wp_dashboard_setup', 'kemosite_wordpress_dashboard_widget' );
 
 // RSS Feed Image Thumbnail
 if ( !function_exists( 'kemosite_wordpress_rss_post_thumbnail' ) ) :
-	require_once get_template_directory() . '/inc/the_content_feed/kemosite_wordpress_rss_post_thumbnail.php';
+	require get_template_directory() . '/inc/the_content_feed/kemosite_wordpress_rss_post_thumbnail.php';
 endif;
 add_filter('the_content_feed', 'kemosite_wordpress_rss_post_thumbnail');
-
-?>

@@ -1,4 +1,11 @@
+[TEMPLATES]
+- Layout Grid
+- Templates are how you decide where things are placed within your theme. 
+- Whenever someone visits any page on your site, WordPress figures out what type of page the visitor is looking at.
+- Once a template is found that matches the page type within the hierarchy, the template is loaded. Its block markup is then parsed and WordPress outputs the resulting HTML markup for the browser to use.
+
 [TEMPLATE PARTS (LAYOUT)]
+- Layout Grid Parts
 - Template parts represent smaller sections of content that can be included in one or more templates.
 - Template parts are generally pieces of the design that are reused within multiple top-level templates
 - Template parts in block themes contain block markup and nothing else.
@@ -7,3 +14,5 @@
 - Reusable groups of blocks.
 - Used inside of templates, post and page content
 - Access to PHP
+
+Templates -> Template Parts -> Block Patterns

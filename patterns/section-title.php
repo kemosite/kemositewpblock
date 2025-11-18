@@ -8,11 +8,14 @@
 
 <!-- wp:heading {"textAlign":"center","level":1} -->
 <?php
-if ( is_plugin_active('woocommerce/woocommerce.php') && is_cart() ):
+
+define( "WOOCOMMERCE_PLUGIN", 'woocommerce/woocommerce.php' );
+
+if ( is_plugin_active( WOOCOMMERCE_PLUGIN ) && is_cart() ):
 	?><h1 class="has-text-align-center wp-block-site-title">Your Cart</h1><?php
-elseif ( is_plugin_active('woocommerce/woocommerce.php') && ( is_shop() || is_product_category() ) ):
+elseif ( is_plugin_active( WOOCOMMERCE_PLUGIN ) && ( is_shop() || is_product_category() ) ):
 	?><h1 class="has-text-align-center wp-block-site-title"><?php woocommerce_page_title(); ?></h1><?php
-elseif ( is_plugin_active('woocommerce/woocommerce.php') && is_woocommerce() ):
+elseif ( is_plugin_active( WOOCOMMERCE_PLUGIN ) && is_woocommerce() ):
 	the_title( '<h1 class="has-text-align-center wp-block-site-title">', '</h1>' );
 elseif ( is_front_page() && is_page() ):
 	the_title( '<h1 class="has-text-align-center wp-block-site-title">', '</h1>' );

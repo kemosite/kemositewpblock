@@ -168,8 +168,6 @@ div[class*="-sidebar-ad"]
 	}
 }
 
-/* @supports (-webkit-appearance:none) {} */
-
 /* SIDEBAR AD QUERIES */
 @media screen and (min-width: 120px) and (min-height: 240px) {
 	.sidebar_ad {

@@ -32,13 +32,19 @@ div.kemosite-grid-area-footer {
 div.kemosite-grid-area-section header {
 	display: flex;
 	flex-direction: column;
-	padding: 2ex 3ch 1ex
+	padding: 2ex 3ch
 }
 div.kemosite-grid-area-section header h1 {
 	order: 2;
 }
 div.kemosite-grid-area-section header ul.eyebrow-headline {
 	order: 1;
+}
+
+.kemosite-grid-area-main li,
+.kemosite-grid-area-footer {
+	ontent-visibility: auto;
+	contain-intrinsic-size: 100vh; /* Provides a placeholder size to avoid jumps. */
 }
 
 .kemosite-grid-area-main .wp-block-post-content {

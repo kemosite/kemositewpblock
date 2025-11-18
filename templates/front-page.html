@@ -1,31 +1,41 @@
 <!-- wp:group {"className":"kemosite-grid-layout"} -->
-<div class="wp-block-group kemosite-grid-layout">
+<div class="kemosite-grid-layout wp-block-group">
 
 <!-- wp:group {"className":"kemosite-grid-area-menu"} -->
-<div class="wp-block-group kemosite-grid-area-menu">
-<!-- wp:template-part {"slug":"menu","tagName":"menu","area":"menu"} /-->
+<div class="kemosite-grid-area-menu wp-block-group">
+<!-- wp:template-part {"slug":"menu","area":"menu","tagName":"menu", "style": { "padding": 0 } } /-->
 </div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"kemosite-grid-area-section"} -->
-<div class="wp-block-group kemosite-grid-area-section"><!-- wp:template-part {"slug":"page-section","tagName":"section","area":"Section"} /--></div>
+<div class="kemosite-grid-area-section wp-block-group lazy">
+<!-- wp:template-part {"slug":"page-section","area":"Section","tagName":"section"} /-->
+</div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"kemosite-grid-area-left-sidebar"} -->
-<div class="wp-block-group kemosite-grid-area-left-sidebar"><!-- wp:template-part {"slug":"left-sidebar","tagName":"left-sidebar","area":"Left Sidebar"} /--></div>
+<div class="kemosite-grid-area-left-sidebar wp-block-group">
+<!-- wp:template-part {"slug":"left-sidebar","area":"Left Sidebar","tagName":"left-sidebar"} /-->
+</div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"kemosite-grid-area-main"} -->
-<div class="kemosite-grid-area-main wp-block-group">
+<div class="kemosite-grid-area-main wp-block-group kemosite-container-main">
 <!-- wp:template-part {"slug":"posts-main","area":"Main","tagName":"main"} /-->
 </div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"kemosite-grid-area-right-sidebar"} -->
-<div class="wp-block-group kemosite-grid-area-right-sidebar"><!-- wp:template-part {"slug":"right-sidebar","tagName":"right-sidebar","area":"Right Sidebar"} /--></div>
+<div class="kemosite-grid-area-right-sidebar wp-block-group">
+<!-- wp:template-part {"slug":"right-sidebar","area":"Right Sidebar","tagName":"right-sidebar"} /-->
+</div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"kemosite-grid-area-footer"} -->
-<div class="wp-block-group kemosite-grid-area-footer"><!-- wp:template-part {"slug":"footer","tagName":"footer","area":"Footer"} /--></div>
-<!-- /wp:group --></div>
+<div class="kemosite-grid-area-footer wp-block-group">
+<!-- wp:template-part {"slug":"footer","area":"Footer","tagName":"footer"} /-->
+</div>
+<!-- /wp:group -->
+
+</div>
 <!-- /wp:group -->

@@ -6,7 +6,7 @@
 
 function kemosite_shortcode_tabs( $attributes, $content ) {
 
-    if ($attributes !== NULL && 
+    if ($attributes !== null &&
     $attributes['id']):
 
         $output = "";
@@ -37,7 +37,7 @@ add_shortcode('tabs', 'kemosite_shortcode_tabs');
 
 function kemosite_shortcode_tab($attributes, $content) {
 
-    if ($attributes !== NULL && 
+    if ($attributes !== null &&
     $attributes['id']):
 
         $output = "";
@@ -52,5 +52,3 @@ function kemosite_shortcode_tab($attributes, $content) {
 
 }
 add_shortcode('tab', 'kemosite_shortcode_tab');
-
-?>

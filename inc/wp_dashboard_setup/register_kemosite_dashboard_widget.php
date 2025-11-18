@@ -55,6 +55,16 @@ function kemosite_wordpress_nextsteps_widget_display() { ?>
 	
 	<p>Do not force site to use iThemes Security SSL feature. It's breaking pages with infinite redirects!</p>
 
+	<h1>Functional Personas</h1>
+
+	<ol>
+	<li>Pull any information from sources like surveys, analytics, support logs and search data</li>
+	<li>Add all information to a GenAI project</li>
+	<li>Use GenAI to perform additional online research, and identify segments based on needs, and generate personas.</li>
+	<li>Give each persona a name, and ask each persona to assess the content you create.</li>
+	<li>Periodically, rerun the process and regenerate functional personas.</li>
+	</ol>
+
 <?php }
 
 function kemosite_wordpress_dashboard_widget() {

@@ -1,13 +1,12 @@
 @charset "utf-8";
 
 :root {
-	--layout: "screen-LT98-landscape";
+	--layout: "screen-90-150-portrait";
 }
 
 .kemosite-grid-layout {
-	grid-template-columns: 1fr minmax(39ch, 59ch) 1fr;
+	grid-template-columns: 45ch minmax( 45ch, 60ch ) 1fr;
 	grid-template-rows: minmax(15ex, 33vh) auto auto 6ex;
-	grid-gap: 1ex 1em;
 	grid-template-areas:
 		"kemosite-grid-area-section			kemosite-grid-area-section	kemosite-grid-area-section"
 		"kemosite-grid-area-left-sidebar	kemosite-grid-area-main		kemosite-grid-area-right-sidebar"

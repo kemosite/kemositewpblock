@@ -81,5 +81,3 @@ function kemosite_shortcode_table_cell_body( $attributes, $content ) {
 
 }
 add_shortcode('table_cell_body', 'kemosite_shortcode_table_cell_body');
-
-?>

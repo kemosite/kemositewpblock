@@ -10,7 +10,7 @@
  * @return string
  */
 
-function kemosite_woocommerce_get_product_thumbnail( $size = 'shop_catalog', $deprecated1 = 0, $deprecated2 = 0 ) {
+function kemosite_woocommerce_get_product_thumbnail( $size = 'shop_catalog' ) {
     
     global $post;        
 
@@ -49,8 +49,6 @@ function kemosite_woocommerce_get_product_thumbnail( $size = 'shop_catalog', $de
         // Prevent esc_url from breaking spaces in urls for image embeds
         // Ref: https://core.trac.wordpress.org/ticket/23605
         // $image = str_replace( ' ', '%20', $image );
-
-        // return '<div class="cropped image" style="max-width:' . esc_attr( $dimensions['width'] ) . 'px; width: 100%; height:' . esc_attr( $dimensions['width'] ) . 'px; background-image: url(\'' . esc_url( $image ) . '\');"><img src="' . esc_url( $image ) . '" alt="' . esc_attr( $props['alt'] ) . '"></div>';
 
         return '<div class="cropped image" style="width: 100%; max-width: ' . esc_attr( $dimensions['width'] ) . 'px; height:' . esc_attr( $dimensions['width'] ) . 'px; background-image: url(\'' . esc_url( $image ) . '\');"><img ' . $srcset_output . ' src="' . esc_url( $image ) . '" '. $props_output . '></div>';
 

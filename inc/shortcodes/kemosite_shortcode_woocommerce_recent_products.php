@@ -20,5 +20,3 @@ function kemosite_shortcode_woocommerce_recent_products( $attributes, $content )
 
 }
 add_shortcode('recent_products', 'kemosite_shortcode_woocommerce_recent_products');
-
-?>

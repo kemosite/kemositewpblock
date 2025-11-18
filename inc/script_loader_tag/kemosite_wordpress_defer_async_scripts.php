@@ -9,7 +9,7 @@
 function kemosite_wordpress_defer_async_scripts( $tag, $handle, $src ) {
 
 	// file gets downloaded asynchronously, but executed only when the document parsing is completed
-	$defer = array( 
+	$defer = array(
 	    'kemosite-wordpress-theme-accessibility',
 	    'foundation-app',
 	    'kemosite-wordpress-theme-gtag',
@@ -37,5 +37,3 @@ function kemosite_wordpress_defer_async_scripts( $tag, $handle, $src ) {
 	return $tag;
 
 }
-
-?>

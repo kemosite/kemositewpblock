@@ -1,16 +1,16 @@
 <?php
 
 /**
- * [kemosite_woocommerce_subcategory_thumbnail]
+ * [kemositeWoocommerceSubcategoryThumbnail]
  */
 
-function kemosite_woocommerce_subcategory_thumbnail( $category ) {
+function kemositeWoocommerceSubcategoryThumbnail( $category ) {
     
     $small_thumbnail_size   = apply_filters( 'subcategory_archive_thumbnail_size', 'shop_catalog' );
     $dimensions             = wc_get_image_size( $small_thumbnail_size );
     $thumbnail_id           = get_term_meta( $category->term_id, 'thumbnail_id', true  );
 
-    // echo "<script>console.log('kemosite_woocommerce_subcategory_thumbnail');</script>";
+    // echo "<script>console.log('kemositeWoocommerceSubcategoryThumbnail');</script>";
 
     if ( isset($thumbnail_id) ):
         if ( $image = wp_get_attachment_image_src( $thumbnail_id, $small_thumbnail_size  ) ): $image = $image[0]; endif;

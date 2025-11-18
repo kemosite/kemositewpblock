@@ -30,17 +30,17 @@ $kemosite_wordpress_base_white_rgb_array			= explode( ",", $kemosite_wordpress_b
 $kemosite_wordpress_base_black_rgb_array			= explode( ",", $kemosite_wordpress_base_black_rgb );
 
 // Luminance
-$kemosite_wordpress_base_primary_colour_lum		= kemosite_calc_lum( 
+$kemosite_wordpress_base_primary_colour_lum		= kemosite_calc_lum(
 													$kemosite_wordpress_base_primary_colour_rgb_array[0],
 													$kemosite_wordpress_base_primary_colour_rgb_array[1],
 													$kemosite_wordpress_base_primary_colour_rgb_array[2],
 												);
-$kemosite_wordpress_base_white_lum				= kemosite_calc_lum( 
+$kemosite_wordpress_base_white_lum				= kemosite_calc_lum(
 													$kemosite_wordpress_base_white_rgb_array[0],
 													$kemosite_wordpress_base_white_rgb_array[1],
 													$kemosite_wordpress_base_white_rgb_array[2],
 												);
-$kemosite_wordpress_base_black_lum				= kemosite_calc_lum( 
+$kemosite_wordpress_base_black_lum				= kemosite_calc_lum(
 													$kemosite_wordpress_base_black_rgb_array[0],
 													$kemosite_wordpress_base_black_rgb_array[1],
 													$kemosite_wordpress_base_black_rgb_array[2],
@@ -72,9 +72,14 @@ $kemosite_wordpress_neutral_black_7_hsl_array		= explode( ",", $kemosite_wordpre
 
 <h2>Base Colour</h2>
 <table>
+	<thead>
+		<tr>
+			<th>Base Colour</th>
+		</tr>
+	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_primary_colour_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_primary_colour_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_primary_colour_hex; ?></td>
@@ -87,7 +92,7 @@ $kemosite_wordpress_neutral_black_7_hsl_array		= explode( ",", $kemosite_wordpre
 <h2>Greyscale</h2>
 <p>Greyscale variation is based on the perceived variations of the base colour option.</p>
 
-<?php 
+<?php
 
 $kemosite_wordpress_base_primary_grey_lum = kemosite_rgb_to_lum( $kemosite_wordpress_base_primary_colour_rgb );
 $kemosite_wordpress_base_primary_grey_chroma = kemosite_rgb_to_chroma( kemosite_hex_to_rgb( $kemosite_wordpress_base_primary_colour_hex ) );
@@ -114,9 +119,9 @@ $kemosite_wordpress_base_primary_grey_value_hex = kemosite_lum_to_hex( $kemosite
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_primary_grey_chroma_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_primary_grey_lum_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_primary_grey_value_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_primary_grey_chroma_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_primary_grey_lum_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_primary_grey_value_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo round( $kemosite_wordpress_base_primary_grey_chroma * 100); ?>%</td>
@@ -143,7 +148,7 @@ $kemosite_wordpress_base_primary_grey_value_hex = kemosite_lum_to_hex( $kemosite
 // White Background
 
 // 3:1
-$kemosite_wordpress_monochromatic_colour_white_3_hsl	=	( kemosite_adjust_hsl_l_contrast( 
+$kemosite_wordpress_monochromatic_colour_white_3_hsl	=	( kemosite_adjust_hsl_l_contrast(
 														$kemosite_wordpress_base_primary_colour_hsl_array, // hsl array of base colour
 														$kemosite_wordpress_base_primary_colour_white_contrast, // colour contrast on white background
 														3, // target contrast
@@ -152,7 +157,7 @@ $kemosite_wordpress_monochromatic_colour_white_3_hsl	=	( kemosite_adjust_hsl_l_c
 $kemosite_wordpress_monochromatic_colour_white_3_hex 	= kemosite_hsl_to_hex( $kemosite_wordpress_monochromatic_colour_white_3_hsl );
 
 // 4.5:1
-$kemosite_wordpress_monochromatic_colour_white_45_hsl	=	( kemosite_adjust_hsl_l_contrast( 
+$kemosite_wordpress_monochromatic_colour_white_45_hsl	=	( kemosite_adjust_hsl_l_contrast(
 														$kemosite_wordpress_base_primary_colour_hsl_array, // hsl array of base colour
 														$kemosite_wordpress_base_primary_colour_white_contrast, // colour contrast on white background
 														4.5, // target contrast
@@ -161,7 +166,7 @@ $kemosite_wordpress_monochromatic_colour_white_45_hsl	=	( kemosite_adjust_hsl_l_
 $kemosite_wordpress_monochromatic_colour_white_45_hex 	= kemosite_hsl_to_hex( $kemosite_wordpress_monochromatic_colour_white_45_hsl );
 
 // 7:1
-$kemosite_wordpress_monochromatic_colour_white_7_hsl	=	( kemosite_adjust_hsl_l_contrast( 
+$kemosite_wordpress_monochromatic_colour_white_7_hsl	=	( kemosite_adjust_hsl_l_contrast(
 														$kemosite_wordpress_base_primary_colour_hsl_array, // hsl array of base colour
 														$kemosite_wordpress_base_primary_colour_white_contrast, // colour contrast on white background
 														7, // target contrast
@@ -172,7 +177,7 @@ $kemosite_wordpress_monochromatic_colour_white_7_hex 	= kemosite_hsl_to_hex( $ke
 // Black Background
 
 // 3:1
-$kemosite_wordpress_monochromatic_colour_black_3_hsl	=	( kemosite_adjust_hsl_l_contrast( 
+$kemosite_wordpress_monochromatic_colour_black_3_hsl	=	( kemosite_adjust_hsl_l_contrast(
 														$kemosite_wordpress_base_primary_colour_hsl_array, // hsl array of base colour
 														$kemosite_wordpress_base_primary_colour_black_contrast, // colour contrast on black background
 														3, // target contrast
@@ -181,7 +186,7 @@ $kemosite_wordpress_monochromatic_colour_black_3_hsl	=	( kemosite_adjust_hsl_l_c
 $kemosite_wordpress_monochromatic_colour_black_3_hex 	= kemosite_hsl_to_hex( $kemosite_wordpress_monochromatic_colour_black_3_hsl );
 
 // 4.5:1
-$kemosite_wordpress_monochromatic_colour_black_45_hsl	=	( kemosite_adjust_hsl_l_contrast( 
+$kemosite_wordpress_monochromatic_colour_black_45_hsl	=	( kemosite_adjust_hsl_l_contrast(
 														$kemosite_wordpress_base_primary_colour_hsl_array, // hsl array of base colour
 														$kemosite_wordpress_base_primary_colour_black_contrast, // colour contrast on black background
 														4.5, // target contrast
@@ -190,7 +195,7 @@ $kemosite_wordpress_monochromatic_colour_black_45_hsl	=	( kemosite_adjust_hsl_l_
 $kemosite_wordpress_monochromatic_colour_black_45_hex 	= kemosite_hsl_to_hex( $kemosite_wordpress_monochromatic_colour_black_45_hsl );
 
 // 7:1
-$kemosite_wordpress_monochromatic_colour_black_7_hsl	=	( kemosite_adjust_hsl_l_contrast( 
+$kemosite_wordpress_monochromatic_colour_black_7_hsl	=	( kemosite_adjust_hsl_l_contrast(
 														$kemosite_wordpress_base_primary_colour_hsl_array, // hsl array of base colour
 														$kemosite_wordpress_base_primary_colour_black_contrast, // colour contrast on black background
 														7, // target contrast
@@ -293,13 +298,13 @@ $kemosite_wordpress_monochromatic_neutral_black_7_hex 				= 	kemosite_hsl_to_hex
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_monochromatic_colour_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_monochromatic_colour_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_monochromatic_colour_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_monochromatic_neutral_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_monochromatic_neutral_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_monochromatic_neutral_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_monochromatic_colour_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_monochromatic_colour_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_monochromatic_colour_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_monochromatic_neutral_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_monochromatic_neutral_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_monochromatic_neutral_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -311,13 +316,13 @@ $kemosite_wordpress_monochromatic_neutral_black_7_hex 				= 	kemosite_hsl_to_hex
 			<td><?php echo $kemosite_wordpress_monochromatic_neutral_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_monochromatic_colour_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_monochromatic_colour_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_monochromatic_colour_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_monochromatic_neutral_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_monochromatic_neutral_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_monochromatic_neutral_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_monochromatic_colour_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_monochromatic_colour_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_monochromatic_colour_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_monochromatic_neutral_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_monochromatic_neutral_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_monochromatic_neutral_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -338,7 +343,7 @@ $kemosite_wordpress_monochromatic_neutral_black_7_hex 				= 	kemosite_hsl_to_hex
 
 <h3>+30 Degrees</h3>
 
-<?php 
+<?php
 
 // + 30 Degrees
 $kemosite_wordpress_analogous_colour_p30_hue 		= 	( 360 + ( $kemosite_wordpress_base_primary_colour_hsl_array[0] + 30 ) ) % 360;
@@ -512,13 +517,13 @@ $kemosite_wordpress_analogous_neutral_p30_black_7_hex 				= 	kemosite_hsl_to_hex
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_colour_p30_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_colour_p30_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_colour_p30_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_neutral_p30_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_neutral_p30_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_neutral_p30_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_colour_p30_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_colour_p30_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_colour_p30_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_neutral_p30_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_neutral_p30_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_neutral_p30_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -530,13 +535,13 @@ $kemosite_wordpress_analogous_neutral_p30_black_7_hex 				= 	kemosite_hsl_to_hex
 			<td><?php echo $kemosite_wordpress_analogous_neutral_p30_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_colour_p30_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_colour_p30_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_colour_p30_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_neutral_p30_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_neutral_p30_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_neutral_p30_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_colour_p30_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_colour_p30_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_colour_p30_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_neutral_p30_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_neutral_p30_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_neutral_p30_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -727,13 +732,13 @@ $kemosite_wordpress_analogous_neutral_m30_black_7_hex 				= 	kemosite_hsl_to_hex
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_colour_m30_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_colour_m30_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_colour_m30_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_neutral_m30_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_neutral_m30_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_neutral_m30_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_colour_m30_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_colour_m30_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_colour_m30_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_neutral_m30_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_neutral_m30_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_neutral_m30_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -745,13 +750,13 @@ $kemosite_wordpress_analogous_neutral_m30_black_7_hex 				= 	kemosite_hsl_to_hex
 			<td><?php echo $kemosite_wordpress_analogous_neutral_m30_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_colour_m30_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_colour_m30_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_colour_m30_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_neutral_m30_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_neutral_m30_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_analogous_neutral_m30_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_colour_m30_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_colour_m30_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_colour_m30_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_neutral_m30_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_neutral_m30_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_analogous_neutral_m30_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -945,13 +950,13 @@ $kemosite_wordpress_complementary_neutral_black_7_hex 				= 	kemosite_hsl_to_hex
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -963,13 +968,13 @@ $kemosite_wordpress_complementary_neutral_black_7_hex 				= 	kemosite_hsl_to_hex
 			<td><?php echo $kemosite_wordpress_complementary_neutral_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -990,7 +995,7 @@ $kemosite_wordpress_complementary_neutral_black_7_hex 				= 	kemosite_hsl_to_hex
 
 <h3>Complementary, +30 Degrees</h3>
 
-<?php 
+<?php
 
 // Complementary + 30 Degrees
 $kemosite_wordpress_split_complementary_colour_p30_hue 				= 	( 360 + ( $kemosite_wordpress_base_primary_colour_hsl_array[0] + (180 + 30 ) ) ) % 360;
@@ -1187,13 +1192,13 @@ $kemosite_wordpress_split_complementary_neutral_p30_black_7_hex 			= 	kemosite_h
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_colour_p30_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_colour_p30_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_colour_p30_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_neutral_p30_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_neutral_p30_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_neutral_p30_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_colour_p30_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_colour_p30_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_colour_p30_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_neutral_p30_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_neutral_p30_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_neutral_p30_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -1205,13 +1210,13 @@ $kemosite_wordpress_split_complementary_neutral_p30_black_7_hex 			= 	kemosite_h
 			<td><?php echo $kemosite_wordpress_split_complementary_neutral_p30_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_colour_p30_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_colour_p30_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_colour_p30_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_neutral_p30_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_neutral_p30_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_neutral_p30_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_colour_p30_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_colour_p30_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_colour_p30_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_neutral_p30_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_neutral_p30_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_neutral_p30_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -1227,7 +1232,7 @@ $kemosite_wordpress_split_complementary_neutral_p30_black_7_hex 			= 	kemosite_h
 
 <h3>Complementary, -30 Degrees</h3>
 
-<?php 
+<?php
 
 // Complementary - 30 Degrees
 $kemosite_wordpress_split_complementary_colour_m30_hue 				= 	( 360 + ( $kemosite_wordpress_base_primary_colour_hsl_array[0] + (180 - 30 ) ) ) % 360;
@@ -1424,13 +1429,13 @@ $kemosite_wordpress_split_complementary_neutral_m30_black_7_hex 			= 	kemosite_h
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_colour_m30_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_colour_m30_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_colour_m30_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_neutral_m30_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_neutral_m30_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_neutral_m30_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_colour_m30_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_colour_m30_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_colour_m30_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_neutral_m30_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_neutral_m30_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_neutral_m30_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -1442,13 +1447,13 @@ $kemosite_wordpress_split_complementary_neutral_m30_black_7_hex 			= 	kemosite_h
 			<td><?php echo $kemosite_wordpress_split_complementary_neutral_m30_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_colour_m30_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_colour_m30_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_colour_m30_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_neutral_m30_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_neutral_m30_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_split_complementary_neutral_m30_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_colour_m30_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_colour_m30_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_colour_m30_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_neutral_m30_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_neutral_m30_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_split_complementary_neutral_m30_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -1469,7 +1474,7 @@ $kemosite_wordpress_split_complementary_neutral_m30_black_7_hex 			= 	kemosite_h
 
 <h3>+120 Degrees</h3>
 
-<?php 
+<?php
 
 // + 120 Degrees
 $kemosite_wordpress_triadic_colour_p120_hue 		= 	( 360 + ( $kemosite_wordpress_base_primary_colour_hsl_array[0] + 120 ) ) % 360;
@@ -1643,13 +1648,13 @@ $kemosite_wordpress_triadic_neutral_p120_black_7_hex 				= 	kemosite_hsl_to_hex(
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_p120_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_p120_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_p120_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_p120_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_p120_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_p120_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_p120_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_p120_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_p120_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_p120_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_p120_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_p120_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -1661,13 +1666,13 @@ $kemosite_wordpress_triadic_neutral_p120_black_7_hex 				= 	kemosite_hsl_to_hex(
 			<td><?php echo $kemosite_wordpress_triadic_neutral_p120_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_p120_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_p120_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_p120_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_p120_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_p120_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_p120_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_p120_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_p120_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_p120_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_p120_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_p120_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_p120_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -1684,7 +1689,7 @@ $kemosite_wordpress_triadic_neutral_p120_black_7_hex 				= 	kemosite_hsl_to_hex(
 <a name="triatic_m120" id="triatic_m120"></a>
 <h3>-120 Degrees</h3>
 
-<?php 
+<?php
 
 // - 120 Degrees
 $kemosite_wordpress_triadic_colour_m120_hue 		= 	( 360 + ( $kemosite_wordpress_base_primary_colour_hsl_array[0] - 120 ) ) % 360;
@@ -1858,13 +1863,13 @@ $kemosite_wordpress_triadic_neutral_m120_black_7_hex 				= 	kemosite_hsl_to_hex(
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_m120_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_m120_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_m120_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_m120_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_m120_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_m120_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_m120_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_m120_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_m120_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_m120_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_m120_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_m120_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -1876,13 +1881,13 @@ $kemosite_wordpress_triadic_neutral_m120_black_7_hex 				= 	kemosite_hsl_to_hex(
 			<td><?php echo $kemosite_wordpress_triadic_neutral_m120_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_m120_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_m120_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_m120_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_m120_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_m120_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_m120_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_m120_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_m120_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_m120_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_m120_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_m120_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_m120_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -1903,7 +1908,7 @@ $kemosite_wordpress_triadic_neutral_m120_black_7_hex 				= 	kemosite_hsl_to_hex(
 
 <h3>+90 Degrees</h3>
 
-<?php 
+<?php
 
 // + 90 Degrees
 $kemosite_wordpress_tetradic_colour_p90_hue 		= 	( 360 + ( $kemosite_wordpress_base_primary_colour_hsl_array[0] + 90 ) ) % 360;
@@ -2077,13 +2082,13 @@ $kemosite_wordpress_tetradic_neutral_p90_black_7_hex 				= 	kemosite_hsl_to_hex(
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_p90_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_p90_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_p90_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_p90_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_p90_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_p90_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_p90_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_p90_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_p90_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_p90_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_p90_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_p90_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -2095,13 +2100,13 @@ $kemosite_wordpress_tetradic_neutral_p90_black_7_hex 				= 	kemosite_hsl_to_hex(
 			<td><?php echo $kemosite_wordpress_tetradic_neutral_p90_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_p90_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_p90_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_p90_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_p90_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_p90_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_p90_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_p90_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_p90_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_p90_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_p90_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_p90_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_p90_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -2131,13 +2136,13 @@ $kemosite_wordpress_tetradic_neutral_p90_black_7_hex 				= 	kemosite_hsl_to_hex(
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -2149,13 +2154,13 @@ $kemosite_wordpress_tetradic_neutral_p90_black_7_hex 				= 	kemosite_hsl_to_hex(
 			<td><?php echo $kemosite_wordpress_complementary_neutral_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -2171,7 +2176,7 @@ $kemosite_wordpress_tetradic_neutral_p90_black_7_hex 				= 	kemosite_hsl_to_hex(
 
 <h3>-90 Degrees</h3>
 
-<?php 
+<?php
 
 // - 90 Degrees
 $kemosite_wordpress_tetradic_colour_m90_hue 		= 	( 360 + ( $kemosite_wordpress_base_primary_colour_hsl_array[0] - 90 ) ) % 360;
@@ -2345,13 +2350,13 @@ $kemosite_wordpress_tetradic_neutral_m90_black_7_hex 				= 	kemosite_hsl_to_hex(
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_m90_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_m90_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_m90_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_m90_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_m90_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_m90_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_m90_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_m90_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_m90_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_m90_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_m90_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_m90_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -2363,13 +2368,13 @@ $kemosite_wordpress_tetradic_neutral_m90_black_7_hex 				= 	kemosite_hsl_to_hex(
 			<td><?php echo $kemosite_wordpress_tetradic_neutral_m90_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_m90_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_m90_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_m90_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_m90_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_m90_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_m90_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_m90_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_m90_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_m90_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_m90_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_m90_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_m90_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -2390,7 +2395,7 @@ $kemosite_wordpress_tetradic_neutral_m90_black_7_hex 				= 	kemosite_hsl_to_hex(
 
 <h3>+60 Degrees</h3>
 
-<?php 
+<?php
 
 // + 60 Degrees
 $kemosite_wordpress_tetradic_colour_p60_hue 		= 	( 360 + ( $kemosite_wordpress_base_primary_colour_hsl_array[0] + 60 ) ) % 360;
@@ -2564,13 +2569,13 @@ $kemosite_wordpress_tetradic_neutral_p60_black_7_hex 				= 	kemosite_hsl_to_hex(
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_p60_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_p60_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_p60_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_p60_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_p60_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_p60_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_p60_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_p60_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_p60_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_p60_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_p60_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_p60_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -2582,13 +2587,13 @@ $kemosite_wordpress_tetradic_neutral_p60_black_7_hex 				= 	kemosite_hsl_to_hex(
 			<td><?php echo $kemosite_wordpress_tetradic_neutral_p60_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_p60_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_p60_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_colour_p60_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_p60_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_p60_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_tetradic_neutral_p60_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_p60_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_p60_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_colour_p60_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_p60_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_p60_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_tetradic_neutral_p60_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -2618,13 +2623,13 @@ $kemosite_wordpress_tetradic_neutral_p60_black_7_hex 				= 	kemosite_hsl_to_hex(
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -2636,13 +2641,13 @@ $kemosite_wordpress_tetradic_neutral_p60_black_7_hex 				= 	kemosite_hsl_to_hex(
 			<td><?php echo $kemosite_wordpress_complementary_neutral_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_colour_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_complementary_neutral_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_colour_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_complementary_neutral_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>
@@ -2672,13 +2677,13 @@ $kemosite_wordpress_tetradic_neutral_p60_black_7_hex 				= 	kemosite_hsl_to_hex(
 	</thead>
 	<tbody>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_white_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_m120_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_m120_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_m120_white_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_m120_white_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_m120_white_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_m120_white_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_white_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_m120_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_m120_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_m120_white_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_m120_white_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_m120_white_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_m120_white_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_white_hex; ?></td>
@@ -2690,13 +2695,13 @@ $kemosite_wordpress_tetradic_neutral_p60_black_7_hex 				= 	kemosite_hsl_to_hex(
 			<td><?php echo $kemosite_wordpress_triadic_neutral_m120_white_7_hex; ?></td>
 		</tr>
 		<tr>
-			<td bgcolor="<?php echo $kemosite_wordpress_base_black_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_m120_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_m120_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_colour_m120_black_7_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_m120_black_3_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_m120_black_45_hex; ?>">&nbsp;</td>
-			<td bgcolor="<?php echo $kemosite_wordpress_triadic_neutral_m120_black_7_hex; ?>">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_base_black_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_m120_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_m120_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_colour_m120_black_7_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_m120_black_3_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_m120_black_45_hex; ?>;">&nbsp;</td>
+			<td style="background-color: <?php echo $kemosite_wordpress_triadic_neutral_m120_black_7_hex; ?>;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td><?php echo $kemosite_wordpress_base_black_hex; ?></td>

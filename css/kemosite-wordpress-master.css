@@ -13,15 +13,44 @@
  * Augmented by principles of CSS Guidelines
  * https://cssguidelin.es/#table-of-contents
  * 
- * Organized contents into structure and skin, in the order of:
- * - Layout display grids
- * - Blocks: The root of a component (Flexbox).
- * - Elements: A component part of a Block (Typography, Forms, Buttons).
- * - Modifier: A variant or extension of a Block (Colours).
+ * Further expanded into layer structures
+ * https://www.smashingmagazine.com/2025/09/integrating-css-cascade-layers-existing-project/
+ * 
+ * Refer to BEM-like naming for more efficient selectors and to avoid specifity
+ * problems. BEM splits components’ classes into three groups:
+ *	- Block: The sole root of the component. For example, A table or list
+ * 	- Element: A component part of the Block. For example: A table cell or list item
+ *	- Modifier: A variant or extension of the Block. Can be based on state or statefulness
+ * 	- and looks like: .block__element--modifier
+ * 
+ * SETTINGS
+ * Global...............Globally-available variables and config.
+ *
+ * TOOLS
+ * Mixins...............Useful mixins.
+ *
+ * GENERIC
+ * Normalize.css........A level playing field.
+ * Box-sizing...........Better default `box-sizing`.
+ *
+ * BASE
+ * Headings.............H1–H6 styles.
+ *
+ * OBJECTS
+ * Wrappers.............Wrapping and constraining elements.
+ *
+ * COMPONENTS
+ * Page-head............The main page header.
+ * Page-foot............The main page footer.
+ * Buttons..............Button elements.
+ *
+ * TRUMPS
+ * Text.................Text helpers.
+ */
 
-/*-------------------------------------------------------------------
-[LAYOUTS]
--------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*\
+	[LAYOUTS]
+\*----------------------------------------------------------------------------*/
 
 /**
  * [LAYOUT AND FLEXBOX NOTES]
@@ -46,12 +75,12 @@
  * - Screen (Layout grids defined here)
  * 
  * [Media queries modify layout grids]
- * - 39 characters wide, portrait mode, thumb navigation at BOTTOM of screen
- * - 39 characters wide, landscape mode, thumb navigation at BOTTOM of screen
- * - 39-59 characters wide, portrait mode, thumb navigation at SIDES of screen
- * - 39-59 characters wide, landscape mode, thumb navigation at BOTTOM of screen
- * - 59+ characters wide, portrait mode, standard navigation
- * - 59+ characters wide, landscape mode, standard navigation
+ * - Max 80 characters wide, portrait mode, thumb navigation at BOTTOM of screen
+ * - Max 80 characters wide, landscape mode, thumb navigation at BOTTOM of screen
+ * - 90-150 characters wide, portrait mode, thumb navigation at SIDES of screen
+ * - 90-150 characters wide, landscape mode, thumb navigation at BOTTOM of screen
+ * - 150+ characters wide, portrait mode, standard navigation
+ * - 150+ characters wide, landscape mode, standard navigation
  * 
  * - Print
  * - Speech (not yet implemented)
@@ -61,6 +90,11 @@
  * -------------------------------------------------------------------*/
 
 /*-------------------------------------------------------------------
+[LAYERS]
+-------------------------------------------------------------------*/
+/* @layer layout, elements, ads, typography, colours; */
+
+/*-------------------------------------------------------------------
 [TYPOGRAPHY]
 -------------------------------------------------------------------*/
 @import "kemosite-wordpress-typography.css" all;
@@ -68,7 +102,7 @@
 /*-------------------------------------------------------------------
 [COLOURS]
 -------------------------------------------------------------------*/
-@import "kemosite-wordpress-colors.css" all;
+@import "kemosite-wordpress-colours.css" all;
 
 /* [ALL] */
 @import "kemosite-wordpress-layout-all.css" all; /* General variables and settings */
@@ -86,16 +120,16 @@
 /* [DEVICE, PORTRAIT ORIENTATION] */
 
 /* Single Column */
-@import "kemosite-wordpress-layout-screen-LT98-portrait.css" screen and (max-width: 98ch) and (orientation: portrait);
-@import "kemosite-wordpress-layout-screen-LT98-landscape.css" screen and (max-width: 98ch) and (orientation: landscape);
+@import "kemosite-wordpress-layout-screen-LT90-portrait.css" screen and (max-width: 90ch) and (orientation: portrait);
+@import "kemosite-wordpress-layout-screen-LT90-landscape.css" screen and (max-width: 90ch) and (orientation: landscape);
 
 /* 2-Column, Left Sidebar */
-@import "kemosite-wordpress-layout-screen-98-157-portrait.css" screen and (min-width: 98ch) and (max-width: 157ch) and (orientation: portrait);
-@import "kemosite-wordpress-layout-screen-98-157-landscape.css" screen and (min-width: 98ch) and (max-width: 157ch) and (orientation: landscape);
+@import "kemosite-wordpress-layout-screen-90-150-portrait.css" screen and (min-width: 90ch) and (max-width: 150ch) and (orientation: portrait);
+@import "kemosite-wordpress-layout-screen-90-150-landscape.css" screen and (min-width: 90ch) and (max-width: 150ch) and (orientation: landscape);
 
 /* 3-Column, Both Sidebars */
-@import "kemosite-wordpress-layout-screen-157-portrait.css" screen and (min-width: 157ch) and (orientation: portrait);
-@import "kemosite-wordpress-layout-screen-157-landscape.css" screen and (min-width: 157ch) and (orientation: landscape);
+@import "kemosite-wordpress-layout-screen-150-portrait.css" screen and (min-width: 150ch) and (orientation: portrait);
+@import "kemosite-wordpress-layout-screen-150-landscape.css" screen and (min-width: 150ch) and (orientation: landscape);
 
 /* # ADS # */
 @import "kemosite-wordpress-layout-screen-ads.css" screen;
