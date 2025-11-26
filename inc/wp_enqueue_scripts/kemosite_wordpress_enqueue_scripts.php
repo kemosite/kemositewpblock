@@ -8,7 +8,7 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	// Retrieve Custom Fields from post.
 	$custom_fields = get_post_custom();
-	$theme_version = "6.8.3.2";
+	$theme_version = "6.8.3.3";
 
 	// Lazy Load Images
 	wp_deregister_script('kemosite-lazy-load-images');
@@ -19,6 +19,11 @@ function kemosite_wordpress_enqueue_scripts() {
 	wp_deregister_script('kemosite-wordpress-theme-accessibility');
 	wp_register_script('kemosite-wordpress-theme-accessibility', get_template_directory_uri() . '/js/accessibility.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'defer' ) );
 	wp_enqueue_script('kemosite-wordpress-theme-accessibility');
+
+	// Font Colours
+	wp_deregister_script('kemosite-wordpress-font-colours');
+	wp_register_script('kemosite-wordpress-font-colours', get_template_directory_uri() . '/js/kemosite-wordpress-font-colours.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'defer' ) );
+	wp_enqueue_script('kemosite-wordpress-font-colours');
 
 	// URL Handler
 	// wp_deregister_script('kemosite-url-handler');
@@ -103,7 +108,7 @@ function kemosite_wordpress_enqueue_scripts() {
 	add_filter('the_generator', 'remove_version_info');
 	*/
 
-	if ( KEMOSITE_ENABLE_SRI ):
+	if ( defined( KEMOSITE_ENABLE_SRI )&& KEMOSITE_ENABLE_SRI == true ):
 		add_filter( 'script_loader_tag', 'kemosite_wordpress_enqueue_scripts_sri', 10, 3 );
 	endif;
 
@@ -136,7 +141,8 @@ function kemosite_wordpress_enqueue_scripts_sri( $html, $handle, $src ) {
 	  	'kemosite-wordpress-theme-navigation',
 	  	'kemosite-wordpress-theme-skip-link-focus-fix',
 	  	'foundation-what-input',
-	  	'kemosite-lazy-load-images'
+	  	'kemosite-lazy-load-images',
+	  	'kemosite-wordpress-font-colours'
 	);
 
 	if ( in_array( $handle, $sri ) ):

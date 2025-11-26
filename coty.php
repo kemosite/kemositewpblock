@@ -8,7 +8,7 @@
 $pantone_coty_colours = array(
 	'164,123,103' => 'Mocha Mousse (2025)',
 	'255,190,152' => 'Peach Fuzz (2024)',
-	'240,240,241' => 'Viva Magenta (2023)',
+	'190,52,85' => 'Viva Magenta (2023)',
 	'102,103,171' => 'Very Peri (2022)',
 	'147,149,151' => 'Ultimate Gray (2021)',
 	'245,223,77' => 'Illuminating (2021)',

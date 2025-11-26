@@ -31,7 +31,11 @@
 
 	--transition-time: 125ms;
 
-	/* Characterized Reference Printing Condition 7, Universal Extra Large, https://www.color.org/chardata/CGATS21-2-CRPC7.xalter */
+	/* Base Primary Colour and Chroma*/
+	--kemosite_wordpress_base_primary_colour: oklch( from var(--wp--preset--color--custom-mocha-mousse-2025) l c h );
+	--kemosite_wordpress_base_primary_chroma: oklch( from var(--kemosite_wordpress_base_primary_colour) l 0 h );
+
+	/* Characterized Reference Printing Condition 7, Universal Extra Large, https://www.color.org/chardata/CGATS21-2-CRPC7.xalter */	
 	--kemosite-cool-white-lab: rgb(from lab(97% 1 -4) r g b); /* Reference White Point */
 	--kemosite-cool-black-lab: rgb(from lab(4.41%  -0.16  2.77) r g b); /* Reference Black Point */
 	--kemosite-cyan-lab: rgb(from lab(54% -42 -54) r g b); /* Cyan */
@@ -43,7 +47,7 @@
 	--kemosite-red-lab: rgb(from lab(47% 75 54) r g b); /* Red */
 
 	/* Derivatives of Lab */
-	--kemosite-cool-black-minue-blue-lab: rgb(from lab(4.41%  -0.16  2.77) r g 0);
+	--kemosite-cool-black-minus-blue-lab: rgb(from lab(4.41%  -0.16  2.77) r g 0);
 	--kemosite-blue-rgb: color-mix(in hsl shorter hue, var(--kemosite-cyan-lab) 100%, var(--kemosite-magenta-lab) 100% ); /* Blue */
 	--kemosite-green-rgb: color-mix(in hsl shorter hue, var(--kemosite-cyan-lab) 100%, var(--kemosite-yellow-lab) 100% ); /* Green */
 	--kemosite-red-rgb: color-mix(in hsl shorter hue, var(--kemosite-magenta-lab) 100%, var(--kemosite-yellow-lab) 100% ); /* Red */
@@ -54,12 +58,65 @@
 	--kemosite-blue-lch: oklch(from rgb(0 0 255) l 50% h); /* Blue */
 
 	/* Hardcoded HEX */
-	--kemosite-cool-white: "#f6f6fe"; /* hex eyedrop of lab */
-	--kemosite-base_black: "#110f09"; /* hex eyedrop of lab */
-	--kemosite-base-black-minus-blue: "#110f00"; /* hex eyedrop of lab */
-	--kemosite-success: "#40bf40";
-	--kemosite-alert: "#bf4040";
-	--kemosite-warning: "#bfbf40";
+	--kemosite-cool-white: #f6f6fe; /* hex eyedrop of lab */
+	--kemosite-base-black: #110f09; /* hex eyedrop of lab */
+	--kemosite-base-black-minus-blue: #110f00; /* hex eyedrop of lab */
+	--kemosite-success: #40bf40;
+	--kemosite-alert: #bf4040;
+	--kemosite-warning: #bfbf40;
+
+	/* [BODY COLOUR] */
+	--kemosite_wordpress_body_background_color: light-dark(
+		oklch( from var(--kemosite-cool-white) l c h ), /* Light Mode */
+		oklch( from var(--kemosite-base-black-minus-blue) l c h )  /* Dark Mode */
+	);
+	--kemosite_wordpress_body_color: light-dark(
+		var(--kemosite-base-black), /* Light Mode */
+		var(--kemosite-cool-white) /* Dark Mode */
+	);
+
+	/* [COMPONENTS AND SELECTIONS */
+	--kemosite_wordpress_table_border_colour: var(--kemosite-base-black);
+	--kemosite_wordpress_table_font_colour: var(--kemosite-cool-white);
+	--kemosite_wordpress_component_colour: var(--kemosite_wordpress_base_primary_colour);
+	--kemosite_wordpress_component_hover_colour: oklch(from var(--kemosite_wordpress_component_colour) 51% 100% h );
+	--kemosite_wordpress_component_font_colour: var(--kemosite-cool-white);
+	--kemosite_wordpress_placeholder_color: var(--kemosite_wordpress_component_font_colour);
+	--kemosite_wordpress_component_shadow_colour: var(--kemosite-base-black);
+	--kemosite_wordpress_component_success_colour: oklch(from var(--kemosite_wordpress_component_colour) l c 140);
+	--kemosite_wordpress_component_success_hover_colour: oklch( 51% 100% 140);
+	--kemosite_wordpress_component_success_font_colour: var(--kemosite-cool-white);
+	--kemosite_wordpress_component_warning_colour: oklch(from var(--kemosite_wordpress_component_colour) l c 30);
+	--kemosite_wordpress_component_warning_hover_colour: oklch( 51% 100% 30);
+	--kemosite_wordpress_component_warning_font_colour: var(--kemosite-cool-white);
+	--kemosite_wordpress_component_alert_colour: oklch(from var(--kemosite_wordpress_component_colour) l c 110);
+	--kemosite_wordpress_component_alert_hover_colour: oklch( 51% 100% 110);
+	--kemosite_wordpress_component_alert_font_colour: var(--kemosite-cool-white);
+	--kemosite_wordpress_selection_colour: var(--kemosite_wordpress_base_primary_colour);
+	--kemosite_wordpress_selection_font_colour: var(--kemosite-cool-white);
+	--kemosite_wordpress_secondary_colour: oklch(from var(--kemosite_wordpress_component_colour) l c calc( h - 30 ) );
+	--kemosite_wordpress_secondary_hover_colour: oklch(from var(--kemosite_wordpress_secondary_colour) 51% 100% h);
+	--kemosite_wordpress_secondary_font_colour: var(--kemosite-base-black);
+
+	/* [HEADER OPTIONS] */
+	/* --kemosite_wordpress_header_bg_image: <?php echo $kemosite_wordpress_header_bg_image; ?>; */
+	--kemosite_wordpress_header_bg_color:  var(--kemosite_wordpress_base_primary_colour);
+	--kemosite_wordpress_header_font_color: light-dark( var(--kemosite-base-black), var(--kemosite-cool-white) );
+
+	/* [MAIN CONTENT OPTIONS] */
+		
+	/* Light Mode (Default) */
+	/* --kemosite_wordpress_main_content_bg_color_light_mode:  <?php echo $kemosite_wordpress_main_content_bg_color_light_mode; ?>; */
+	/* --kemosite_wordpress_main_content_font_color_light_mode:  <?php echo $kemosite_base_black; ?>; */
+
+	/* Dark Mode */
+	/* --kemosite_wordpress_main_content_bg_color_dark_mode:  <?php echo $kemosite_wordpress_main_content_bg_color_dark_mode; ?>; */
+	/* --kemosite_wordpress_main_content_font_color_dark_mode:  <?php echo $kemosite_cool_white; ?>; */
+
+	/* [FOOTER OPTIONS] */
+	--kemosite_wordpress_footer_bg_color: light-dark( var(--kemosite_wordpress_base_primary_chroma), oklch(15% 0 0) );
+	--kemosite_wordpress_footer_font_color: light-dark( var(--kemosite-base-black), var(--kemosite-cool-white) );
+
 }
 
 @media screen and (prefers-contrast: more) and (forced-colors: none) {
@@ -78,6 +135,40 @@
 
 	:root {
 		--transition-time: 0ms;
+	}
+
+}
+
+@media (prefers-color-scheme: light) {
+
+	:root {
+		
+		--kemosite_wordpress_colour_scheme: "Light Theme";
+		
+		/* [BODY COLOUR] */
+		--kemosite_wordpress_body_background_color: oklch( from var(--kemosite-cool-white) l c h ); /* Light Mode */
+		--kemosite_wordpress_body_color: var(--kemosite-base-black); /* Light Mode */
+		
+		/* [HEADER OPTIONS] */
+		--kemosite_wordpress_header_font_color: var(--kemosite-base-black);
+
+	}
+
+}
+
+@media (prefers-color-scheme: dark) {
+
+	:root {
+
+		--kemosite_wordpress_colour_scheme: "Dark Theme";
+
+		/* [BODY COLOUR] */
+		--kemosite_wordpress_body_background_color: oklch( from var(--kemosite-base-black-minus-blue) l c h );  /* Dark Mode */
+		--kemosite_wordpress_body_color: var(--kemosite-cool-white); /* Dark Mode */
+		
+		/* [HEADER OPTIONS] */
+		--kemosite_wordpress_header_font_color: var(--kemosite-cool-white);
+
 	}
 
 }
@@ -120,26 +211,15 @@ body,
 
 .callout.secondary {
 	background-color: #fff;
-	border: 1px solid var(--kemosite_wordpress_component_colour);
+	border: 1px solid var(--kemosite_wordpress_secondary_colour);
 }
 
-/*
-div.kemosite-grid-area-menu { 
-	background-color: var(--kemosite_wordpress_placeholder_color);
-}
-*/
-
-div.kemosite-grid-area-section { 
-	color: var(--kemosite_wordpress_header_font_color);
+div.kemosite-grid-area-section {
 	background-color: var(--kemosite_wordpress_header_bg_color);
 }
 
-div.kemosite-grid-area-section section {
-	background-color: var(--kemosite_wordpress_header_bg_color);
-}
-
-div.kemosite-grid-area-section section h1,
-div.kemosite-grid-area-section section h1 a {
+div.kemosite-grid-area-section header h1,
+div.kemosite-grid-area-section header h1 a {
 	color: var(--kemosite_wordpress_header_font_color);
 }
 
@@ -161,8 +241,7 @@ li:not(.accordian-item) a, li:not(.accordian-item) a:link,
 .woocommerce-breadcrumb a:not(img), .woocommerce-breadcrumb a:link:not(img),
 .woocommerce .woocommerce-breadcrumb a, .woocommerce .woocommerce-breadcrumb a:link,
 ul.wc-tabs li a, ul.wc-tabs li a:link,
-div a:not(.button), div a:link:not(.button),
-footer .wp-block-navigation .wp-block-navigation-item__content.wp-block-navigation-item__content
+div a:not(.button), div a:link:not(.button)
 {	
 	transition: all var(--transition-time) ease;
 	color: var(--kemosite_wordpress_component_colour);
@@ -252,8 +331,10 @@ input.search-submit,
 div.css-search div.em-search-main .em-search-submit, /* Events */
 .woocommerce span.onsale /* WooCommerce On Sale Button */
 {
+	/*
 	-webkit-box-shadow: 0 1px 0 var(--kemosite_wordpress_component_shadow_colour);
 	box-shadow: 0 1px 0 var(--kemosite_wordpress_component_shadow_colour);
+	*/
 	-webkit-transition: -webkit-box-shadow ease-in-out var(--transition-time);
 	transition: -webkit-box-shadow ease-in-out var(--transition-time);
 	transition: box-shadow ease-in-out var(--transition-time);
@@ -277,11 +358,13 @@ button:hover, button:focus, input.mailpoet_submit:hover, input.mailpoet_submit:f
 .woocommerce #respond input#submit.alt:focus, .woocommerce a.button.wc-backward:focus, .woocommerce a.button.alt:focus, .woocommerce button.button.alt:focus, .woocommerce input.button.alt:focus, /* WooCommerce */
 .wc-tabs a:hover, .wc-tabs a:focus, /* WooCommerce Tabs */
 div.css-search div.em-search-main .em-search-submit:hover, div.css-search div.em-search-main .em-search-submit:focus /* Events */ {
+	/*
 	-webkit-box-shadow: 0 2px 0 var(--kemosite_wordpress_component_shadow_colour);
 	box-shadow: 0 2px 0 var(--kemosite_wordpress_component_shadow_colour);
+	*/
 	background: none;
 	background-color: var(--kemosite_wordpress_component_hover_colour);
-	color: var(--kemosite_wordpress_base_black);
+	color: var(--kemosite-base-black);
 }
 
 /* [HOLLOW / OUTLINE BUTTONS */
@@ -335,7 +418,7 @@ a.button.success:hover,
 button.success:hover, button.button.success:hover,
 .wp-block-button.success .wp-block-button__link:hover { 
 	background-color: var(--kemosite_wordpress_component_success_hover_colour);
-	color: var(--kemosite_wordpress_base_black);
+	color: var(--kemosite-base-black);
 }
 
 /* warning */
@@ -351,7 +434,7 @@ a.button.warning:hover,
 button.warning:hover, button.button.warning:hover,
 .wp-block-button.warning .wp-block-button__link:hover { 
 	background-color: var(--kemosite_wordpress_component_warning_hover_colour);
-	color: var(--kemosite_wordpress_base_black);
+	color: var(--kemosite-base-black);
 }
 
 /* alert */
@@ -367,30 +450,30 @@ a.button.alert:hover,
 button.alert:hover, button.button.alert:hover,
 .wp-block-button.alert .wp-block-button__link:hover { 
 	background-color: var(--kemosite_wordpress_component_alert_hover_colour);
-	color: var(--kemosite_wordpress_base_black);
+	color: var(--kemosite-base-black);
 }
 
 label { color: var(--kemosite_wordpress_component_colour) }
 
 /* Disabled WooCommerce Buttons */
 .woocommerce #respond input#submit.disabled, .woocommerce #respond input#submit:disabled, .woocommerce #respond input#submit:disabled[disabled], .woocommerce a.button.disabled, .woocommerce a.button:disabled, .woocommerce a.button:disabled[disabled], .woocommerce button.button.disabled, .woocommerce button.button:disabled, .woocommerce button.button:disabled[disabled], .woocommerce input.button.disabled, .woocommerce input.button:disabled, .woocommerce input.button:disabled[disabled] {
-	color: var(--kemosite_wordpress_cool_white);
+	color: var(--kemosite-cool-white);
 	background-color: var(--kemosite_wordpress_secondary_colour);
 }
 .woocommerce #respond input#submit.disabled:hover, .woocommerce #respond input#submit:disabled:hover, .woocommerce #respond input#submit:disabled[disabled]:hover, .woocommerce a.button.disabled:hover, .woocommerce a.button:disabled:hover, .woocommerce a.button:disabled[disabled]:hover, .woocommerce button.button.disabled:hover, .woocommerce button.button:disabled:hover, .woocommerce button.button:disabled[disabled]:hover, .woocommerce input.button.disabled:hover, .woocommerce input.button:disabled:hover, .woocommerce input.button:disabled[disabled]:hover {
-	color: var(--kemosite_wordpress_cool_white);
+	color: var(--kemosite-cool-white);
 	background-color: var(--kemosite_wordpress_secondary_colour);
 }
 
-.dropdown.menu li.is-active > a { color: var(--kemosite_wordpress_base_black); }
+.dropdown.menu li.is-active > a { color: var(--kemosite-base-black); }
 .dropdown.menu > li.is-dropdown-submenu-parent > a::after { border-color: var(--kemosite_wordpress_component_colour) transparent transparent; }
 .is-dropdown-submenu .is-dropdown-submenu-parent.opens-right > a::after { border-color: transparent transparent transparent var(--kemosite_wordpress_component_colour); }
 
 #add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment {
-	background-color: var(--kemosite_wordpress_cool_white);
+	background-color: var(--kemosite-cool-white);
 }
 #add_payment_method #payment div.payment_box, .woocommerce-cart #payment div.payment_box, .woocommerce-checkout #payment div.payment_box {
-	background-color: var(--kemosite_wordpress_cool_white);
+	background-color: var(--kemosite-cool-white);
 }
 #add_payment_method #payment div.payment_box::before, .woocommerce-cart #payment div.payment_box::before, .woocommerce-checkout #payment div.payment_box::before {
 	border: 1em solid white;
@@ -407,7 +490,7 @@ div.tag-cloud a.tag-cloud-link {
     background-color: var(--kemosite_wordpress_component_colour);
     border: 2px solid;
     border-color: var(--kemosite_wordpress_component_colour);
-    color: var(--kemosite_wordpress_cool_white);
+    color: var(--kemosite-cool-white);
 }
 
 div.tag-cloud a.tag-cloud-link:hover,
@@ -415,20 +498,20 @@ div.tag-cloud a.tag-cloud-link:focus {
     background-color: var(--kemosite_wordpress_component_colour);
     border: 2px solid;
     border-color: var(--kemosite_wordpress_component_colour);
-    color: var(--kemosite_wordpress_base_black);
+    color: var(--kemosite-base-black);
     filter: saturate(50%) brightness(150%);
 }
 
-footer.grid_area_footer {
+.kemosite-grid-area-footer {
 	background-color: var(--kemosite_wordpress_footer_bg_color);
 	color: var(--kemosite_wordpress_footer_font_color);
 }
-footer.grid_area_footer a, footer.grid_area_footer a:link {
+.kemosite-grid-area-footer a, .kemosite-grid-area-footer a:link {
 	color: var(--kemosite_wordpress_footer_font_color);
 }
-footer.grid_area_footer a:hover, footer.grid_area_footer a:focus {
+.kemosite-grid-area-footer a:hover, .kemosite-grid-area-footer a:focus {
 	background-color: var(--kemosite_wordpress_component_colour);
-	color: var(--kemosite_wordpress_base_black);
+	color: var(--kemosite-base-black);
 	filter: saturate(50%) brightness(150%);
 }
 

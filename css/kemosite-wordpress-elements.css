@@ -23,7 +23,7 @@ body {
 /* Lazy load assets */
 *.lazy {
 	background-image: none;
-	background-color: var( --kemosite-base_black );
+	background-color: var( --kemosite-base-black );
 }
 
 .mobile.logo.position {

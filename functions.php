@@ -27,6 +27,8 @@ elseif ( !defined( 'KEMOSITE_THEME_LOGO' ) ):
 	define("KEMOSITE_THEME_LOGO", "" );
 endif;
 
+if ( !defined( 'KEMOSITE_ENABLE_SRI' ) ): define("KEMOSITE_ENABLE_SRI", false ); endif;
+
 // Default handling method
 // if ( !function_exists('kemosite_debug_to_console') ): require get_template_directory() . '/inc/function-helpers/kemosite_debug_to_console.php'; endif;
 // set_error_handler( 'kemosite_debug_to_console' );
@@ -155,18 +157,12 @@ if ( !function_exists( 'kemosite_custom_excerpt' ) ) :
 	require get_template_directory() . '/inc/function-helpers/kemosite_custom_excerpt.php';
 endif;
 
-/**
- * [Theme Customization API]
- */
-require get_template_directory() . '/inc/customize_register/functions-customize-register.php';
-require get_template_directory() . '/inc/customize_register/functions-customize-sections.php';
+/* [Theme Support Sections] */
+require get_template_directory() . '/inc/appearance-support-pages/functions-customize-sections.php';
 
 /**
  * [Enqueue scripts and styles]
  */
-
-// Universal theme colours, returns $kemosite_wordpress_universal_colours. Possibly depricated
-require get_template_directory() . '/inc/customize_register/customize-register-universal-colours.php';
 
 // Woocommerce modification functions
 // require get_template_directory() . '/inc/woocommerce/functions_woocommerce.php';
@@ -192,10 +188,6 @@ if ( !function_exists( 'kemosite_site_description' ) ) :
 	require get_template_directory() . '/inc/wp_head/kemosite_site_description.php';
 endif;
 add_action('wp_head', 'kemosite_site_description');
-
-/* [ADD CUSTOMIZER CSS] */
-if ( ! function_exists( 'kemosite_customizer_css' ) ): require get_template_directory() . '/inc/wp_head/kemosite_customizer_css.php'; endif;
-add_action( 'wp_head', 'kemosite_customizer_css');
 
 // Load Favicon
 if ( !function_exists( 'kemosite_wordpress_load_favicon' ) ) :

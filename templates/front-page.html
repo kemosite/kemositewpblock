@@ -1,41 +1,25 @@
-<!-- wp:group {"className":"kemosite-grid-layout"} -->
-<div class="kemosite-grid-layout wp-block-group">
-
-<!-- wp:group {"className":"kemosite-grid-area-menu"} -->
-<div class="kemosite-grid-area-menu wp-block-group">
-<!-- wp:template-part {"slug":"menu","area":"menu","tagName":"menu", "style": { "padding": 0 } } /-->
-</div>
+<!-- wp:group {"className":"kemosite-grid-layout","style":{"typography":{"fontStyle":"normal","fontWeight":"400"}},"fontSize":"medium","fontFamily":"open-sans"} -->
+<div class="wp-block-group kemosite-grid-layout has-open-sans-font-family has-medium-font-size" style="font-style:normal;font-weight:400"><!-- wp:group {"className":"kemosite-grid-area-menu","style":{"typography":{"fontStyle":"normal","fontWeight":"400"}}} -->
+<div class="wp-block-group kemosite-grid-area-menu" style="font-style:normal;font-weight:400"><!-- wp:template-part {"slug":"menu","tagName":"menu","area":"menu"} /--></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"className":"kemosite-grid-area-section"} -->
-<div class="kemosite-grid-area-section wp-block-group lazy">
-<!-- wp:template-part {"slug":"page-section","area":"Section","tagName":"section"} /-->
-</div>
+<!-- wp:group {"className":"kemosite-grid-area-section lazy","style":{"elements":{"link":{"color":{"text":"var:preset|color|custom-cool-white"}}}},"backgroundColor":"custom-mocha-mousse-2025","textColor":"custom-cool-white","fontSize":"x-large","layout":{"type":"default"}} -->
+<div class="wp-block-group kemosite-grid-area-section lazy has-custom-cool-white-color has-custom-mocha-mousse-2025-background-color has-text-color has-background has-link-color has-x-large-font-size"><!-- wp:template-part {"slug":"page-section","tagName":"div","area":"Section"} /--></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"className":"kemosite-grid-area-left-sidebar"} -->
-<div class="kemosite-grid-area-left-sidebar wp-block-group">
-<!-- wp:template-part {"slug":"left-sidebar","area":"Left Sidebar","tagName":"left-sidebar"} /-->
-</div>
+<!-- wp:group {"className":"kemosite-grid-area-left-sidebar","layout":{"type":"constrained","wideSize":"80rem","contentSize":"45rem","justifyContent":"left"}} -->
+<div class="wp-block-group kemosite-grid-area-left-sidebar"><!-- wp:template-part {"slug":"left-sidebar","tagName":"left-sidebar","area":"Left Sidebar"} /--></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"className":"kemosite-grid-area-main"} -->
-<div class="kemosite-grid-area-main wp-block-group kemosite-container-main">
-<!-- wp:template-part {"slug":"posts-main","area":"Main","tagName":"main"} /-->
-</div>
+<!-- wp:group {"className":"kemosite-grid-area-main kemosite-container-main","layout":{"type":"constrained","contentSize":"60rem","wideSize":"80rem"}} -->
+<div class="wp-block-group kemosite-grid-area-main kemosite-container-main"><!-- wp:template-part {"slug":"posts-main","tagName":"main","area":"Main"} /--></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"className":"kemosite-grid-area-right-sidebar"} -->
-<div class="kemosite-grid-area-right-sidebar wp-block-group">
-<!-- wp:template-part {"slug":"right-sidebar","area":"Right Sidebar","tagName":"right-sidebar"} /-->
-</div>
+<!-- wp:group {"className":"kemosite-grid-area-right-sidebar","layout":{"type":"constrained","wideSize":"80rem","contentSize":"45rem","justifyContent":"right"}} -->
+<div class="wp-block-group kemosite-grid-area-right-sidebar"><!-- wp:template-part {"slug":"right-sidebar","tagName":"right-sidebar","area":"Right Sidebar"} /--></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"className":"kemosite-grid-area-footer"} -->
-<div class="kemosite-grid-area-footer wp-block-group">
-<!-- wp:template-part {"slug":"footer","area":"Footer","tagName":"footer"} /-->
-</div>
-<!-- /wp:group -->
-
-</div>
+<!-- wp:group {"className":"kemosite-grid-area-footer","style":{"spacing":{"margin":{"top":"0em","bottom":"0em"}},"dimensions":{"minHeight":"0em"}},"layout":{"type":"default"}} -->
+<div class="wp-block-group kemosite-grid-area-footer" style="min-height:0em;margin-top:0em;margin-bottom:0em"><!-- wp:template-part {"slug":"footer","tagName":"footer","area":"Footer"} /--></div>
+<!-- /wp:group --></div>
 <!-- /wp:group -->

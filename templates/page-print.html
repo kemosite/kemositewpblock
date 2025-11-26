@@ -1,0 +1,52 @@
+<style>
+
+body.page-template-page-print {
+	background-color: #fff;
+	color: var(--kemosite-cool-black-lab);
+	font-size: 11pt;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+body.page-template-page-print * {
+	color: var(--kemosite-cool-black-lab);
+}
+
+body.page-template-page-print h1 { font-size:2em; }
+body.page-template-page-print h2 { font-size:1.5em; }
+body.page-template-page-print h3 { font-size:1.25em; }
+
+body.page-template-page-print * p,
+body.page-template-page-print * ul,
+body.page-template-page-print * ol {
+    /* margin-top: 0; */
+}
+
+body.page-template-page-print p.no-margin {
+	margin-top: 0;
+}
+
+body.page-template-page-print .kemosite-grid-layout {
+	padding: 0;
+	margin: 0;
+	display: grid;
+	overflow: clip;
+	grid-template-columns: 1fr;
+	grid-template-areas:
+		"kemosite-grid-area-main";
+}
+
+</style>
+
+<!-- wp:group {"className":"kemosite-grid-layout print-screen"} -->
+<div class="wp-block-group kemosite-grid-layout print-screen">
+
+<!-- wp:group {"className":"kemosite-grid-area-main kemosite-print-main"} -->
+<div class="wp-block-group kemosite-grid-area-main kemosite-print-main">
+<!-- wp:template-part {"slug":"page-main","tagName":"main","area":"Main"} /-->
+</div>
+<!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->

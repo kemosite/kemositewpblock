@@ -16,6 +16,7 @@
 }
 
 .wp-block-search__inside-wrapper { border: 0; }
+/* :root :where(.is-layout-flow) > * { margin-block-start: 0; } */
 
 div.kemosite-grid-layout .wp-block-site-logo.is-default-size img {
 	height: 96px;
@@ -48,8 +49,7 @@ div.kemosite-grid-area-section header ul.eyebrow-headline {
 }
 
 .kemosite-grid-area-main .wp-block-post-content {
-	columns: 39ch auto;
-	column-gap: 3ch;
+	max-width: 80ch;
 	margin: 1ex 3ch;
 }
 
