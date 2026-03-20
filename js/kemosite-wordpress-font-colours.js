@@ -159,6 +159,11 @@ window.addEventListener("DOMContentLoaded", function() {
 
 		}
 
+		// Primary Font Colour
+		let primaryFontColour = primaryBackgroundColourLum >= 50 ? 'var(--kemosite-base-black)' : 'var(--kemosite-cool-white)';
+		document.body.style.setProperty("--kemosite_wordpress_component_font_colour", footerFontColour);
+		document.body.style.setProperty("--kemosite_wordpress_selection_font_colour", footerFontColour);
+
 		// Secondary Colour via Swatch
 		let secondaryBackgroundSelector = document.querySelector( "div.swatch-kemosite-wordpress-secondary-colour" );
 		let lchSecondaryBackgroundColour = getComputedStyle( secondaryBackgroundSelector ).getPropertyValue("background-color");

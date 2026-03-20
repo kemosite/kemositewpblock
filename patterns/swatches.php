@@ -12,7 +12,7 @@ div.colour-swatches {
 	position: fixed;
 	right: 0;
 	bottom: 0;
-	display: none;
+	/* display: none; */
 }
 
 .colour-swatches .colour-swatches-gang {
@@ -76,6 +76,18 @@ div.colour-swatches {
 <div class="swatch" style="background-color: var(--kemosite-blue-rgb);">&nbsp;</div>
 <div class="swatch" style="background-color: var(--kemosite-green-rgb);">&nbsp;</div>
 <div class="swatch" style="background-color: var(--kemosite-red-rgb);">&nbsp;</div>
+</div>
+
+<!-- Reduced Chroma RGB Variable Colour Test -->
+<div class="colour-swatches-gang">
+<div class="swatch" style="background-color: var(--kemosite-blue-lch);">&nbsp;</div>
+<div class="swatch" style="background-color: var(--kemosite-green-lch);">&nbsp;</div>
+<div class="swatch" style="background-color: var(--kemosite-red-lch);">&nbsp;</div>
+</div>
+
+<!-- Reduced Red Chroma Primary Colour Test -->
+<div class="colour-swatches-gang">
+<div class="swatch" style="background-color: var(--kemosite_wordpress_base_primary_autism);">&nbsp;</div>
 </div>
 
 <!--

@@ -29,11 +29,25 @@
 /* No preferences */
 :root {
 
-	--transition-time: 125ms;
+	--element-transition-time: 125ms;
+
+	/* Low Chroma LCH of RGB */
+	--kemosite-red-lch: oklch(from rgb(255 0 0) l 50% h); /* Red */
+	--kemosite-green-lch: oklch(from rgb(0 255 0) l 50% h); /* Green */
+	--kemosite-blue-lch: oklch(from rgb(0 0 255) l 50% h); /* Blue */
 
 	/* Base Primary Colour and Chroma*/
-	--kemosite_wordpress_base_primary_colour: oklch( from var(--wp--preset--color--custom-mocha-mousse-2025) l c h );
+	--kemosite_wordpress_base_primary_colour: oklch( from var(--wp--preset--color--custom-cloud-dancer-2026) l c h );
 	--kemosite_wordpress_base_primary_chroma: oklch( from var(--kemosite_wordpress_base_primary_colour) l 0 h );
+	--kemosite_wordpress_base_primary_red: rgb( from var(--kemosite_wordpress_base_primary_colour) r 0 0 );
+	--kemosite_wordpress_base_primary_green: rgb( from var(--kemosite_wordpress_base_primary_colour) 0 g 0 );
+	--kemosite_wordpress_base_primary_blue: rgb( from var(--kemosite_wordpress_base_primary_colour) 0 0 b );
+	--kemosite_wordpress_base_primary_reduced_red_lch: oklch(from var(--kemosite_wordpress_base_primary_red) l 50% h);
+	--kemosite_wordpress_base_primary_reduced_red_rgb: rgb(from var(--kemosite_wordpress_base_primary_reduced_red_lch) r 0 0);
+	--kemosite_wordpress_base_primary_reduced_red: oklch( from rgb( var(--kemosite_wordpress_base_primary_reduced_red_rgb) var(--kemosite_wordpress_base_primary_green) var(--kemosite_wordpress_base_primary_blue) ) l c h);
+	--kemosite_wordpress_base_primary_reduced_blue_lch: oklch(from var(--kemosite_wordpress_base_primary_blue) l 50% h);
+	--kemosite_wordpress_base_primary_reduced_blue_rgb: rgb(from var(--kemosite_wordpress_base_primary_reduced_blue_lch) r 0 0);
+	--kemosite_wordpress_base_primary_reduced_blue: oklch( from rgb( var(--kemosite_wordpress_base_primary_red) var(--kemosite_wordpress_base_primary_green) var(--kemosite_wordpress_base_primary_reduced_blue_rgb) ) l c h);
 
 	/* Characterized Reference Printing Condition 7, Universal Extra Large, https://www.color.org/chardata/CGATS21-2-CRPC7.xalter */	
 	--kemosite-cool-white-lab: rgb(from lab(97% 1 -4) r g b); /* Reference White Point */
@@ -42,20 +56,15 @@
 	--kemosite-magenta-lab: rgb(from lab(47% 78 -10) r g b);  /* Magenta */
 	--kemosite-yellow-lab: rgb(from lab(90% -4 103) r g b); /* Yellow */
 	--kemosite-key-lab: rgb(from lab(14% 0 0) r g b); /* Key/Black */
-	--kemosite-blue-lab: rgb(from lab(20% 26 -53) r g b); /* Blue */
-	--kemosite-green-lab: rgb(from lab(50% -72 29) r g b); /* Green */
-	--kemosite-red-lab: rgb(from lab(47% 75 54) r g b); /* Red */
+	--kemosite-blue-lab: rgb(from lab(20% 26 -53) r g b); /* Blue (Print) */
+	--kemosite-green-lab: rgb(from lab(50% -72 29) r g b); /* Green (Print) */
+	--kemosite-red-lab: rgb(from lab(47% 75 54) r g b); /* Red (Print) */
 
 	/* Derivatives of Lab */
 	--kemosite-cool-black-minus-blue-lab: rgb(from lab(4.41%  -0.16  2.77) r g 0);
-	--kemosite-blue-rgb: color-mix(in hsl shorter hue, var(--kemosite-cyan-lab) 100%, var(--kemosite-magenta-lab) 100% ); /* Blue */
-	--kemosite-green-rgb: color-mix(in hsl shorter hue, var(--kemosite-cyan-lab) 100%, var(--kemosite-yellow-lab) 100% ); /* Green */
-	--kemosite-red-rgb: color-mix(in hsl shorter hue, var(--kemosite-magenta-lab) 100%, var(--kemosite-yellow-lab) 100% ); /* Red */
-
-	/* Low contrast LCH of RGB */
-	--kemosite-red-lch: oklch(from rgb(255 0 0) l 50% h); /* Red */
-	--kemosite-green-lch: oklch(from rgb(0 255 0) l 50% h); /* Green */
-	--kemosite-blue-lch: oklch(from rgb(0 0 255) l 50% h); /* Blue */
+	--kemosite-blue-rgb: color-mix(in hsl shorter hue, var(--kemosite-cyan-lab) 100%, var(--kemosite-magenta-lab) 100% ); /* Blue (Print) */
+	--kemosite-green-rgb: color-mix(in hsl shorter hue, var(--kemosite-cyan-lab) 100%, var(--kemosite-yellow-lab) 100% ); /* Green (Print) */
+	--kemosite-red-rgb: color-mix(in hsl shorter hue, var(--kemosite-magenta-lab) 100%, var(--kemosite-yellow-lab) 100% ); /* Red (Print) */
 
 	/* Hardcoded HEX */
 	--kemosite-cool-white: #f6f6fe; /* hex eyedrop of lab */
@@ -79,7 +88,7 @@
 	--kemosite_wordpress_table_border_colour: var(--kemosite-base-black);
 	--kemosite_wordpress_table_font_colour: var(--kemosite-cool-white);
 	--kemosite_wordpress_component_colour: var(--kemosite_wordpress_base_primary_colour);
-	--kemosite_wordpress_component_hover_colour: oklch(from var(--kemosite_wordpress_component_colour) 51% 100% h );
+	--kemosite_wordpress_component_hover_colour: oklch( from var(--kemosite_wordpress_component_colour) 51% 50% h );
 	--kemosite_wordpress_component_font_colour: var(--kemosite-cool-white);
 	--kemosite_wordpress_placeholder_color: var(--kemosite_wordpress_component_font_colour);
 	--kemosite_wordpress_component_shadow_colour: var(--kemosite-base-black);
@@ -134,7 +143,7 @@
 @media (prefers-reduced-motion: reduce) {
 
 	:root {
-		--transition-time: 0ms;
+		--element-transition-time: 0ms;
 	}
 
 }
@@ -218,8 +227,8 @@ div.kemosite-grid-area-section {
 	background-color: var(--kemosite_wordpress_header_bg_color);
 }
 
-div.kemosite-grid-area-section header h1,
-div.kemosite-grid-area-section header h1 a {
+div.kemosite-grid-area-section h1,
+div.kemosite-grid-area-section h1 a {
 	color: var(--kemosite_wordpress_header_font_color);
 }
 
@@ -243,7 +252,7 @@ li:not(.accordian-item) a, li:not(.accordian-item) a:link,
 ul.wc-tabs li a, ul.wc-tabs li a:link,
 div a:not(.button), div a:link:not(.button)
 {	
-	transition: all var(--transition-time) ease;
+	transition: all var(--element-transition-time) ease;
 	color: var(--kemosite_wordpress_component_colour);
 	filter: saturate(100%) brightness(100%); /* Something is wonky with the "Sale" WooCommerce button */
 }
@@ -335,10 +344,11 @@ div.css-search div.em-search-main .em-search-submit, /* Events */
 	-webkit-box-shadow: 0 1px 0 var(--kemosite_wordpress_component_shadow_colour);
 	box-shadow: 0 1px 0 var(--kemosite_wordpress_component_shadow_colour);
 	*/
-	-webkit-transition: -webkit-box-shadow ease-in-out var(--transition-time);
-	transition: -webkit-box-shadow ease-in-out var(--transition-time);
-	transition: box-shadow ease-in-out var(--transition-time);
-	transition: box-shadow ease-in-out var(--transition-time),-webkit-box-shadow ease-in-out var(--transition-time);
+	-webkit-transition: -webkit-box-shadow ease-in-out var(--element-transition-time);
+	transition: -webkit-box-shadow ease-in-out var(--element-transition-time);
+	transition: box-shadow ease-in-out var(--element-transition-time);
+	transition: box-shadow ease-in-out var(--element-transition-time),
+	-webkit-box-shadow ease-in-out var(--element-transition-time);
 	text-transform: uppercase;
 	line-height: 1.5em;
 	background: none;

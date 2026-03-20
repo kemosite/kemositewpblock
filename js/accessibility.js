@@ -1,4 +1,24 @@
-document.addEventListener("DOMContentLoaded", function() {
+function optionsModal() {
+
+	console.log("Modal is ready for developing");
+
+	const dialog = document.getElementById("accessibilityModal");
+	const showButton = document.querySelector("a#showAccessibilityModal");
+	const closeButton = document.querySelector("button#closeAccessibilityModal");
+
+	// "Show the dialog" button opens the dialog modally
+	showButton.addEventListener("click", () => {
+	  dialog.showModal();
+	});
+
+	// "Close" button closes the dialog
+	closeButton.addEventListener("click", () => {
+	  dialog.close();
+	});
+
+}
+
+function updateLinks() {
 
 	try {
 
@@ -18,6 +38,19 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 		}
 
+		// Apple Voiceover Fix
+		let br_elements = document.querySelectorAll("br");
+
+		if (br_elements) {
+			br_elements.forEach( function(br_element) {
+
+				if (br_element.getAttribute("aria-hidden") === null) {
+					br_element.setAttribute("aria-hidden", "true" );
+				}
+				
+			});
+		}
+
 	}
 
 	catch( e ) {
@@ -25,5 +58,15 @@ document.addEventListener("DOMContentLoaded", function() {
 		console.log( e );
 
 	}
+
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+
+	// Add Options Modal
+	optionsModal();
+
+	// Update links last
+	updateLinks();
 
 });

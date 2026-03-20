@@ -3,13 +3,69 @@
 :root {
 	--layout: "screen-default";
 	scroll-behavior: smooth;
+	--document-transition-time: 1.5s;
+	scrollbar-gutter: stable;
+}
+
+/* [VIEW TRANSITIONS] */
+
+@media (prefers-reduced-motion: reduce) {
+
+	:root {
+		--document-transition-time: 0ms;
+	}
+
+	*, *::before, *::after {
+		animation-duration: 0ms !important;
+		transition-duration: 0ms !important;
+	}
+
+}
+
+/* Note that this at-rule is all that is needed to create the default cross-fade animation  */
+@view-transition {
+    navigation: auto;
+}
+
+/* Customize the default animation behavior */
+
+::view-transition-group(root) {
+    animation-duration: var(--document-transition-time);
+}
+
+/* Apply the custom animation to the old and new page states */
+
+@keyframes transition-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes transition-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+::view-transition-old(root) {
+  animation: var(--document-transition-time) transition-out ease-in-out;
+}
+
+::view-transition-new(root) {
+  animation: var(--document-transition-time) transition-in ease-in-out;
 }
 
 /* [Define Grid] */
 
 .kemosite-grid-layout {
 	display: grid;
-	margin: 3ex 0;
+	margin: env(safe-area-max-inset-top, 3ex) 0 env(safe-area-max-inset-bottom, 3ex) 0;
 	grid-gap: 3ex 2ch;
 	/* padding: 3ex 0; */
 	overflow: clip;
@@ -39,7 +95,7 @@
 }
 
 .kemosite-grid-area-menu menu {
-	padding: 0 2ch;
+	padding: 0 env(safe-area-max-inset-right, 2ch) 0 env(safe-area-max-inset-left, 2ch);
 }
 
 .kemosite-grid-layout :where(body .is-layout-flow) > nav {
@@ -47,8 +103,8 @@
 }
 
 .kemosite-grid-layout.no-sidebars .kemosite-grid-area-main {
-	margin-left: 3ch;
-	margin-right: 3ch;
+	margin-left: env(safe-area-max-inset-left, 3ch);
+	margin-right: env(safe-area-max-inset-right, 3ch)
 }
 
 .kemosite-grid-area-main .wp-block-post-content h1,
@@ -97,4 +153,9 @@
 }
 .wp-block-post-template.is-flex-container {
 	gap: 1ch;
+}
+
+::backdrop {
+	opacity: 0.85;
+	background-color: var(--kemosite_wordpress_body_background_color);
 }

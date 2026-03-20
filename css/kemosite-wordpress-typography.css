@@ -6,6 +6,7 @@
 # Font variables are defined as CSS variables in functions.php
 
 # variables
+# font families
 # html, body
 # accessibility
 # header
@@ -59,6 +60,35 @@
 -------------------------------------------------------------------*/
 
 /*-------------------------------------------------------------------
+[VISUAL ACCUITY DISCUSSION]
+---------------------------------------------------------------------
+
+# The standard definition of normal visual acuity (20/20 vision) is the ability 
+# to resolve a spatial pattern separated by a visual angle of one minute of 
+# arc. Since one degree contains sixty minutes, a visual angle of one minute of 
+# arc is 1/60 of a degree.
+# https://www.nde-ed.org/NDETechniques/PenetrantTest/Introduction/visualacuity.xhtml
+# 
+# Note that 20/20 vision corresponds to recognizing letters that are 5 minutes of arc
+# https://education.siggraph.org/static/HyperVis/virtual.env/percept.iss/percept.htm
+#
+# Another approach would be to display two black lines, 1 minarc wide and 1 
+# minarc apart. At 20 feet they should just be visible as two lines to someone 
+# with 20/20 vision, but at any further distance they would begin to look like 
+# one grey line, as the two black lines appear to merge into one.
+https://www.activu.com/visual-acuity-explained/
+#
+# 25.00% logarithmic progression
+# 1 
+# 1.25    
+# 1.64    
+# 2.31    
+# 3.65    
+# 6.99    
+
+-------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------
 [DEVICE FIELD OF VISION DISCUSSION]
 ---------------------------------------------------------------------
 
@@ -89,17 +119,41 @@
 # the nodal point of the eye."
 # https://en.wikipedia.org/wiki/Visual_acuity
 
+/*-------------------------------------------------------------------
+[X-HEIGHT DISCUSSION]
+---------------------------------------------------------------------
+
+# What’s the best font size for the web? Well, it depends…
+# "They found that reading speed is fastest when the text’s x-height is 0.3
+# degrees of arc.[3]
+#
+# The “x-height critical size” of text—in other words, the minimum size—is 
+# about 4.5 points at 16″, or about 0.2° of visual arc, for readers with 20/20
+# vision. For older readers, this increases to 0.3° (~6 pts); for those with 
+# much older and less flexible eyes, it rises to as much as 1.0° (~20 pts)."
+# https://www.imarc.com/blog/best-font-size-for-any-device
+#
+# Does print size matter for reading? A review of findings from vision science 
+# and typography
+# https://jov.arvojournals.org/article.aspx?articleid=2191906
+
 -------------------------------------------------------------------*/
 
 :root {
 
     --kemosite-base-font-size: 1rem; /* Always start from device base size as minimum */
-    --kemosite-foveal-vision-degrees: 1; /* Foveal vision, in degrees, for 3-4 letters. */
-    --kemosite-field-of-view-degrees: 15; /* Ideal field of view variation, in degrees, for computer monitor. */
-    /* --kemosite-foveal-vision-letters: clamp( 3, 3.5, 4); /* 3-4 letters */ 
-    --kemosite-min-line-length: calc( var(--kemosite-field-of-view-degrees) * 3ch );
-    --kemosite-ideal-line-length: calc( var(--kemosite-field-of-view-degrees) * 4ch );
+    --kemosite-base-x-height-ratio: 0.51875; /* 1ex / 1 rem */
+    --kemosite-saccade-degrees: 1; /* Saccade, in degrees, for 3-4 letters. */
+    --kemosite-saccade-letters: 3; /* 3 letter saccade */
+    --kemosite-visual-acuity: calc( 1 / 60); /* 1/60 of a degree to resolve a spatial pattern, including lines. */
+    --kemosite-letter-visual-acuity: calc( 5 / 60); /* 5/60 of a degree to recognize a letter. */
+    --kemosite-visual-zone-degrees: 15; /* Visual zone, in degrees. */
+    --kemosite-preferable-visual-zone-degrees: 30; /* Preferable visual zone, in degrees, for a monitor. */
+    --kemosite-acceptable-visual-zone-degrees: 45; /* Acceptable visual zone, in degrees, for a monitor. */
+    --kemosite-min-line-length: calc( var(--kemosite-visual-zone-degrees) * 3ch );
+    --kemosite-ideal-line-length: calc( var(--kemosite-visual-zone-degrees) * 4ch );
     --kemosite-max-line-length: 80ch;
+
     --kemosite-border-size: .11em; /* Rule of thirds: font size / 3 (0.33), further devided by 3 (0.11) to accomodate a margin around the border.  */
     --kemosite-border: solid;
 
@@ -108,7 +162,9 @@
 @media screen and (prefers-contrast: more) {
     
     :root {
-        --kemosite-foveal-vision-letters: 2; /* 2 letters */
+        --kemosite-saccade-letters: 2; /* 2 letter saccade */
+        --kemosite-visual-acuity: calc( 2 / 60);
+        --kemosite-letter-visual-acuity: calc( 6 / 60);
         --kemosite-border-size: .22em; /* Double standard border size  */
     }
     
@@ -117,21 +173,31 @@
 @media screen and (prefers-contrast: less) {
     :root {
         --kemosite-border: dashed;
+        --kemosite-saccade-letters: 4; /* 4 letter saccade */
+        --kemosite-visual-acuity: calc( 0.5 / 60 );
+        --kemosite-letter-visual-acuity: calc( 4 / 60);
     }
 
 }
 
 :root {
 
-    --kemosite-foveal-vision-letters: 3; /* 3 letters */
-    --kemosite-foveal-vision-ratio: calc( var(--kemosite-foveal-vision-degrees) / var(--kemosite-field-of-view-degrees) );
-    --kemosite-vmin-ratio: calc( ( 100vmin * var(--kemosite-foveal-vision-ratio) ) / var(--kemosite-foveal-vision-letters) );
-    --kemosite-vmax-ratio: calc( ( 100vmax * var(--kemosite-foveal-vision-ratio) ) / var(--kemosite-foveal-vision-letters) );
-    --kemosite-font-size: clamp( var(--kemosite-base-font-size), var(--kemosite-vmin-ratio), var(--kemosite-vmax-ratio) );
-    --kemosite-font-size-adjust: 1ex;
+    --kemosite-vmin-one-degree-arc: calc( 100vmin / var(--kemosite-preferable-visual-zone-degrees) );
+    --kemosite-vmax-one-degree-arc: calc( 100vmax / var(--kemosite-acceptable-visual-zone-degrees) );
+    --kemosite-one-degree-arc-min: min( var(--kemosite-vmin-one-degree-arc), var(--kemosite-vmax-one-degree-arc) );
+    --kemosite-one-degree-arc-max: max( var(--kemosite-vmin-one-degree-arc), var(--kemosite-vmax-one-degree-arc) );
+    --kemosite-visual-acuity-font-size: calc( var(--kemosite-one-degree-arc-min) * var(--kemosite-letter-visual-acuity) );
+    --kemosite-font-size: clamp(
+            max( var(--kemosite-base-font-size), var(--kemosite-visual-acuity-font-size) ),
+            calc( ( var(--kemosite-one-degree-arc-min) / var(--kemosite-saccade-letters) ) / var(--kemosite-base-x-height-ratio) ),
+            calc( ( var(--kemosite-one-degree-arc-max) / var(--kemosite-saccade-letters) ) / var(--kemosite-base-x-height-ratio) )
+    );
+    --kemosite-border-width-min: var(--kemosite-one-degree-arc-min) * var(--kemosite-visual-acuity);
+    --kemosite-border-width-max: var(--kemosite-one-degree-arc-max) * var(--kemosite-visual-acuity);
 
     font-size: var(--kemosite-font-size);
-    font-size-adjust: var(--kemosite-font-size-adjust);
+    font-weight: 400; /* Normal, book weight */
+    font-size-adjust: ex-height from-font;
     widows: 2;
     orphans: 2;
     text-rendering: optimizeLegibility;
@@ -141,8 +207,33 @@
 
 }
 
+::spelling-error {
+    text-decoration: underline wavy red;
+}
+
+::grammar-error {
+    text-decoration: underline wavy orange;
+}
+
+/* FONT FAMILIES */
+.font-open-sans {
+    font-family: var(--wp--preset--font-family--open-sans), Arial, sans-serif, system-ui;
+    font-size-adjust: ex-height from-font;
+}
+
+.font-oswald {
+    font-family: var(--wp--preset--font-family--oswald), Arial, sans-serif, system-ui;
+    font-size-adjust: ex-height from-font;
+}
+
+.font-modern_pictogramsnormal {
+    font-family: 'modern_pictogramsnormal';
+    font-size-adjust: ex-height from-font;
+}
+
 html body {
-    font-family: var(--wp--preset--font-family--open-sans), Arial, sans-serif;
+    font-family: var(--wp--preset--font-family--open-sans), Arial, sans-serif, system-ui;
+    font-size-adjust: ex-height from-font;
 }
 
 body, body * {
@@ -172,18 +263,24 @@ body, body * {
 
 }
 
+/* BORDERS */
+hr, .border {
+    border-width: clamp(2px, var(--kemosite-border-width-min), var(--kemosite-border-width-max) );
+}
+
 /* HEADER GROUPS */
 /* vh units seem to work better than ex units in Google Chrome on Android. */
-h1 { font-size: clamp( 3.75vh, calc(3.75vh + 3.75vw), 30vh ); font-weight: normal; } /* [PAGE TITLES] */ 
-h2 { font-size: clamp( 3vh, calc(3vh + 3vw), 6vh ); font-weight: normal; } /* [SUBTITLES] */
-h3 { font-size: clamp( 2vh, calc(2vh + 2vw), 4vh ); font-weight: normal; } /* [SECTION TITLES+] */
+h1 { font-size: clamp( 2.31em, calc(2.31em + 3vh), 30vh ); font-weight: normal; } /* [PAGE TITLES] */ 
+h2 { font-size: clamp( 1.64em, calc(1.64em + 2vh), 6vh ); font-weight: normal; } /* [SUBTITLES] */
+h3 { font-size: clamp( 1.25em, calc(1.25em + 1vh), 4vh ); font-weight: normal; } /* [SECTION TITLES+] */
 h4 { font-size: 1em; font-weight: bold; }       /* [Body Copy Size] */
-h5 { font-size: .875em; font-weight: bold; }    /* [Small] */
-h6 { font-size: .75em; font-weight: bold; }     /* [Smaller] */
+h5 { font-size: clamp( var(--kemosite-visual-acuity-font-size), var(--kemosite-visual-acuity-font-size), 1em); font-weight: bold; }    /* [Small] */
+h6 { font-size: var(--kemosite-visual-acuity-font-size); font-weight: bold; }     /* [Smaller] */
 
 h1,h2,h3,h4,h5,h6 { 
     margin-top: 3ex;
-    font-family: var(--wp--preset--font-family--oswald), Arial, sans-serif;
+    font-family: var(--wp--preset--font-family--oswald), Arial, sans-serif, system-ui;
+    font-size-adjust: ex-height from-font;
 }
 
 ul.eyebrow-headline {
@@ -198,7 +295,7 @@ ul.eyebrow-headline li {
     display: none;
 }
 
-div.kemosite-grid-area-section header h1 {
+div.kemosite-grid-area-section h1 {
     margin: 0;
 }
 
@@ -320,6 +417,7 @@ a[name] {
 /* emails */
 a[href^="mailto:"]:after {
     font-family: 'modern_pictogramsnormal';
+    font-size-adjust: ex-height from-font;
     content: "m";
     margin-left: .25em;
 }
@@ -327,6 +425,7 @@ a[href^="mailto:"]:after {
 /* pdfs */
 a[href$=".pdf"]:after {
     font-family: 'modern_pictogramsnormal';
+    font-size-adjust: ex-height from-font;
     content: "K";
     margin-left: .25em;
 }
@@ -335,6 +434,7 @@ a[href$=".pdf"]:after {
 a[target="_blank"]:after,
 a[target="new"]:after {
     font-family: 'modern_pictogramsnormal';
+    font-size-adjust: ex-height from-font;
     content: "W";
     margin-left: .25em;
 }

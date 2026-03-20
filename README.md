@@ -14,6 +14,19 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 6.9.4.1 =
+- Updated default colour for 2026
+- Implemented env() padding for mobile devices
+- Better animation management based on user preference
+- Improved font size calculating
+- Font preloading
+
+= 6.8.3.3 =
+- Fixed malfunction in colour selection.
+- Rebuild of theme.json
+- Refactor contrast accessibility functions to use CSS/JS instead of PHP.
+- Sunset Customizer, in favour of the new block editor.
+
 = 6.8.3.2 =
 - Bug fixes
 

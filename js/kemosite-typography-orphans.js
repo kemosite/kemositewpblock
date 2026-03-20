@@ -27,7 +27,7 @@ let kemosite_typography_orphans = new function() {
 		Only apply if screen width > 39ch
 		*/
 
-		if (window.matchMedia("(min-width: 39ch)").matches) {
+		if (window.matchMedia("(min-width: 40ch)").matches) {
 
 		    /* [Locate elements for typesetter] */
 		    let orphan_control_elements = document.querySelectorAll(

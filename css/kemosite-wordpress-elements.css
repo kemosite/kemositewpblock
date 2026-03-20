@@ -191,7 +191,7 @@ a.wp-block-button__link {
 	padding: 1ex 1em;
 	border-radius: .25em;
 	height: auto;
-	margin: minmax( var(--touch-target-separation), 1ex ) minmax( var(--touch-target-separation), 1ch );
+	margin: max( var(--touch-target-separation), 1ex ) max( var(--touch-target-separation), 1ch );
 	display: flex;
 	align-items: center;
 }

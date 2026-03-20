@@ -19,7 +19,7 @@
 // Override Dot Org will skip any updates from wordpress.org for plugins with identical slugs.
 define( 'GITHUB_UPDATER_OVERRIDE_DOT_ORG', true );
 if (!defined( 'SAVEQUERIES' )): define( 'SAVEQUERIES', true ); endif;
-define('DISABLE_NAG_NOTICES', true);
+if (!defined( 'DISABLE_NAG_NOTICES' )): define( 'DISABLE_NAG_NOTICES', true ); endif;
 
 if ( get_theme_mod('custom_logo') && !defined( 'KEMOSITE_THEME_LOGO' ) ):
 	define("KEMOSITE_THEME_LOGO", wp_get_attachment_image_src(get_theme_mod('custom_logo'))[0] );
@@ -84,7 +84,7 @@ endif;
 
 /**
  * [Action Reference]
- * @link https://codex.wordpress.org/Plugin_API/Action_Reference
+ * @link https://developer.wordpress.org/apis/hooks/action-reference/
  */
 
 /**
@@ -110,12 +110,6 @@ if ( ! function_exists( 'kemosite_wordpress_add_woocommerce_support' ) ):
     require get_template_directory() . '/inc/after_setup_theme/kemosite_wordpress_add_woocommerce_support.php';
 endif;
 add_action( 'after_setup_theme', 'kemosite_wordpress_add_woocommerce_support' );
-
-// Set up Widgets
-if ( ! function_exists( 'kemosite_widgets_init' ) ):
-	require get_template_directory() . '/inc/widgets_init/kemosite_widgets_init.php';
-endif;
-add_action( 'widgets_init', 'kemosite_widgets_init' );
 
 /* [Add kemosite-wordpress-theme class to body tag ] */
 if ( !function_exists('kemosite_wordpress_theme_class') ) :
@@ -182,6 +176,18 @@ add_action( 'wp_enqueue_scripts', 'kemosite_wordpress_enqueue_scripts' );
 /**
  * [Print scripts or data in the head tag on the front end]
  */
+
+// Preload Theme Fonts
+if ( !function_exists( 'kemosite_preload_fonts' ) ) :
+	require get_template_directory() . '/inc/wp_head/kemosite_preload_fonts.php';
+endif;
+add_action('wp_head', 'kemosite_preload_fonts');
+
+// Load View Transition
+if ( !function_exists( 'kemosite_view_transition' ) ) :
+	require get_template_directory() . '/inc/wp_head/kemosite_view_transition.php';
+endif;
+add_action('wp_head', 'kemosite_view_transition');
 
 // Load Site Description
 if ( !function_exists( 'kemosite_site_description' ) ) :

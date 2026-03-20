@@ -33,7 +33,7 @@ div.kemosite-grid-area-footer {
 div.kemosite-grid-area-section header {
 	display: flex;
 	flex-direction: column;
-	padding: 2ex 3ch
+	padding: env(safe-area-max-inset-top, 2ex) env(safe-area-max-inset-right, 3ch) env(safe-area-max-inset-bottom, 2ex) env(safe-area-max-inset-left, 3ch)
 }
 div.kemosite-grid-area-section header h1 {
 	order: 2;
@@ -44,7 +44,7 @@ div.kemosite-grid-area-section header ul.eyebrow-headline {
 
 .kemosite-grid-area-main li,
 .kemosite-grid-area-footer {
-	ontent-visibility: auto;
+	content-visibility: auto;
 	contain-intrinsic-size: 100vh; /* Provides a placeholder size to avoid jumps. */
 }
 

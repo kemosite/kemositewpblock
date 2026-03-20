@@ -1,5 +1,11 @@
 <!-- wp:group {"className":"menu-block","style":{"spacing":{"blockGap":"0","padding":{"top":"1em","bottom":"1em"}},"dimensions":{"minHeight":"3em"}},"fontSize":"medium","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} -->
-<div class="wp-block-group menu-block has-medium-font-size" style="min-height:3em;padding-top:1em;padding-bottom:1em"><!-- wp:navigation {"ref":1901,"overlayMenu":"never","style":{"layout":{"selfStretch":"fill","flexSize":null},"spacing":{"blockGap":"3em"}},"fontSize":"medium","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} /--></div>
+<div class="wp-block-group menu-block has-medium-font-size" style="min-height:3em;padding-top:1em;padding-bottom:1em"><!-- wp:buttons {"layout":{"type":"flex","justifyContent":"right"}} -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" id="showAccessibilityModal">Accessibility Options</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:navigation {"ref":1901,"overlayMenu":"never","style":{"layout":{"selfStretch":"fill","flexSize":null},"spacing":{"blockGap":"3em"}},"fontSize":"medium","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} /--></div>
 <!-- /wp:group -->
 
 <style>
@@ -74,6 +80,19 @@ div.colour-swatches {
 <div class="swatch" style="background-color: var(--kemosite-red-rgb);">&nbsp;</div>
 </div>
 
+<!-- Reduced Chroma RGB Variable Colour Test -->
+<div class="colour-swatches-gang">
+<div class="swatch" style="background-color: var(--kemosite-blue-lch);">&nbsp;</div>
+<div class="swatch" style="background-color: var(--kemosite-green-lch);">&nbsp;</div>
+<div class="swatch" style="background-color: var(--kemosite-red-lch);">&nbsp;</div>
+</div>
+
+<!-- Reduced Chroma Primary Colour Test -->
+<div class="colour-swatches-gang">
+<div class="swatch" style="background-color: var(--kemosite_wordpress_base_primary_reduced_red);">&nbsp;</div>
+<div class="swatch" style="background-color: var(--kemosite_wordpress_base_primary_reduced_blue);">&nbsp;</div>
+</div>
+
 <!--
 <div class="colour-swatches-gang">
 <div class="swatch swatch-test-value" style="background-color: var(--kemosite_wordpress_body_background_color_luminance);">&nbsp;</div>
@@ -81,6 +100,38 @@ div.colour-swatches {
 -->
 
 </div>
+
+<dialog id="accessibilityModal">
+
+  <form>
+
+  	<p>This model will contain accessibility preferences.</p>
+  	
+  	<p>Reduce red light:<br>
+  	<div class="switch">
+		<input class="switch-input" id="reduceRedRadioSwitch" type="radio" name="reduceLightGroup">
+		<label class="switch-paddle" for="reduceRedRadioSwitch">
+			<span class="show-for-sr">Reduce red light</span>
+		</label>
+	</div>
+	</p>
+
+	<p>Reduce blue light:<br>
+	<div class="switch">
+		<input class="switch-input" id="reduceBlueRadioSwitch" type="radio" name="reduceLightGroup">
+		<label class="switch-paddle" for="reduceBlueRadioSwitch">
+			<span class="show-for-sr">Reduce blue light</span>
+		</label>
+	</div>
+	</p>
+
+	<input type="reset" value="Reset">
+
+  </form>
+
+  <button id="closeAccessibilityModal" autofocus>Close</button>
+
+</dialog>
 
 <script>
 
