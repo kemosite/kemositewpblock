@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+:root {
+	--layout: "layout-grid";
+}
+
+/*-------------------------------------------------------------------
+[GRID]
+---------------------------------------------------------------------*/
+
+/* [THE GRID] */
+.kemosite-grid-layout {
+	display: grid;
+	margin: env(safe-area-max-inset-top, 3ex) 0 env(safe-area-max-inset-bottom, 3ex) 0;
+	grid-gap: 3ex 2ch;
+	overflow: clip;
+	grid-template-columns: auto auto auto;
+	grid-template-rows: auto auto auto auto;
+	grid-template-areas:
+		"kemosite-grid-area-menu			kemosite-grid-area-menu		kemosite-grid-area-menu"
+		"kemosite-grid-area-section			kemosite-grid-area-section	kemosite-grid-area-section"
+		"kemosite-grid-area-left-sidebar	kemosite-grid-area-main		kemosite-grid-area-right-sidebar"
+		"kemosite-grid-area-footer			kemosite-grid-area-footer	kemosite-grid-area-footer";
+
+}
+
+.kemosite-grid-layout.no-sidebars {
+	grid-template-columns: minmax( min( 100%, var(--kemosite-min-line-length) ), var(--kemosite-max-line-length) );
+	grid-template-areas:
+		"kemosite-grid-area-menu"
+		"kemosite-grid-area-section"
+		"kemosite-grid-area-main"
+		"kemosite-grid-area-footer";
+}
+
+.kemosite-grid-area-menu { grid-area: kemosite-grid-area-menu; }
+.kemosite-grid-area-section { grid-area: kemosite-grid-area-section; }
+.kemosite-grid-area-left-sidebar { grid-area: kemosite-grid-area-left-sidebar; }
+.kemosite-grid-area-main { grid-area: kemosite-grid-area-main; }
+.kemosite-grid-area-right-sidebar { grid-area: kemosite-grid-area-right-sidebar; }
+.kemosite-grid-area-footer { grid-area: kemosite-grid-area-footer; }
+
+/* [ALL MODES] */
+
+div.kemosite-grid-area-section,
+div.kemosite-grid-area-footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+div.kemosite-grid-area-section {
+	background-color: var(--kemosite_wordpress_header_bg_color);
+}
+
+.kemosite-container-section {
+    container-name: kemosite-container-section;
+    container-type: inline-size;
+}
+
+@container kemosite-container-section ( width > 80ch ) {
+    /* main { columns: 59ch auto; } */
+    main { font-size: calc( 1em + 1.25cqw); } /* 100% / 80ch = 1.25% per character. */
+
+}
+
+.kemosite-container-main {
+    container-name: kemosite-container-main;
+    container-type: inline-size;
+}
+
+@container kemosite-container-main ( width > 80ch ) {
+    /* main { columns: 59ch auto; } */
+    main { font-size: calc( 1em + 1.25cqw); } /* 100% / 80ch = 1.25% per character. */
+
+}
+
+div.kemosite-grid-area-footer {
+	background-color: var(--kemosite_wordpress_footer_bg_color);
+	color: var(--kemosite_wordpress_footer_font_color);
+}

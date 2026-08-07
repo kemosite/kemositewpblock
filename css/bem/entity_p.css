@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+p {
+    margin-block: 3ex 0;
+}
+
+/*
+ * Adjusting first block margins
+ */
+* p:first-child,
+h1 + p,
+:root :where(.is-layout-flow) p:first-child,
+:root :where(.is-layout-flow) h1 + p {
+    margin-block-start: 0;
+}
+
+div.columns p {
+    line-height: 3ex;
+    vertical-align: baseline;
+    margin-block-end: 3ex;
+}

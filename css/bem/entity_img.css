@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+.wp-block-column img { width: 100%; }
+
+.cropped.image {
+    background-position:center center;
+    background-repeat:no-repeat;
+    overflow:hidden;
+    margin: 1em auto;
+    background-size: contain;
+    min-width: 100%;
+    min-height: 256px;
+}
+.cropped.image img {
+    min-height:100%;
+    min-width:100%;
+    opacity:0
+}

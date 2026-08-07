@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+hr, .border {
+    border-width: clamp(2px, var(--kemosite-border-width-min), var(--kemosite-border-width-max) );
+}
+
+hr, canvas {
+    margin: 1.5em auto;
+}
+
+hr.wp-block-separator { column-span: all; }
+
+div.wp-block-spacer {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    margin-top: 6ex;
+}

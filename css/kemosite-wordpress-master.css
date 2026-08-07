@@ -1,138 +1,110 @@
 @charset "utf-8";
 
 /** 
- * [GLOBAL CSS VARIABLES]
- */
-
-/** 
  * [MASTER STYLESHEET CONTENTS]
- *
- * Original idea from Smashing Magazine
- * https://www.smashingmagazine.com/2008/05/improving-code-readability-with-css-styleguides/
- * 
- * Augmented by principles of CSS Guidelines
- * https://cssguidelin.es/#table-of-contents
- * 
- * Further expanded into layer structures
- * https://www.smashingmagazine.com/2025/09/integrating-css-cascade-layers-existing-project/
- * 
- * Refer to BEM-like naming for more efficient selectors and to avoid specifity
- * problems. BEM splits components’ classes into three groups:
- *	- Block: The sole root of the component. For example, A table or list
- * 	- Element: A component part of the Block. For example: A table cell or list item
- *	- Modifier: A variant or extension of the Block. Can be based on state or statefulness
- * 	- and looks like: .block__element--modifier
- * 
- * SETTINGS
- * Global...............Globally-available variables and config.
- *
- * TOOLS
- * Mixins...............Useful mixins.
- *
- * GENERIC
- * Normalize.css........A level playing field.
- * Box-sizing...........Better default `box-sizing`.
- *
- * BASE ELEMENTS
- * Headings.............H1–H6 styles.
- *
- * OBJECTS
- * Wrappers.............Wrapping and constraining elements.
- *
- * COMPONENTS
- * Page-head............The main page header.
- * Page-foot............The main page footer.
- * Buttons..............Button elements.
- *
- * UTILITIES AND HELPER CLASSES
- * Text.................Text helpers.
  */
 
-/*----------------------------------------------------------------------------*\
-	[LAYOUTS]
-\*----------------------------------------------------------------------------*/
-
-/**
- * [LAYOUT AND FLEXBOX NOTES]
- * CSS Grids are for LAYOUT, 2 dimensions
- * Define layout grid containers, then place content areas into them.
- * Example:
- * .grid_header 		{ display: grid; grid-template-areas: "grid_header_logo"; }
- * .grid_header_logo 	{ grid-area: grid_header_logo; }
- * Layouts can change according to media query.
- * https://css-tricks.com/snippets/css/complete-guide-grid/
- * 
- * CSS Flexbox is for a BOX, either row or column.
- * Place into a layout grid.
- * https://medium.com/flexbox-and-grids/how-to-efficiently-master-the-css-grid-in-a-jiffy-585d0c213577
- */
-
-/**
- *
- * [Typography]
- * 
- * [VIEWS AND BREAKPOINTS]
- * - Screen (Layout grids defined here)
- * 
- * [Media queries modify layout grids]
- * - Max 80 characters wide, portrait mode, thumb navigation at BOTTOM of screen
- * - Max 80 characters wide, landscape mode, thumb navigation at BOTTOM of screen
- * - 90-150 characters wide, portrait mode, thumb navigation at SIDES of screen
- * - 90-150 characters wide, landscape mode, thumb navigation at BOTTOM of screen
- * - 150+ characters wide, portrait mode, standard navigation
- * - 150+ characters wide, landscape mode, standard navigation
- * 
- * - Print
- * - Speech (not yet implemented)
- * - Ads
- * - Elements
- * - Colour
- * -------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+[RESET]
+---------------------------------------------------------------------*/
+@import "reset.css" layer( reset );
 
 /*-------------------------------------------------------------------
-[LAYERS]
--------------------------------------------------------------------*/
-/* @layer layout, elements, ads, typography, colours; */
+[FOUNDATION]
+---------------------------------------------------------------------*/
+@import "foundation.min.css" layer( foundation );
+@import "foundation-icons/foundation-icons.css" layer( foundation );
 
 /*-------------------------------------------------------------------
-[TYPOGRAPHY]
--------------------------------------------------------------------*/
-@import "kemosite-wordpress-typography.css" all;
+[MEDIA ELEMENT]
+---------------------------------------------------------------------*/
+@import "mediaelementplayer.min.css" layer( mediaelement );
 
 /*-------------------------------------------------------------------
-[COLOURS]
--------------------------------------------------------------------*/
-@import "kemosite-wordpress-colours.css" all;
+[VARIABLES]
+---------------------------------------------------------------------*/
 
-/* [ALL] */
-@import "kemosite-wordpress-layout-all.css" all; /* General variables and settings */
+/* Colors */
+@import "variables/kemosite-wordpress-colours.css" layer( variables );
 
-/* [SCREEN] */
-@import "kemosite-wordpress-layout-screen.css" screen; /* Screen specific variables and settings */
+/* Typography */
+@import "variables/kemosite-wordpress-typography.css" layer( variables );
 
-/* [PRINT] */
-@import "kemosite-wordpress-layout-print.css" print; /* Print specific variables and settings */
+/* Layout */
+@import "variables/kemosite-wordpress-layout.css" layer( variables );
+@import "variables/kemosite-wordpress-layout-screen.css" layer( variables ) screen;
+@import "variables/kemosite-wordpress-layout-print.css" layer( variables ) print;
+@import "variables/kemosite-wordpress-layout-speech.css" layer( variables ) speech;
 
-/* [SPEECH] */
-@import "kemosite-wordpress-layout-speech.css" speech; /* Speech charactistics */
+/*-------------------------------------------------------------------
+[LAYOUT GRID]
+---------------------------------------------------------------------*/
 
+/* [DEFAULTS] */
+@import "layout-grid/kemosite-wordpress-layout-grid.css" layer( layout );
 
-/* [DEVICE, PORTRAIT ORIENTATION] */
+/* [SMALLER SCREEN] */
+@import "layout-grid/kemosite-wordpress-layout-screen-LT80.css" layer( layout ) screen and ( max-width: 80ch );
 
-/* Single Column */
-@import "kemosite-wordpress-layout-screen-LT90-portrait.css" screen and (max-width: 90ch) and (orientation: portrait);
-@import "kemosite-wordpress-layout-screen-LT90-landscape.css" screen and (max-width: 90ch) and (orientation: landscape);
+/* [MEDIUM SCREEN] */
+@import "layout-grid/kemosite-wordpress-layout-screen-80-45-3.css" layer( layout ) screen and ( min-width: 80ch ) and ( max-width: 135ch );
 
-/* 2-Column, Left Sidebar */
-@import "kemosite-wordpress-layout-screen-90-150-portrait.css" screen and (min-width: 90ch) and (max-width: 150ch) and (orientation: portrait);
-@import "kemosite-wordpress-layout-screen-90-150-landscape.css" screen and (min-width: 90ch) and (max-width: 150ch) and (orientation: landscape);
+/* [LARGER SCREEN] */
+@import "layout-grid/kemosite-wordpress-layout-screen-GT45-3.css" layer( layout ) screen and (min-width: 135ch );
 
-/* 3-Column, Both Sidebars */
-@import "kemosite-wordpress-layout-screen-150-portrait.css" screen and (min-width: 150ch) and (orientation: portrait);
-@import "kemosite-wordpress-layout-screen-150-landscape.css" screen and (min-width: 150ch) and (orientation: landscape);
+/*-------------------------------------------------------------------
+[BLOCKS, ELEMENTS, MODIFIERS]
+---------------------------------------------------------------------
+# BEM stands for Block Element Modifier, a popular CSS naming convention
+# developed by the search engine company Yandex to organize, maintain, and scale
+# front-end code.  It divides user interfaces into independent blocks (standalone
+# entities like headers or menus), elements (parts of blocks with no standalone
+# meaning like menu items), and modifiers (flags that change appearance or
+# behavior such as disabled or highlighted).  This methodology uses a strict
+# naming structure of block__element–modifier (e.g., .button--primary) to ensure
+# code is reusable, readable, and free from naming conflicts.
+*/
 
-/* # ADS # */
-@import "kemosite-wordpress-layout-screen-ads.css" screen;
+/* [ENTITIES] */
+@import "bem/entity_html.css" layer( bem );
+@import "bem/entity_body.css" layer( bem );
+@import "bem/entity_h1.css" layer( bem );
+@import "bem/entity_h2.css" layer( bem );
+@import "bem/entity_h3.css" layer( bem );
+@import "bem/entity_h4.css" layer( bem );
+@import "bem/entity_h5.css" layer( bem );
+@import "bem/entity_h6.css" layer( bem );
+@import "bem/entity_table.css" layer( bem );
+@import "bem/entity_blockquote.css" layer( bem );
+@import "bem/entity_p.css" layer( bem );
+@import "bem/entity_li.css" layer( bem );
+@import "bem/entity_a.css" layer( bem );
+@import "bem/entity_button.css" layer( bem );
+@import "bem/entity_label.css" layer( bem );
+@import "bem/entity_figcaption.css" layer( bem );
+@import "bem/entity_main.css" layer( bem );
+@import "bem/entity_footer.css" layer( bem );
+@import "bem/entity_time.css" layer( bem );
+@import "bem/entity_form.css" layer( bem );
+@import "bem/entity_img.css" layer( bem );
+@import "bem/entity_figure.css" layer( bem );
+@import "bem/entity_canvas.css" layer( bem );
+@import "bem/entity_meter.css" layer( bem );
+@import "bem/entity_progress.css" layer( bem );
 
-/* [ELEMENTS] */
-@import "kemosite-wordpress-elements.css" all; /* Common variables and settings */
+/* [CLASSES] */
+@import "bem/class_off-canvas.css" layer( bem );
+@import "bem/class_callout.css" layer( bem );
+@import "bem/class_card.css" layer( bem );
+@import "bem/class_eyebrow.css" layer( bem );
+@import "bem/class_accordian.css" layer( bem );
+@import "bem/class_rules.css" layer( bem );
+@import "bem/class_wp-block-navigation.css" layer( bem );
+@import "bem/class_lazy.css" layer( bem );
+@import "bem/class_logo.css" layer( bem );
+@import "bem/class_tooltip.css" layer( bem );
+@import "bem/class_off-canvas-wrapper.css" layer( bem );
+@import "bem/class_tag-cloud.css" layer( bem );
+@import "bem/class_menu.css" layer( bem );
+@import "bem/class_media-object.css" layer( bem );
+@import "bem/class_flex-container.css" layer( bem );

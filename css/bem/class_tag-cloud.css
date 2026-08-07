@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+div.tag-cloud {
+	text-align: center;
+}
+
+.tag-cloud-link {
+    border-radius: 1em;
+    display: inline-block;
+    margin: .25em;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0em .5em;
+}

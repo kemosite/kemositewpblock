@@ -1,0 +1,90 @@
+@charset "utf-8";
+
+ul, ol {
+    margin-block: 3ex 0;
+    line-height: 1;
+    list-style-position: outside;
+    padding-left: 1em;
+}
+
+/*
+ * Adjusting first block margins
+ */
+* ul:first-child, * ol:first-child,
+h1 + ul, h1 + ol,
+h2 + ul, h2 + ol,
+h3 + ul, h3 + ol,
+h4 + ul, h4 + ol,
+h5 + ul, h5 + ol,
+h6 + ul, h6 + ol,
+:root :where(.is-layout-flow) ul:first-child, :root :where(.is-layout-flow) ol:first-child,
+:root :where(.is-layout-flow) h1 + ul, :root :where(.is-layout-flow) h1 + ol,
+:root :where(.is-layout-flow) h2 + ul, :root :where(.is-layout-flow) h2 + ol,
+:root :where(.is-layout-flow) h3 + ul, :root :where(.is-layout-flow) h3 + ol,
+:root :where(.is-layout-flow) h4 + ul, :root :where(.is-layout-flow) h4 + ol,
+:root :where(.is-layout-flow) h5 + ul, :root :where(.is-layout-flow) h5 + ol,
+:root :where(.is-layout-flow) h6 + ul, :root :where(.is-layout-flow) h6 + ol {
+    margin-block-start: 0;
+}
+
+ul.wp-block-navigation-submenu {
+    padding: 1ex 1ch;
+    margin-left: 1ch;
+}
+
+ul.page-numbers { text-align: center; }
+
+ol.flex-control-thumbs {
+    display:flex;
+    justify-content: center;
+}
+ol.flex-control-thumbs li {
+    list-style-type: none;
+    margin: 1em;
+}
+
+ul.wp-block-navigation > li.menu-item,
+ul.wp-block-navigation > li.menu-item > ul.wp-block-navigation-submenu,
+ul.wp-block-navigation-submenu > li.menu-item,
+ul.wp-block-navigation > li.wp-block-navigation-item,
+ul.wp-block-navigation > li.wp-block-navigation-item > ul.wp-block-navigation-submenu,
+ul.wp-block-navigation-submenu > li.wp-block-navigation-item
+{ margin: 0 }
+
+li {
+	margin-block: 3ex 3ex;
+	line-height: 3ex;
+}
+
+li.categories {
+    list-style: none;
+}
+
+li.jetpack-social-widget-item {
+    list-style: none;
+    display: inline-block;
+}
+
+ul.accordian li.accordian-item {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-left: 0 !important;
+}
+
+li.menu-item a,
+li.menu-item > a,
+li.menu-item > a:link,
+li.wp-block-navigation-item a,
+li.wp-block-navigation-item > a,
+li.wp-block-navigation-item > a:link,
+div.wp-block-navigation__responsive-container-content > ul.wp-block-navigation__container > li.wp-block-navigation-item > a.wp-block-navigation-item__content {
+    padding: 1ex 1em;
+    display: flex;
+    align-items: center;
+}
+
+.footer-menu li {
+    margin: 0 !important;
+    display: inline-block;
+    padding: 0 1em;
+}

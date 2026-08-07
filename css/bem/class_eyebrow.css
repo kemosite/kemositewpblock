@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+ul.eyebrow-headline {
+    list-style-type: none;
+    padding: 0; margin: 0;
+}
+ul.eyebrow-headline li:first-child {
+    margin: 0;
+    display: block;
+}
+ul.eyebrow-headline li {
+    display: none;
+}
+
+ul.eyebrow-headline li a { color: var(--kemosite_wordpress_component_font_colour) }

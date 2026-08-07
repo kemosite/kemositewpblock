@@ -1,0 +1,4 @@
+@charset "utf-8";
+
+.accordion-title, .accordion-content { border-bottom: 1px }
+.accordion-content { border-top: 0; }

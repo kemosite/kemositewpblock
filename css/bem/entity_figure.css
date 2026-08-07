@@ -1,0 +1,6 @@
+@charset "utf-8";
+
+figure.wp-block-post-featured-image {
+    margin: 0ex 3ch 1ex 0;
+    width: clamp( 25%, 100%, 33% );
+}

@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+.callout, .callout.primary {
+    background-color: var(--kemosite_wordpress_body_background_color);
+    border: 1px solid var(--kemosite_wordpress_component_colour);
+    border-radius: .25rem;
+    color: var(--kemosite_wordpress_body_color);
+}
+
+.callout.secondary {
+    background-color: #fff;
+    border: 1px solid var(--kemosite_wordpress_secondary_colour);
+    margin: 2em auto;
+}

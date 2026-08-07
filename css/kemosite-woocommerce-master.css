@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /*-------------------------------------------------------------------
-[TYPOGRAPHY]
+[WOOCOMMERCE]
 -------------------------------------------------------------------*/
-@import "woocommerce-typography.css";
-
+@import "woocommerce-typography.css" layer( woocommerce );
+@import "woocommerce-colors.css" layer( woocommerce );

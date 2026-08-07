@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+table {
+	margin-top: 3ex;
+	width: var(--kemosite-line-length);
+}
+
+table,
+table thead,
+table thead tr,
+table tbody,
+table tbody tr,
+table tfoot,
+table tfoot tr {
+	border: 1px solid var(--kemosite_wordpress_body_color);
+	color: var(--kemosite_wordpress_body_color);
+}
+
+table,
+table thead,
+table thead tr,
+table tbody,
+table tbody tr,
+table tbody tr:nth-child(odd),
+table tfoot,
+table tfoot tr {
+	background-color: oklch( 0% 0% 0 / 0);
+}
+
+table tbody tr:nth-child(even) {
+	background-color: oklch( 100% 0% 0 / 0.1);
+}
+
+table thead tr th {
+	position: sticky;
+	top: 0;
+}
+
+table tr td.label {
+  display: table-cell;
+  color: inherit;
+  background: inherit;
+  font-size: inherit;
+  font-weight: 600;
+}

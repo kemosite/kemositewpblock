@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+:root {
+
+    --kemosite-base-x-height-ratio: 0.5; /* 1ex / 1rem */
+    --kemosite-base-standard-contrast: 0.53;
+    --kemosite-base-arc-minutes: 7; /* 6 arc minutes per letter + 1 arc minute of negative space */
+    --kemosite-visual-zone-degrees: 30; /* Preferable visual zone, in degrees, for a monitor. */
+    --kemosite-font-size: clamp( 1rem, 0.7vmin, 0.7vmax ); /* Always start from device base size as minimum */
+    --kemosite-min-line-length: 26.7vmin;
+    --kemosite-ideal-line-length: 53.3vmin;
+    --kemosite-max-line-length: 80ch;
+    --kemosite-line-length: clamp( var(--kemosite-min-line-length), var(--kemosite-ideal-line-length), var(--kemosite-max-line-length) );
+    --kemosite-border-size: 0.1vmin; /* % per arc minute  */
+    --kemosite-border: solid;
+
+}
+
+@supports ( calc( 1ex / 1rem ) ) {
+    --kemosite-base-x-height-ratio: calc( 1ex / 1rem );
+}
+
+@media screen and (prefers-contrast: more) {
+    
+    :root {
+        --kemosite-border-size: 0.2vmin; /* Double standard border size  */
+        --kemosite-visual-zone-degrees: 45; /* Acceptable visual zone, in degrees, for a monitor. */
+        --kemosite-base-arc-minutes: 8; /* 7 arc minutes per letter + 1 arc minute of negative space */
+    }
+    
+}
+
+@media screen and (prefers-contrast: less) {
+    :root {
+        --kemosite-border-size: 0.05vmin; /* Half standard border size  */
+        --kemosite-visual-zone-degrees: 15; /* Visual zone, in degrees. */
+        --kemosite-base-arc-minutes: 6; /* 5 arc minutes per letter + 1 arc minute of negative space */
+    }
+
+}
+
+:root {
+
+    --kemosite-vmin-one-degree-arc: calc( 100vmin / var(--kemosite-preferable-visual-zone-degrees) );
+    --kemosite-vmax-one-degree-arc: calc( 100vmax / var(--kemosite-acceptable-visual-zone-degrees) );
+    --kemosite-one-degree-arc-min: min( var(--kemosite-vmin-one-degree-arc), var(--kemosite-vmax-one-degree-arc) );
+    --kemosite-one-degree-arc-max: max( var(--kemosite-vmin-one-degree-arc), var(--kemosite-vmax-one-degree-arc) );
+    --kemosite-border-width-min: var(--kemosite-one-degree-arc-min);
+    --kemosite-border-width-max: var(--kemosite-one-degree-arc-max);
+
+    font-size: var(--kemosite-font-size);
+    font-weight: 400; /* Normal, book weight */
+    font-size-adjust: ex-height from-font;
+    widows: 2;
+    orphans: 2;
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: none;
+    font-kerning: auto;
+    hyphens: none;
+    letter-spacing: .1ch;
+
+    /* 100vmin / 80ch max = 1.25vmin */
+    --kemosite-h1-font-size: clamp( 3.981rem, calc(3.981rem + 1.25vmin), 6.310rem );
+    --kemosite-h2-font-size: clamp( 2.512rem, calc(2.512rem + 1.25vmin), 3.981rem );
+    --kemosite-h3-font-size: clamp( 1.585rem, calc(1.585rem + 1.25vmin), 2.512rem );
+    --kemosite-h4-font-size: clamp( 1rem, calc(1rem + 1.25vmin), 1.585rem );
+    --kemosite-h5-font-size: 1rem;
+    --kemosite-h6-font-size: clamp( 0.7vmin, 1.95vmin, 1rem);
+
+}
+
+::spelling-error {
+    text-decoration: underline wavy red;
+}
+
+::grammar-error {
+    text-decoration: underline wavy orange;
+}
+
+body {
+    --wp--preset--font-size--x-large: var(--kemosite-h1-font-size);
+    --wp--preset--font-size--large: var(--kemosite-h2-font-size);
+    --wp--preset--font-size--medium: var(--kemosite-h3-font-size);
+    --wp--preset--font-size--small: var(--kemosite-h6-font-size);
+}
+
+/* FONT FAMILIES */
+.font-open-sans {
+    font-family: var(--wp--preset--font-family--open-sans), Arial, sans-serif, system-ui;
+    font-size-adjust: ex-height from-font;
+}
+
+.font-oswald {
+    font-family: var(--wp--preset--font-family--oswald), Arial, sans-serif, system-ui;
+    font-size-adjust: ex-height from-font;
+}
+
+.font-modern_pictogramsnormal {
+    font-family: 'modern_pictogramsnormal', Fantasy;
+    font-size-adjust: ex-height from-font;
+}
+
+div.font-optician-sans {
+    font-family: var(--wp--preset--font-family--optician-sans), Georgia, Arial, sans-serif, system-ui;
+    font-size: 2rem;
+}

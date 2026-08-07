@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+ul.wp-block-navigation > li.menu-item,
+ul.wp-block-navigation > li.menu-item > ul.wp-block-navigation-submenu,
+ul.wp-block-navigation-submenu > li.menu-item,
+ul.wp-block-navigation > li.wp-block-navigation-item,
+ul.wp-block-navigation > li.wp-block-navigation-item > ul.wp-block-navigation-submenu,
+ul.wp-block-navigation-submenu > li.wp-block-navigation-item
+{ margin: 0 }
+
+li.menu-item a,
+li.menu-item > a,
+li.menu-item > a:link,
+li.wp-block-navigation-item a,
+li.wp-block-navigation-item > a,
+li.wp-block-navigation-item > a:link,
+div.wp-block-navigation__responsive-container-content > ul.wp-block-navigation__container > li.wp-block-navigation-item > a.wp-block-navigation-item__content {
+    padding: 1ex 1em;
+    display: flex;
+    align-items: center;
+}
+
+ul.wp-block-navigation li.wp-block-navigation-item a:hover,
+ul.wp-block-navigation li.wp-block-navigation-item.is-active > a,
+ul.wp-block-navigation li.wp-block-navigation-item.is-active > a:link {
+    background-color: var(--kemosite_wordpress_component_colour);
+    color: var(--kemosite-base-black);
+}
+
+.dropdown.menu li.is-active > a { color: var(--kemosite-base-black); }
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after { border-color: var(--kemosite_wordpress_component_colour) transparent transparent; }
+.is-dropdown-submenu .is-dropdown-submenu-parent.opens-right > a::after { border-color: transparent transparent transparent var(--kemosite_wordpress_component_colour); }

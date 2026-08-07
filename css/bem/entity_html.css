@@ -1,0 +1,5 @@
+html {
+    font-family: var(--wp--preset--font-family--open-sans), Arial, sans-serif, system-ui;
+    font-size-adjust: ex-height from-font;
+    scroll-behavior: smooth;
+}

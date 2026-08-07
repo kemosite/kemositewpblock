@@ -76,15 +76,37 @@ window.addEventListener("DOMContentLoaded", function() {
 
 	try {
 
+		/*
+		/(a+)+$/.test(
+		"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+
+		"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+
+		"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+
+		"aaaaaaaaaaaaaaa!"
+		); // Sensitive
+		
+		/((?=(a+))\2)+$/.test(
+		"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+
+		"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+
+		"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+
+		"aaaaaaaaaaaaaaa!"
+		); // Compliant
+		*/
+
+
+
 		// LCH RegEx
 		// let lchRegEx = /oklch\(([0-9]*\.[0-9]+) [0-9]*\.[0-9]+ [0-9]*\.[0-9]+\)/i;
-		let lchRegEx = /oklch\(([0-9]*(?:[.0-9]+)) [0-9]*(?:[.0-9]+) [0-9]*(?:[.0-9]+)\)/i;
+		// let lchRegEx = /oklch\(([0-9]*(?:[.0-9]+)) [0-9]*(?:[.0-9]+) [0-9]*(?:[.0-9]+)\)/i;
+		let lchRegEx = /^oklch\(([0-9]*(?:[.0-9]+)) [0-9]*(?:[.0-9]+) [0-9]*(?:[.0-9]+)\)$/i;
 		let rootVariables = document.documentElement;
-		let bodyVariables = getComputedStyle( document.body );
 
 		// Body Background Colour
+		let bodyVariables = getComputedStyle( document.body );
 		let bodyBackgroundColour = bodyVariables.getPropertyValue("background-color");
-		let bodyBackgroundColourLCHArray = bodyBackgroundColour.match(lchRegEx);
+		document.body.setAttribute('style', 'background-color: oklch( from ' + bodyBackgroundColour + ' l c h) !important');
+		let convertedBodyVariables = getComputedStyle( document.body );
+		let convertedBodyBackgroundColour = convertedBodyVariables.getPropertyValue("background-color");
+		let bodyBackgroundColourLCHArray = convertedBodyBackgroundColour.match(lchRegEx);
 		let bodyBackgroundColourLum = bodyBackgroundColourLCHArray[1] * 100;
 		
 		// Body Font Colour
@@ -94,7 +116,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		// Header Colour
 		let headerBackgroundSelector = document.querySelector( "div.kemosite-grid-area-section" );
 		let headerBackgroundColour = getComputedStyle( headerBackgroundSelector ).getPropertyValue("background-color");
-		headerBackgroundSelector.setAttribute('style', 'background-color: oklch( from ' + headerBackgroundColour + ' l c h) !important');
+		// headerBackgroundSelector.setAttribute('style', 'background-color: oklch( from ' + headerBackgroundColour + ' l c h) !important');
 		let lchHeaderBackgroundColour = getComputedStyle( headerBackgroundSelector ).getPropertyValue("background-color");
 		let headerBackgroundColourLCHArray = lchHeaderBackgroundColour.match(lchRegEx);
 		let headerBackgroundColourLum = headerBackgroundColourLCHArray[1] * 100;
@@ -127,7 +149,10 @@ window.addEventListener("DOMContentLoaded", function() {
 		// Footer Colour
 		let footerBackgroundSelector = document.querySelector( "div.kemosite-grid-area-footer" );
 		let footerBackgroundColour = getComputedStyle( footerBackgroundSelector ).getPropertyValue("background-color");
-		let footerBackgroundColourLCHArray = footerBackgroundColour.match(lchRegEx);
+		footerBackgroundSelector.setAttribute('style', 'background-color: oklch( from ' + footerBackgroundColour + ' l 0 0 ) !important');
+		let convertedFooterBackgroundSelector = document.querySelector( "div.kemosite-grid-area-footer" );
+		let convertedFooterBackgroundColour = getComputedStyle( convertedFooterBackgroundSelector ).getPropertyValue("background-color");
+		let footerBackgroundColourLCHArray = convertedFooterBackgroundColour.match(lchRegEx);
 		let footerBackgroundColourLum = footerBackgroundColourLCHArray[1] * 100;
 
 		// Footer Font Colour
@@ -135,9 +160,12 @@ window.addEventListener("DOMContentLoaded", function() {
 		document.body.style.setProperty("--kemosite_wordpress_footer_font_color", footerFontColour);
 
 		// Primary Colour via Swatch
-		let primaryBackgroundSelector = document.querySelector( "div.swatch-kemosite-wordpress-base-primary-colour" );
+		let primaryBackgroundSelector = document.querySelector( "#swatch-kemosite-wordpress-base-primary-colour" );
 		let lchPrimaryBackgroundColour = getComputedStyle( primaryBackgroundSelector ).getPropertyValue("background-color");
-		let primaryBackgroundColourLCHArray = lchPrimaryBackgroundColour.match(lchRegEx);
+		primaryBackgroundSelector.setAttribute('style', 'background-color: oklch( from ' + lchPrimaryBackgroundColour + ' l c h ) !important');
+		let convertedPrimaryBackgroundSelector = document.querySelector( "#swatch-kemosite-wordpress-base-primary-colour" );
+		let convertedLchPrimaryBackgroundColour = getComputedStyle( convertedPrimaryBackgroundSelector ).getPropertyValue("background-color");
+		let primaryBackgroundColourLCHArray = convertedLchPrimaryBackgroundColour.match(lchRegEx);
 		let primaryBackgroundColourLum = primaryBackgroundColourLCHArray[1] * 100;
 
 		// Evaluate relative luminance between Primary and Body Background
@@ -161,13 +189,16 @@ window.addEventListener("DOMContentLoaded", function() {
 
 		// Primary Font Colour
 		let primaryFontColour = primaryBackgroundColourLum >= 50 ? 'var(--kemosite-base-black)' : 'var(--kemosite-cool-white)';
-		document.body.style.setProperty("--kemosite_wordpress_component_font_colour", footerFontColour);
-		document.body.style.setProperty("--kemosite_wordpress_selection_font_colour", footerFontColour);
+		document.body.style.setProperty("--kemosite_wordpress_component_font_colour", primaryFontColour);
+		document.body.style.setProperty("--kemosite_wordpress_selection_font_colour", primaryFontColour);
 
 		// Secondary Colour via Swatch
-		let secondaryBackgroundSelector = document.querySelector( "div.swatch-kemosite-wordpress-secondary-colour" );
+		let secondaryBackgroundSelector = document.querySelector( "#swatch-kemosite-wordpress-secondary-colour" );
 		let lchSecondaryBackgroundColour = getComputedStyle( secondaryBackgroundSelector ).getPropertyValue("background-color");
-		let secondaryBackgroundColourLCHArray = lchSecondaryBackgroundColour.match(lchRegEx);
+		secondaryBackgroundSelector.setAttribute('style', 'background-color: oklch( from ' + lchSecondaryBackgroundColour + ' l c h ) !important');
+		let convertedSecondaryBackgroundSelector = document.querySelector( "#swatch-kemosite-wordpress-secondary-colour" );
+		let convertedLchSecondaryBackgroundColour = getComputedStyle( convertedSecondaryBackgroundSelector ).getPropertyValue("background-color");
+		let secondaryBackgroundColourLCHArray = convertedLchSecondaryBackgroundColour.match(lchRegEx);
 		let secondaryBackgroundColourLum = secondaryBackgroundColourLCHArray[1] * 100;
 
 		// Evaluate relative luminance between Primary and Body Background

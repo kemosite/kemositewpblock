@@ -85,22 +85,3 @@ div.colour-swatch-test {
 -->
 
 </div>
-
-<script>
-
-window.addEventListener("DOMContentLoaded", function() {
-	
-	/*
-	document.querySelectorAll(".swatch-test-value").forEach( test => {
-		console.log( "Colour Swatch Test:" );
-		let bgColour = getComputedStyle( test ).getPropertyValue("background-color");
-		console.log( bgColour );
-		let re = /(?<=lab\()\d+(\.\d+)?/gmi;
-		let reArray = re.exec( bgColour );
-		console.log( reArray[0] );
-	});
-	*/
-	
-});
-
-</script>

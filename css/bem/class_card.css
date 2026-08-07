@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+.card { 
+	height: 100%;
+	padding: 1ex 1ch;
+}
+
+.wp-block-column .card { border: none; }

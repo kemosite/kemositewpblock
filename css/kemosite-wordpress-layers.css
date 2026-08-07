@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+/*-------------------------------------------------------------------
+[LAYERS]
+---------------------------------------------------------------------
+# This is useful because the initial order in which layers are declared
+# indicates which layer has precedence. As with declarations, the last layer 
+# takes the most precedence.
+*/
+@layer reset, foundation, mediaelement, variables, layout, bem, woocommerce, learnpress;

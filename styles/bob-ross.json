@@ -1,0 +1,81 @@
+{
+	"version": 2,
+	"title": "Bob Ross Palette",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"color": "#a2264b",
+					"name": "Alizarin Crimson",
+					"slug": "alizarin-crimson"
+				},
+				{
+					"color": "#d60137",
+					"name": "Light Red",
+					"slug": "light-red"
+				},
+				{
+					"color": "#f9fd5e",
+					"name": "Cadmium Yellow",
+					"slug": "cadmium-yellow"
+				},
+				{
+					"color": "#6e3637",
+					"name": "Dark Sienna",
+					"slug": "dark-sienna"
+				},
+				{
+					"color": "#f8b800",
+					"name": "Indian Yellow",
+					"slug": "indian-yellow"
+				},
+				{
+					"color": "#252529",
+					"name": "Midnight Black",
+					"slug": "midnight-black"
+				},
+				{
+					"color": "#20242d",
+					"name": "Mountain Mix",
+					"slug": "mountain-mix"
+				},
+				{
+					"color": "#014c8e",
+					"name": "Phthalo Blue",
+					"slug": "phthalo-blue"
+				},
+				{
+					"color": "#027357",
+					"name": "Phthalo Green",
+					"slug": "phthalo-green"
+				},
+				{
+					"color": "#024c6f",
+					"name": "Prussian Blue",
+					"slug": "prussian-blue"
+				},
+				{
+					"color": "#455c28",
+					"name": "Sap Green",
+					"slug": "sap-green"
+				},
+				{
+					"color": "#ffffff",
+					"name": "Titanium White",
+					"slug": "titanium-white"
+				},
+				{
+					"color": "#50292e",
+					"name": "Vandyke Brown",
+					"slug": "vandyke-brown"
+				},
+				{
+					"color": "#bd6207",
+					"name": "Yellow Ochre",
+					"slug": "yellow-ochre"
+				}
+			]
+		}
+	},
+	"styles": {}
+}

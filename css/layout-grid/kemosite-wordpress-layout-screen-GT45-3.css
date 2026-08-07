@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+:root {
+	--layout: "screen-GT45-3";
+}
+
+.kemosite-grid-layout {
+	grid-template-columns: minmax( var(--kemosite-min-line-length), var(--kemosite-ideal-line-length) ) minmax( var(--kemosite-ideal-line-length), 1fr ) minmax( var(--kemosite-min-line-length), var(--kemosite-ideal-line-length) );
+	grid-template-rows: auto minmax(15ex, 33vh) auto auto;
+	grid-gap: 1ex 1em;
+	grid-template-areas:
+		"kemosite-grid-area-menu			kemosite-grid-area-menu		kemosite-grid-area-menu"
+		"kemosite-grid-area-section			kemosite-grid-area-section	kemosite-grid-area-section"
+		"kemosite-grid-area-left-sidebar	kemosite-grid-area-main		kemosite-grid-area-right-sidebar"
+		"kemosite-grid-area-footer			kemosite-grid-area-footer	kemosite-grid-area-footer";
+}

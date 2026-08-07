@@ -51,8 +51,6 @@ function kemosite_wordpress_resource_hints($hints, $relation_type) {
 	);
 
     $prefetch_style = array(
-    	'the-new-css-reset',
-    	'foundation',
 		'kemosite-master-styles',
 	);
 

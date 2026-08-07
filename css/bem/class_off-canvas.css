@@ -1,0 +1,5 @@
+@charset "utf-8";
+
+.off-canvas {
+    background-color: var(--kemosite_wordpress_placeholder_color);
+}

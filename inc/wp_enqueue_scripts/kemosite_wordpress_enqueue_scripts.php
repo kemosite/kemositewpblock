@@ -10,6 +10,13 @@ function kemosite_wordpress_enqueue_scripts() {
 	$custom_fields = get_post_custom();
 	$theme_version = "6.8.3.3";
 
+	// Performance, if Debug is true
+	if ( WP_DEBUG ):
+		wp_deregister_script('kemosite-performance-observer');
+		wp_register_script('kemosite-performance-observer', get_template_directory_uri() . '/js/kemosite-performance-observer.js', array(), $theme_version, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_enqueue_script('kemosite-performance-observer');
+	endif;
+
 	// Lazy Load Images
 	wp_deregister_script('kemosite-lazy-load-images');
 	wp_register_script('kemosite-lazy-load-images', get_template_directory_uri().'/js/kemosite-lazy-load-images.js', array(), $theme_version );
@@ -17,47 +24,31 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	// Accessibility enhancements
 	wp_deregister_script('kemosite-wordpress-theme-accessibility');
-	wp_register_script('kemosite-wordpress-theme-accessibility', get_template_directory_uri() . '/js/accessibility.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'defer' ) );
+	wp_register_script('kemosite-wordpress-theme-accessibility', get_template_directory_uri() . '/js/accessibility.js', array(), $theme_version, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	wp_enqueue_script('kemosite-wordpress-theme-accessibility');
 
 	// Font Colours
+	/*
 	wp_deregister_script('kemosite-wordpress-font-colours');
-	wp_register_script('kemosite-wordpress-font-colours', get_template_directory_uri() . '/js/kemosite-wordpress-font-colours.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'defer' ) );
+	wp_register_script('kemosite-wordpress-font-colours', get_template_directory_uri() . '/js/kemosite-wordpress-font-colours.js', array(), $theme_version, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	wp_enqueue_script('kemosite-wordpress-font-colours');
-
-	// URL Handler
-	// wp_deregister_script('kemosite-url-handler');
-	// wp_register_script('kemosite-url-handler', get_template_directory_uri().'/js/kemosite-url-handler.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'defer' ) );
-	// wp_enqueue_script('kemosite-url-handler');
-
-	// Typography
-	// wp_deregister_script('kemosite-typography-orphans');
-	// wp_register_script('kemosite-typography-orphans', get_template_directory_uri().'/js/kemosite-typography-orphans.js', array(), $theme_version, array( 'footer' => true ) );
-	// wp_enqueue_script('kemosite-typography-orphans');
-
-	/* wp_add_inline_script( 'kemosite-typography-orphans', '
-		document.addEventListener("DOMContentLoaded", (event) => {
-			document.fonts.ready.then( function() {
-				kemosite_typography_orphans.init();
-			});
-		});
-	'); */
+	*/
 
 	// Foundation JS Files
 	wp_deregister_script('jquery');
-	wp_register_script('jquery', get_template_directory_uri().'/js/vendor/jquery.min.js', array(), '3.7.1', array( 'footer' => true ) );
+	wp_register_script('jquery', get_template_directory_uri().'/js/vendor/jquery.min.js', array(), '3.7.1', array( 'in_footer' => true ) );
 	wp_enqueue_script('jquery');
 
 	wp_deregister_script('foundation-what-input');
-	wp_register_script('foundation-what-input', get_template_directory_uri().'/js/vendor/what-input.min.js', array(), '5.2.12', array( 'footer' => true, 'strategy' => 'async' ) );
+	wp_register_script('foundation-what-input', get_template_directory_uri().'/js/vendor/what-input.min.js', array(), '5.2.12', array( 'in_footer' => true, 'strategy' => 'async' ) );
 	wp_enqueue_script('foundation-what-input');
 
 	wp_deregister_script('foundation');
-	wp_register_script('foundation', get_template_directory_uri().'/js/vendor/foundation.min.js', array('jquery'), '6.8.1', array( 'footer' => true ) );
+	wp_register_script('foundation', get_template_directory_uri().'/js/vendor/foundation.min.js', array('jquery'), '6.8.1', array( 'in_footer' => true ) );
 	wp_enqueue_script('foundation');
 
 	wp_deregister_script('foundation-app');
-	wp_register_script('foundation-app', get_template_directory_uri().'/js/app.js', array('foundation'), '6.8.1', array( 'footer' => true, 'strategy' => 'defer' ) );
+	wp_register_script('foundation-app', get_template_directory_uri().'/js/app.js', array('foundation'), '6.8.1', array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	wp_enqueue_script('foundation-app');
 
 	// Load Graph.js if declared in page Custom Fields
@@ -81,22 +72,24 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	// Mediaelement
 	wp_deregister_script('mediaelement');
-	wp_register_script('mediaelement', get_template_directory_uri().'/js/vendor/mediaelement-and-player.min.js', array(), '7.0.5', array( 'footer' => true, 'strategy' => 'async' ) );
+	wp_register_script('mediaelement', get_template_directory_uri().'/js/vendor/mediaelement-and-player.min.js', array(), '7.0.5', array( 'in_footer' => true, 'strategy' => 'async' ) );
 	wp_enqueue_script('mediaelement');
 
 	// Underscores Navigation
 	wp_deregister_script('kemosite-wordpress-theme-navigation');
-	wp_register_script('kemosite-wordpress-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'async' ) );
+	wp_register_script('kemosite-wordpress-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $theme_version, array( 'in_footer' => true, 'strategy' => 'async' ) );
 	wp_enqueue_script('kemosite-wordpress-theme-navigation');
 
 	wp_deregister_script('kemosite-wordpress-theme-skip-link-focus-fix');
-	wp_register_script('kemosite-wordpress-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'async' ) );
+	wp_register_script('kemosite-wordpress-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), $theme_version, array( 'in_footer' => true, 'strategy' => 'async' ) );
 	wp_enqueue_script('kemosite-wordpress-theme-skip-link-focus-fix');
 
 	// Gtag
+	/*
 	wp_deregister_script('kemosite-wordpress-theme-gtag');
-	wp_register_script('kemosite-wordpress-theme-gtag', get_template_directory_uri() . '/js/gtag.js', array(), $theme_version, array( 'footer' => true, 'strategy' => 'defer' ) );
+	wp_register_script('kemosite-wordpress-theme-gtag', get_template_directory_uri() . '/js/gtag.js', array(), $theme_version, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	wp_enqueue_script('kemosite-wordpress-theme-gtag');
+	*/
 		
 	// Add menus
 	// add_action( 'init', 'register_my_menus' );	
@@ -108,7 +101,7 @@ function kemosite_wordpress_enqueue_scripts() {
 	add_filter('the_generator', 'remove_version_info');
 	*/
 
-	if ( defined( KEMOSITE_ENABLE_SRI )&& KEMOSITE_ENABLE_SRI == true ):
+	if ( defined( KEMOSITE_ENABLE_SRI ) && KEMOSITE_ENABLE_SRI == true ):
 		add_filter( 'script_loader_tag', 'kemosite_wordpress_enqueue_scripts_sri', 10, 3 );
 	endif;
 
@@ -120,14 +113,6 @@ function kemosite_wordpress_enqueue_scripts_sri( $html, $handle, $src ) {
 	// The values have to be re-calculated for each server location.
 	// For this reason, a PHP function to calculate this every time now makes more sense.
 
-	/*
-	echo "<pre>";
-	print_r( 'hash: ' );
-	print_r( kemosite_wordpress_calculate_sri( $src ) );
-	echo "<br><br>";
-	echo "</pre>";
-	*/
-
 	$sri = array(
 		'jquery',
 		'foundation',
@@ -136,7 +121,6 @@ function kemosite_wordpress_enqueue_scripts_sri( $html, $handle, $src ) {
 		'kemosite-wordpress-theme-accessibility',
 		'kemosite-wordpress-theme-gtag',
 		'chart-js-config',
-		// 'kemosite-url-handler',
 		'mediaelement',
 	  	'kemosite-wordpress-theme-navigation',
 	  	'kemosite-wordpress-theme-skip-link-focus-fix',
@@ -146,7 +130,8 @@ function kemosite_wordpress_enqueue_scripts_sri( $html, $handle, $src ) {
 	);
 
 	if ( in_array( $handle, $sri ) ):
-		$html = str_replace( '></script>', ' integrity="' . kemosite_wordpress_calculate_sri( $src ) . '" crossorigin="anonymous"></script>', $html );
+		// $html = str_replace( '></script>', ' integrity="' . kemosite_wordpress_calculate_sri( $src ) . '" crossorigin="anonymous"></script>', $html );
+		$html = str_replace( '<script ', '<script nonce="' . csp_get_nonce() . '" crossorigin="anonymous" ', $html );
 		return $html;
 	else:
 		return $html;

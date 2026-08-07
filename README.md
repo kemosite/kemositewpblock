@@ -3,8 +3,8 @@
 === kemositewpblock ===
 Contributors: Kevin Montgomery
 Requires at least: 6.0
-Tested up to: 6.8.3
-Requires PHP: 5.7
+Tested up to: 7.0.3
+Requires PHP: 8.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Changelog ==
+
+= 7.0.3.1 =
+- Includes Optician Sans font
+- New BEM-style layers, entities and class structures
+- theme.json compiler
 
 = 6.9.4.1 =
 - Updated default colour for 2026

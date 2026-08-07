@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+/** [MENU STYLES] **/
+
+/* [Mobile Menu] */
+.main_mobile_menu {
+    width: 100vw;
+    background-color: white;
+    z-index: 10;
+    top: 0;
+    display: flex;
+}
+
+/* [Screen Menu] */
+.main_screen_menu {
+    width: 100%;
+    top: 0;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+}
+.section h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.section.header {
+    height: 100%;
+}
+ul.curriculum-sections li.section {
+    display: block;
+}
+
+.the.exerpt img { width: 100%; }
+
+/* [Desktop Menu] */
+.dropdown.menu,
+.menu.nested {margin-left: 0 }
+.menu li {
+    font-weight: bold;
+    margin: 0 !important;
+}
+.menu .nested li { font-weight: normal; }
+
+.off-canvas-menu > li > a,
+.off-canvas-menu .sub-menu > li > a {
+    border-bottom: 1px solid;
+}

@@ -1,9 +1,5 @@
 @charset "utf-8";
 
-:root {
-	--golden_ratio: 1.618;
-}
-
 .speech {
 
 	position:absolute;

@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+iframe.youtube-player { width: 100%; }
+
+.media-object {
+	width: 100%;
+	margin: auto;
+}
+.media-object .thumbnail {
+	background-position:center center;
+    background-repeat:no-repeat;
+    overflow:hidden;
+    max-width: 100%;
+    max-height: 100%;
+    background-size: cover;
+    min-height: var(--touch-target-size);
+	min-width: var(--touch-target-size);
+	margin: minmax( var(--touch-target-separation), 1ex ) minmax( var(--touch-target-separation), 1ch );
+}
+.media-object .thumbnail img { 
+	min-height:100%;
+    min-width:100%;
+    opacity:0;
+}
+

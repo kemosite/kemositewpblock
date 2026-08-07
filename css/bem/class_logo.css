@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.mobile.logo.position {
+	display: flex;
+	height: 7ch;
+	width: 100%;
+	justify-content: center;
+	text-align: center;
+	margin: 1em 0;
+}
+
+.logo.position img {
+	height: 5ch;
+	margin: 0 !important;
+}
+
+.mobile.logo.position a {
+	display: flex;
+	justify-content: center;
+}
+
+.mobile.logo.position img {
+	height: 100%;
+	width: inherit;
+}

@@ -1,0 +1,389 @@
+@charset "utf-8";
+
+/* No preferences */
+:root {
+
+	--element-transition-time: 125ms;
+
+	/* Base Primary Colour and Chroma */
+	--kemosite_wordpress_base_primary_colour: oklch( from var(--wp--preset--color--custom-cloud-dancer-2026) l c h );
+	--kemosite_wordpress_base_background_colour: oklch( from var(--kemosite_wordpress_base_primary_colour) 83.18% c h );
+	--kemosite_wordpress_base_foreground_colour: oklch( from var(--kemosite_wordpress_base_primary_colour) 16.82% c h );	
+
+	/* Reduced Values */
+	--kemosite_wordpress_base_primary_reduced_red: color( from var(--kemosite_wordpress_base_primary_colour) srgb calc(r / 2) g b );
+	--kemosite_wordpress_base_primary_reduced_blue: color( from var(--kemosite_wordpress_base_primary_colour) srgb r g calc( b / 2 ) );
+
+	/* Colour Values */
+	--kemosite_wordpress_base_primary_red_value: color( from var(--kemosite_wordpress_base_primary_colour) srgb r r r );	
+	--kemosite_wordpress_base_primary_green_value: color( from var(--kemosite_wordpress_base_primary_colour) srgb g g g );
+	--kemosite_wordpress_base_primary_blue_value: color( from var(--kemosite_wordpress_base_primary_colour) srgb b b b );
+
+	/* Greyscale */
+	--kemosite_wordpress_base_primary_luminance: oklch( from var(--kemosite_wordpress_base_primary_colour) l 0 h );
+	--kemosite_wordpress_base_primary_value: hsl( from var(--kemosite_wordpress_base_primary_colour) h 0 l );
+
+	/* Characterized Reference Printing Condition 7, Universal Extra Large, https://www.color.org/chardata/CGATS21-2-CRPC7.xalter */	
+	--kemosite-cool-white-lab: lab( 97% 1 -4 ); /* Reference White Point */
+	--kemosite-cool-black-lab: lab( 4.41%  -0.16  2.77 ); /* Reference Black Point */
+	
+	/* Monochromatic */
+	--kemosite_cool_white_monochromatic_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .618 c h ) srgb r g b );
+	--kemosite_cool_white_monochromatic_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .487 c h  ) srgb r g b );
+	--kemosite_cool_white_monochromatic_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .378 c h ) srgb r g b );
+	--kemosite_cool_white_neutral_monochromatic_3: color( from oklch( from var(--kemosite_cool_white_monochromatic_3) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_monochromatic_45: color( from oklch( from var(--kemosite_cool_white_monochromatic_45) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_monochromatic_7: color( from oklch( from var(--kemosite_cool_white_monochromatic_7) l 5% h ) srgb r g b );
+	--kemosite_cool_black_monochromatic_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .869 c h ) srgb r g b );
+	--kemosite_cool_black_monochromatic_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .928 c h ) srgb r g b );
+	--kemosite_cool_black_monochromatic_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .96 c h ) srgb r g b );
+	--kemosite_cool_black_neutral_monochromatic_3: color( from oklch( from var(--kemosite_cool_black_monochromatic_3) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_monochromatic_45: color( from oklch( from var(--kemosite_cool_black_monochromatic_45) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_monochromatic_7: color( from oklch( from var(--kemosite_cool_black_monochromatic_7) l 5% h ) srgb r g b );
+
+	/* Analogous, +30 Degrees  */
+	--kemosite_cool_white_analogous_p30_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .618 c calc( h + 30 ) ) srgb r g b );
+	--kemosite_cool_white_analogous_p30_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .487 c calc( h + 30 ) ) srgb r g b );
+	--kemosite_cool_white_analogous_p30_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .378 c calc( h + 30 ) ) srgb r g b );
+	--kemosite_cool_white_neutral_analogous_p30_3: color( from oklch( from var(--kemosite_cool_white_analogous_p30_3) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_analogous_p30_45: color( from oklch( from var(--kemosite_cool_white_analogous_p30_45) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_analogous_p30_7: color( from oklch( from var(--kemosite_cool_white_analogous_p30_7) l 5% h ) srgb r g b );
+	--kemosite_cool_black_analogous_p30_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .869 c calc( h + 30 ) ) srgb r g b );
+	--kemosite_cool_black_analogous_p30_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .928 c calc( h + 30 ) ) srgb r g b );
+	--kemosite_cool_black_analogous_p30_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .96 c calc( h + 30 ) ) srgb r g b );
+	--kemosite_cool_black_neutral_analogous_p30_3: color( from oklch( from var(--kemosite_cool_black_analogous_p30_3) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_analogous_p30_45: color( from oklch( from var(--kemosite_cool_black_analogous_p30_45) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_analogous_p30_7: color( from oklch( from var(--kemosite_cool_black_analogous_p30_7) l 5% h ) srgb r g b );
+
+	/* Analogous, -30 Degrees  */
+	--kemosite_cool_white_analogous_m30_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .618 c calc( h - 30 ) ) srgb r g b );
+	--kemosite_cool_white_analogous_m30_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .487 c calc( h - 30 ) ) srgb r g b );
+	--kemosite_cool_white_analogous_m30_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .378 c calc( h - 30 ) ) srgb r g b );
+	--kemosite_cool_white_neutral_analogous_m30_3: color( from oklch( from var(--kemosite_cool_white_analogous_m30_3) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_analogous_m30_45: color( from oklch( from var(--kemosite_cool_white_analogous_m30_45) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_analogous_m30_7: color( from oklch( from var(--kemosite_cool_white_analogous_m30_7) l 5% h ) srgb r g b );
+	--kemosite_cool_black_analogous_m30_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .869 c calc( h - 30 ) ) srgb r g b );
+	--kemosite_cool_black_analogous_m30_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .928 c calc( h - 30 ) ) srgb r g b );
+	--kemosite_cool_black_analogous_m30_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .96 c calc( h - 30 ) ) srgb r g b );
+	--kemosite_cool_black_neutral_analogous_m30_3: color( from oklch( from var(--kemosite_cool_black_analogous_m30_3) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_analogous_m30_45: color( from oklch( from var(--kemosite_cool_black_analogous_m30_45) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_analogous_m30_7: color( from oklch( from var(--kemosite_cool_black_analogous_m30_7) l 5% h ) srgb r g b );
+
+	/* Complimentary, +/-180 Degrees  */
+	--kemosite_cool_white_complimentary_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .618 c calc( h + 180 ) ) srgb r g b );
+	--kemosite_cool_white_complimentary_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .487 c calc( h + 180 ) ) srgb r g b );
+	--kemosite_cool_white_complimentary_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .378 c calc( h + 180 ) ) srgb r g b );
+	--kemosite_cool_white_neutral_complimentary_3: color( from oklch( from var(--kemosite_cool_white_complimentary_3) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_complimentary_45: color( from oklch( from var(--kemosite_cool_white_complimentary_45) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_complimentary_7: color( from oklch( from var(--kemosite_cool_white_complimentary_7) l 5% h ) srgb r g b );
+	--kemosite_cool_black_complimentary_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .869 c calc( h + 180 ) ) srgb r g b );
+	--kemosite_cool_black_complimentary_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .928 c calc( h + 180 ) ) srgb r g b );
+	--kemosite_cool_black_complimentary_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .96 c calc( h + 180 ) ) srgb r g b );
+	--kemosite_cool_black_neutral_complimentary_3: color( from oklch( from var(--kemosite_cool_black_complimentary_3) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_complimentary_45: color( from oklch( from var(--kemosite_cool_black_complimentary_45) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_complimentary_7: color( from oklch( from var(--kemosite_cool_black_complimentary_7) l 5% h ) srgb r g b );
+
+	/* Complimentary, +30 Degrees  */
+	--kemosite_cool_white_complimentary_p30_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .618 c calc( h + 180 + 30 ) ) srgb r g b );
+	--kemosite_cool_white_complimentary_p30_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .487 c calc( h + 180 + 30 ) ) srgb r g b );
+	--kemosite_cool_white_complimentary_p30_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .378 c calc( h + 180 + 30 ) ) srgb r g b );
+	--kemosite_cool_white_neutral_complimentary_p30_3: color( from oklch( from var(--kemosite_cool_white_complimentary_p30_3) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_complimentary_p30_45: color( from oklch( from var(--kemosite_cool_white_complimentary_p30_45) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_complimentary_p30_7: color( from oklch( from var(--kemosite_cool_white_complimentary_p30_7) l 5% h ) srgb r g b );
+	--kemosite_cool_black_complimentary_p30_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .869 c calc( h + 180 + 30 ) ) srgb r g b );
+	--kemosite_cool_black_complimentary_p30_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .928 c calc( h + 180 + 30 ) ) srgb r g b );
+	--kemosite_cool_black_complimentary_p30_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .96 c calc( h + 180 + 30 ) ) srgb r g b );
+	--kemosite_cool_black_neutral_complimentary_p30_3: color( from oklch( from var(--kemosite_cool_black_complimentary_p30_3) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_complimentary_p30_45: color( from oklch( from var(--kemosite_cool_black_complimentary_p30_45) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_complimentary_p30_7: color( from oklch( from var(--kemosite_cool_black_complimentary_p30_7) l 5% h ) srgb r g b );
+
+	/* Complimentary, -30 Degrees  */
+	--kemosite_cool_white_complimentary_m30_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .618 c calc( h + 180 - 30 ) ) srgb r g b );
+	--kemosite_cool_white_complimentary_m30_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .487 c calc( h + 180 - 30 ) ) srgb r g b );
+	--kemosite_cool_white_complimentary_m30_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .378 c calc( h + 180 - 30 ) ) srgb r g b );
+	--kemosite_cool_white_neutral_complimentary_m30_3: color( from oklch( from var(--kemosite_cool_white_complimentary_m30_3) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_complimentary_m30_45: color( from oklch( from var(--kemosite_cool_white_complimentary_m30_45) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_complimentary_m30_7: color( from oklch( from var(--kemosite_cool_white_complimentary_m30_7) l 5% h ) srgb r g b );
+	--kemosite_cool_black_complimentary_m30_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .869 c calc( h + 180 - 30 ) ) srgb r g b );
+	--kemosite_cool_black_complimentary_m30_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .928 c calc( h + 180 - 30 ) ) srgb r g b );
+	--kemosite_cool_black_complimentary_m30_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .96 c calc( h + 180 - 30 ) ) srgb r g b );
+	--kemosite_cool_black_neutral_complimentary_m30_3: color( from oklch( from var(--kemosite_cool_black_complimentary_m30_3) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_complimentary_m30_45: color( from oklch( from var(--kemosite_cool_black_complimentary_m30_45) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_complimentary_m30_7: color( from oklch( from var(--kemosite_cool_black_complimentary_m30_7) l 5% h ) srgb r g b );
+
+	/* Triadic, +120 Degrees  */
+	--kemosite_cool_white_triadic_p120_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .618 c calc( h + 120 ) ) srgb r g b );
+	--kemosite_cool_white_triadic_p120_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .487 c calc( h + 120 ) ) srgb r g b );
+	--kemosite_cool_white_triadic_p120_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .378 c calc( h + 120 ) ) srgb r g b );
+	--kemosite_cool_white_neutral_triadic_p120_3: color( from oklch( from var(--kemosite_cool_white_triadic_p120_3) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_triadic_p120_45: color( from oklch( from var(--kemosite_cool_white_triadic_p120_45) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_triadic_p120_7: color( from oklch( from var(--kemosite_cool_white_triadic_p120_7) l 5% h ) srgb r g b );
+	--kemosite_cool_black_triadic_p120_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .869 c calc( h + 120 ) ) srgb r g b );
+	--kemosite_cool_black_triadic_p120_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .928 c calc( h + 120 ) ) srgb r g b );
+	--kemosite_cool_black_triadic_p120_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .96 c calc( h + 120 ) ) srgb r g b );
+	--kemosite_cool_black_neutral_triadic_p120_3: color( from oklch( from var(--kemosite_cool_black_triadic_p120_3) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_triadic_p120_45: color( from oklch( from var(--kemosite_cool_black_triadic_p120_45) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_triadic_p120_7: color( from oklch( from var(--kemosite_cool_black_triadic_p120_7) l 5% h ) srgb r g b );
+
+	/* Triadic, -120 Degrees  */
+	--kemosite_cool_white_triadic_m120_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .618 c calc( h - 120 ) ) srgb r g b );
+	--kemosite_cool_white_triadic_m120_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .487 c calc( h - 120 ) ) srgb r g b );
+	--kemosite_cool_white_triadic_m120_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .378 c calc( h - 120 ) ) srgb r g b );
+	--kemosite_cool_white_neutral_triadic_m120_3: color( from oklch( from var(--kemosite_cool_white_triadic_m120_3) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_triadic_m120_45: color( from oklch( from var(--kemosite_cool_white_triadic_m120_45) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_triadic_m120_7: color( from oklch( from var(--kemosite_cool_white_triadic_m120_7) l 5% h ) srgb r g b );
+	--kemosite_cool_black_triadic_m120_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .869 c calc( h - 120 ) ) srgb r g b );
+	--kemosite_cool_black_triadic_m120_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .928 c calc( h - 120 ) ) srgb r g b );
+	--kemosite_cool_black_triadic_m120_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .96 c calc( h - 120 ) ) srgb r g b );
+	--kemosite_cool_black_neutral_triadic_m120_3: color( from oklch( from var(--kemosite_cool_black_triadic_m120_3) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_triadic_m120_45: color( from oklch( from var(--kemosite_cool_black_triadic_m120_45) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_triadic_m120_7: color( from oklch( from var(--kemosite_cool_black_triadic_m120_7) l 5% h ) srgb r g b );
+
+	/* Square, +90 Degrees  */
+	--kemosite_cool_white_square_p90_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .618 c calc( h + 90 ) ) srgb r g b );
+	--kemosite_cool_white_square_p90_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .487 c calc( h + 90 ) ) srgb r g b );
+	--kemosite_cool_white_square_p90_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .378 c calc( h + 90 ) ) srgb r g b );
+	--kemosite_cool_white_neutral_square_p90_3: color( from oklch( from var(--kemosite_cool_white_square_p90_3) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_square_p90_45: color( from oklch( from var(--kemosite_cool_white_square_p90_45) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_square_p90_7: color( from oklch( from var(--kemosite_cool_white_square_p90_7) l 5% h ) srgb r g b );
+	--kemosite_cool_black_square_p90_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .869 c calc( h + 90 ) ) srgb r g b );
+	--kemosite_cool_black_square_p90_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .928 c calc( h + 90 ) ) srgb r g b );
+	--kemosite_cool_black_square_p90_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .96 c calc( h + 90 ) ) srgb r g b );
+	--kemosite_cool_black_neutral_square_p90_3: color( from oklch( from var(--kemosite_cool_black_square_p90_3) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_square_p90_45: color( from oklch( from var(--kemosite_cool_black_square_p90_45) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_square_p90_7: color( from oklch( from var(--kemosite_cool_black_square_p90_7) l 5% h ) srgb r g b );
+
+	/* Square, -90 Degrees  */
+	--kemosite_cool_white_square_m90_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .618 c calc( h - 90 ) ) srgb r g b );
+	--kemosite_cool_white_square_m90_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .487 c calc( h - 90 ) ) srgb r g b );
+	--kemosite_cool_white_square_m90_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .378 c calc( h - 90 ) ) srgb r g b );
+	--kemosite_cool_white_neutral_square_m90_3: color( from oklch( from var(--kemosite_cool_white_square_m90_3) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_square_m90_45: color( from oklch( from var(--kemosite_cool_white_square_m90_45) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_square_m90_7: color( from oklch( from var(--kemosite_cool_white_square_m90_7) l 5% h ) srgb r g b );
+	--kemosite_cool_black_square_m90_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .869 c calc( h - 90 ) ) srgb r g b );
+	--kemosite_cool_black_square_m90_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .928 c calc( h - 90 ) ) srgb r g b );
+	--kemosite_cool_black_square_m90_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .96 c calc( h - 90 ) ) srgb r g b );
+	--kemosite_cool_black_neutral_square_m90_3: color( from oklch( from var(--kemosite_cool_black_square_m90_3) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_square_m90_45: color( from oklch( from var(--kemosite_cool_black_square_m90_45) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_square_m90_7: color( from oklch( from var(--kemosite_cool_black_square_m90_7) l 5% h ) srgb r g b );
+
+	/* Square, +60 Degrees  */
+	--kemosite_cool_white_square_p60_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .618 c calc( h + 60 ) ) srgb r g b );
+	--kemosite_cool_white_square_p60_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .487 c calc( h + 60 ) ) srgb r g b );
+	--kemosite_cool_white_square_p60_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .378 c calc( h + 60 ) ) srgb r g b );
+	--kemosite_cool_white_neutral_square_p60_3: color( from oklch( from var(--kemosite_cool_white_square_p60_3) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_square_p60_45: color( from oklch( from var(--kemosite_cool_white_square_p60_45) l 5% h ) srgb r g b );
+	--kemosite_cool_white_neutral_square_p60_7: color( from oklch( from var(--kemosite_cool_white_square_p60_7) l 5% h ) srgb r g b );
+	--kemosite_cool_black_square_p60_3: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .869 c calc( h + 60 ) ) srgb r g b );
+	--kemosite_cool_black_square_p60_45: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .928 c calc( h + 60 ) ) srgb r g b );
+	--kemosite_cool_black_square_p60_7: color( from oklch( from var(--kemosite_wordpress_base_primary_colour) .96 c calc( h + 60 ) ) srgb r g b );
+	--kemosite_cool_black_neutral_square_p60_3: color( from oklch( from var(--kemosite_cool_black_square_p60_3) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_square_p60_45: color( from oklch( from var(--kemosite_cool_black_square_p60_45) l 5% h ) srgb r g b );
+	--kemosite_cool_black_neutral_square_p60_7: color( from oklch( from var(--kemosite_cool_black_square_p60_7) l 5% h ) srgb r g b );
+
+	/* Low Chroma LCH of RGB */
+	--kemosite-red-lc: color( from oklch(from red l 50% h) srgb r g b ); /* Red */
+	--kemosite-green-lc: color( from oklch(from green l 50% h) srgb r g b ); /* Green */
+	--kemosite-blue-lc: color( from oklch(from blue l 50% h) srgb r g b ); /* Blue */
+
+	/* Lab Print Colours */
+	--kemosite-cyan-lab: color(from lab(54% -42 -54) srgb r g b); /* Cyan */
+	--kemosite-magenta-lab: color(from lab(47% 78 -10) srgb r g b);  /* Magenta */
+	--kemosite-yellow-lab: color(from lab(90% -4 103) srgb r g b); /* Yellow */
+	--kemosite-key-lab: color(from lab(14% 0 0) srgb r g b); /* Key/Black */
+	--kemosite-blue-lab: color(from lab(20% 26 -53) srgb r g b); /* Blue (Print) */
+	--kemosite-green-lab: color(from lab(50% -72 29) srgb r g b); /* Green (Print) */
+	--kemosite-red-lab: color(from lab(47% 75 54) srgb r g b); /* Red (Print) */
+
+	/* Derivatives of Lab */
+	--kemosite-cool-black-minus-blue-lab: color(from lab(4.41%  -0.16  2.77) srgb r g 0);
+	--kemosite-blue-rgb: color-mix(in hsl, var(--kemosite-cyan-lab), var(--kemosite-magenta-lab) ); /* Blue (Print) */
+	--kemosite-green-rgb: color-mix(in hsl, var(--kemosite-cyan-lab), var(--kemosite-yellow-lab) ); /* Green (Print) */
+	--kemosite-red-rgb: color-mix(in hsl, var(--kemosite-magenta-lab), var(--kemosite-yellow-lab) ); /* Red (Print) */
+
+	/* Hardcoded HEX */
+	/* --kemosite-cool-white: #f6f6fe; ** hex eyedrop of lab */
+	--kemosite-base-black: #110f09; /* hex eyedrop of cool black lab */
+	--kemosite-base-black-minus-blue: #110f00; /* hex eyedrop of lab */
+	--kemosite-success: #40bf40;
+	--kemosite-alert: #bf4040;
+	--kemosite-warning: #bfbf40;
+
+	/* [SCROLLBAR] */
+	scrollbar-color: var(--kemosite_wordpress_base_foreground_colour) var(--kemosite_wordpress_base_background_colour);
+	scrollbar-width: auto;
+
+	/* [BODY COLOUR] */
+	--kemosite_wordpress_body_background_color: light-dark(
+		oklch( from var(--kemosite-cool-white-lab) l c h ), /* Light Mode */
+		oklch( from var(--kemosite-base-black-minus-blue) l c h )  /* Dark Mode */
+	);
+	--kemosite_wordpress_body_color: light-dark(
+		var(--kemosite-base-black), /* Light Mode */
+		var(--kemosite-cool-white-lab) /* Dark Mode */
+	);
+
+	/* [COMPONENTS AND SELECTIONS */
+	--kemosite_wordpress_table_border_colour: var(--kemosite-base-black);
+	--kemosite_wordpress_table_font_colour: var(--kemosite-cool-white-lab);
+	--kemosite_wordpress_component_colour: var(--kemosite_cool_white_neutral_monochromatic_7);
+	--kemosite_wordpress_component_hover_colour: oklch( from var(--kemosite_wordpress_component_colour) 49% 50% h );
+	--kemosite_wordpress_component_font_colour: var(--kemosite-cool-white-lab);
+	--kemosite_wordpress_placeholder_color: var(--kemosite_wordpress_component_font_colour);
+	--kemosite_wordpress_component_shadow_colour: var(--kemosite-base-black);
+	--kemosite_wordpress_component_success_colour: oklch(from var(--kemosite_wordpress_component_colour) l c 140);
+	--kemosite_wordpress_component_success_hover_colour: oklch( 51% 100% 140);
+	--kemosite_wordpress_component_success_font_colour: var(--kemosite-cool-white-lab);
+	--kemosite_wordpress_component_warning_colour: oklch(from var(--kemosite_wordpress_component_colour) l c 30);
+	--kemosite_wordpress_component_warning_hover_colour: oklch( 51% 100% 30);
+	--kemosite_wordpress_component_warning_font_colour: var(--kemosite-cool-white-lab);
+	--kemosite_wordpress_component_alert_colour: oklch(from var(--kemosite_wordpress_component_colour) l c 110);
+	--kemosite_wordpress_component_alert_hover_colour: oklch( 51% 100% 110);
+	--kemosite_wordpress_component_alert_font_colour: var(--kemosite-cool-white-lab);
+	--kemosite_wordpress_secondary_colour: oklch(from var(--kemosite_wordpress_component_colour) l c calc( h - 30 ) );
+	--kemosite_wordpress_secondary_hover_colour: oklch(from var(--kemosite_wordpress_secondary_colour) 51% 100% h);
+	--kemosite_wordpress_secondary_font_colour: var(--kemosite-base-black);
+
+	/* [HEADER OPTIONS] */
+	/* --kemosite_wordpress_header_bg_image: <?php echo $kemosite_wordpress_header_bg_image; ?>; */
+	--kemosite_wordpress_header_bg_color: light-dark(
+		var(--kemosite_cool_white_monochromatic_7), /* Light Mode */
+		var(--kemosite_cool_black_monochromatic_7) /* Dark Mode */
+	);
+	--kemosite_wordpress_header_font_color: light-dark(
+		var(--kemosite-base-black), /* Light Mode */
+		var(--kemosite-cool-white-lab) /* Dark Mode */
+	);
+
+	/* [MAIN CONTENT OPTIONS] */
+		
+	/* Light Mode (Default) */
+	--kemosite_wordpress_main_content_bg_color_light_mode:: var(--kemosite-cool-white-lab);
+	--kemosite_wordpress_main_content_font_color_light_mode: var(--kemosite-base-black);
+
+	/* Dark Mode */
+	--kemosite_wordpress_main_content_bg_color_dark_mode: var(--kemosite-base-black-minus-blue);
+	--kemosite_wordpress_main_content_font_color_dark_mode: var(--kemosite-cool-white-lab);
+
+	/* [FOOTER OPTIONS] */
+	--kemosite_wordpress_footer_bg_color: light-dark(
+		var(--kemosite_wordpress_base_primary_luminance), /* Light Mode */
+		oklch(15% 0 0) /* Dark Mode */
+	);
+	--kemosite_wordpress_footer_font_color: light-dark(
+		var(--kemosite-base-black), /* Light Mode */
+		var(--kemosite-cool-white-lab) /* Dark Mode */
+	);
+
+	/* [SELECTION] */
+	--kemosite_wordpress_selection_colour: light-dark(
+		var(--kemosite_cool_white_neutral_monochromatic_3), /* Light Mode */
+		var(--kemosite_cool_black_neutral_monochromatic_3) /* Dark Mode */
+	);
+	--kemosite_wordpress_selection_font_colour: light-dark(
+		var(--kemosite-base-black), /* Light Mode */
+		var(--kemosite-cool-white-lab) /* Dark Mode */
+	);
+
+}
+
+@media (forced-colors: active) {
+	
+	/*
+	@supports (background-color: ButtonFace) {
+		background-color: ButtonFace;
+		color: WindowText;
+		border: 1px solid WindowText;
+	}
+
+	@supports not (background-color: ButtonFace) {
+		background-color: hashtag#fff;
+		color: #000;
+		border: 1px solid #000;
+	}
+	*/
+
+}
+
+@media screen and (prefers-contrast: more) and (forced-colors: none) {
+	
+	:root {}
+
+}
+
+@media screen and (prefers-contrast: less) {
+	
+	:root {}
+	
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	:root {
+		--element-transition-time: 0ms;
+	}
+
+}
+
+@media (prefers-color-scheme: light) {
+
+	:root {
+		
+		--kemosite_wordpress_colour_scheme: "Light Theme";
+		
+		/* [BODY COLOUR] */
+		--kemosite_wordpress_body_background_color: oklch( from var(--kemosite-cool-white-lab) l c h ); /* Light Mode */
+		--kemosite_wordpress_body_color: var(--kemosite-base-black); /* Light Mode */
+		
+		/* [HEADER OPTIONS] */
+		--kemosite_wordpress_header_bg_color: var(--kemosite_cool_white_monochromatic_7);
+		--kemosite_wordpress_header_font_color: var(--kemosite-cool-white-lab);
+
+		/* [SELECTION] */
+		--kemosite_wordpress_selection_colour: var(--kemosite_cool_white_neutral_monochromatic_3);
+		--kemosite_wordpress_selection_font_colour: var(--kemosite-cool-white-lab);
+
+	}
+
+}
+
+@media (prefers-color-scheme: dark) {
+
+	:root {
+
+		--kemosite_wordpress_colour_scheme: "Dark Theme";
+
+		/* [BODY COLOUR] */
+		--kemosite_wordpress_body_background_color: oklch( from var(--kemosite-base-black-minus-blue) l c h );  /* Dark Mode */
+		--kemosite_wordpress_body_color: var(--kemosite-cool-white-lab); /* Dark Mode */
+		
+		/* [HEADER OPTIONS] */
+		--kemosite_wordpress_header_bg_color: var(--kemosite_cool_black_monochromatic_7);
+		--kemosite_wordpress_header_font_color: var(--kemosite-base-black);
+
+		/* [SELECTION] */
+		--kemosite_wordpress_selection_colour: var(--kemosite_cool_black_neutral_monochromatic_3);
+		--kemosite_wordpress_selection_font_colour: var(--kemosite-base-black);
+
+	}
+
+}
+
+*::selection {
+	background-color: var(--kemosite_wordpress_selection_colour);
+	color: var(--kemosite_wordpress_selection_font_colour);
+}
+
+*::placeholder {
+	color: var(--kemosite_wordpress_placeholder_color);
+}
+
+body {
+	--wp--preset--color--custom-background-color: var(--kemosite_wordpress_body_background_color);
+	--wp--preset--color--custom-text-color: var(--kemosite_wordpress_body_color);
+	--wp--preset--color--custom-captions-color: var(--kemosite_wordpress_body_color);
+	--wp--preset--color--custom-button-background-color: var(--kemosite_wordpress_component_colour);
+	--wp--preset--color--custom-button-text-color: var(--kemosite_wordpress_component_font_colour);
+	--wp--preset--color--custom-heading-background-color: var(--kemosite_wordpress_header_bg_color);
+	--wp--preset--color--custom-heading-text-color: var(--kemosite_wordpress_header_font_color);
+}

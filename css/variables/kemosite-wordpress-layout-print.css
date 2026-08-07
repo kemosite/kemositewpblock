@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+:root {
+	--layout: "print";
+	font-size: 12pt;
+}
+
+@page {
+	margin: 0.5in;
+}
