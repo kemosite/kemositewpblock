@@ -12,6 +12,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 7.0.3.2 =
+- Adjustments to entity_main and footer.
+
 = 7.0.3.1 =
 - Includes Optician Sans font
 - New BEM-style layers, entities and class structures
