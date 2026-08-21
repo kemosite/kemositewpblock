@@ -17,7 +17,10 @@
 }
 
 @supports ( calc( 1ex / 1rem ) ) {
-    --kemosite-base-x-height-ratio: calc( 1ex / 1rem );
+
+    :root {
+        --kemosite-base-x-height-ratio: calc( 1ex / 1rem );
+    }
 }
 
 @media screen and (prefers-contrast: more) {
@@ -88,16 +91,19 @@ body {
 .font-open-sans {
     font-family: var(--wp--preset--font-family--open-sans), Arial, sans-serif, system-ui;
     font-size-adjust: ex-height from-font;
+    text-rendering: optimizeLegibility;
 }
 
 .font-oswald {
     font-family: var(--wp--preset--font-family--oswald), Arial, sans-serif, system-ui;
     font-size-adjust: ex-height from-font;
+    text-rendering: optimizeLegibility
 }
 
 .font-modern_pictogramsnormal {
     font-family: 'modern_pictogramsnormal', Fantasy;
     font-size-adjust: ex-height from-font;
+    text-rendering: optimizeLegibility
 }
 
 div.font-optician-sans {

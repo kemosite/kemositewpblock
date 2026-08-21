@@ -7,11 +7,16 @@ p {
 /*
  * Adjusting first block margins
  */
+
 * p:first-child,
 h1 + p,
 :root :where(.is-layout-flow) p:first-child,
 :root :where(.is-layout-flow) h1 + p {
     margin-block-start: 0;
+}
+
+:root :where(.wp-block-post-content) p:first-child {
+    margin-block-start: 3ex;
 }
 
 div.columns p {

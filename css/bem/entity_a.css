@@ -33,7 +33,7 @@ a[name] {
 
 /* emails */
 a[href^="mailto:"]:after {
-    font-family: 'modern_pictogramsnormal';
+    font-family: 'modern_pictogramsnormal', fantasy;
     font-size-adjust: ex-height from-font;
     content: "m";
     margin-left: .25em;
@@ -41,7 +41,7 @@ a[href^="mailto:"]:after {
 
 /* pdfs */
 a[href$=".pdf"]:after {
-    font-family: 'modern_pictogramsnormal';
+    font-family: 'modern_pictogramsnormal', fantasy;
     font-size-adjust: ex-height from-font;
     content: "K";
     margin-left: .25em;
@@ -50,7 +50,7 @@ a[href$=".pdf"]:after {
 /* highlight links that open in a new window */
 a[target="_blank"]:after,
 a[target="new"]:after {
-    font-family: 'modern_pictogramsnormal';
+    font-family: 'modern_pictogramsnormal', fantasy;
     font-size-adjust: ex-height from-font;
     content: "W";
     margin-left: .25em;

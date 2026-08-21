@@ -160,8 +160,8 @@ require_once get_template_directory() . '/inc/appearance-support-pages/functions
 
 // Load styles for Block Editor
 function kemosite_wordpress_enqueue_editor_styles() {
-    add_editor_style( get_template_directory_uri() . '/css/kemosite-wordpress-layers.css' );
     add_editor_style( get_template_directory_uri() . '/style.css' );
+    add_editor_style( get_template_directory_uri() . '/css/kemosite-wordpress-layers.css' );
     add_editor_style( get_template_directory_uri() . '/css/kemosite-wordpress-master.css' );
     if ( defined( KEMOSITE_WOOCOMMERCE_ACTIVE ) && KEMOSITE_WOOCOMMERCE_ACTIVE == true ):
 	    add_editor_style( get_template_directory_uri() . '/css/kemosite-woocommerce-master.css' );
