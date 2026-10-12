@@ -15,6 +15,7 @@ kemositeObserver.observe({
     "element",
     "event",
     "first-input",
+    "interaction-contentful-paint",
     "largest-contentful-paint",
     "layout-shift",
     "long-animation-frame",

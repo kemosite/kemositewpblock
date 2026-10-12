@@ -4,9 +4,30 @@
  * [ENQUEUE STYLES]
  */
 
+function kemosite_wordpress_enqueue_styles_sri( $html, $handle, $src, $media ) {
+
+	$sri = array(
+		'kemosite-wp-layers',
+		'kemosite-wp-block',
+		'kemosite-master-styles',
+		'kemosite-woocommerce',
+		'kemosite-learnpress'
+	);
+
+	if ( in_array( $handle, $sri ) ):
+		// $html = str_replace( '<link ', '<link integrity="' . kemosite_wordpress_calculate_sri( $src ) . '" crossorigin="anonymous" ', $html );
+		// $html = str_replace( '<link ', '<link nonce="' . kemosite_wordpress_csp_get_nonce() . '" crossorigin="anonymous" ', $html );
+		$html = str_replace( '<link ', '<link integrity="' . kemosite_wordpress_calculate_sri( $src ) . '" nonce="' . kemosite_wordpress_csp_get_nonce() . '" crossorigin="anonymous" ', $html );
+		return $html;
+	else:
+		return $html;
+	endif;
+
+}
+
 function kemosite_wordpress_enqueue_styles() {
 	
-	$theme_version = "6.8.3.3";
+	$theme_version = "7.1.3.1";
 
 	// WP lazy load is problematic.
 	wp_dequeue_style( 'wp-img-auto-sizes-contain' );
@@ -42,26 +63,6 @@ function kemosite_wordpress_enqueue_styles() {
 
 	if ( defined( KEMOSITE_ENABLE_SRI ) && KEMOSITE_ENABLE_SRI == true ):
 		add_filter( 'style_loader_tag', 'kemosite_wordpress_enqueue_styles_sri', 10, 4 );
-	endif;
-
-}
-
-function kemosite_wordpress_enqueue_styles_sri( $html, $handle, $src, $media ) {
-
-	$sri = array(
-		'kemosite-wp-layers',
-		'kemosite-wp-block',
-		'kemosite-master-styles',
-		'kemosite-woocommerce',
-		'kemosite-learnpress'
-	);
-
-	if ( in_array( $handle, $sri ) ):
-		// $html = str_replace( '<link ', '<link integrity="' . kemosite_wordpress_calculate_sri( $src ) . '" crossorigin="anonymous" ', $html );
-		$html = str_replace( '<link ', '<link nonce="' . csp_get_nonce() . '" crossorigin="anonymous" ', $html );
-		return $html;
-	else:
-		return $html;
 	endif;
 
 }

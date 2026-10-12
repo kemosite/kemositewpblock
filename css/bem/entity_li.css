@@ -54,6 +54,7 @@ ul.wp-block-navigation-submenu > li.wp-block-navigation-item
 li {
 	margin-block: 3ex 3ex;
 	line-height: 3ex;
+    list-style: outside;
 }
 
 li.categories {

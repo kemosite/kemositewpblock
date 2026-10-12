@@ -12,6 +12,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 7.1.3.1 =
+- Proper implementation of SRI and Nonce.
+
 = 7.1.0.1 =
 - Fix to front page.
 

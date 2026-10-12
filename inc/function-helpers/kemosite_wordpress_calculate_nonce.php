@@ -3,7 +3,7 @@
 // https://www.sitesecurityscore.com/learning-center/how-to-write-csp-for-wordpress
 
 // Generate a nonce once per request
-function csp_get_nonce() {
+if ( !function_exists('kemosite_wordpress_csp_get_nonce') ) : function kemosite_wordpress_csp_get_nonce() {
 
 	static $nonce = null;
     
@@ -16,12 +16,12 @@ function csp_get_nonce() {
     
     return $nonce;
 
-}
+} endif;
 
 // Add nonce to enqueued script tags (WP 6.1+)
 add_filter('wp_script_attributes', function($attributes) {
 	
-	$attributes['nonce'] = csp_get_nonce();
+	$attributes['nonce'] = kemosite_wordpress_csp_get_nonce();
 	return $attributes;
 
 });
@@ -29,7 +29,7 @@ add_filter('wp_script_attributes', function($attributes) {
 // Add nonce to inline script tags
 add_filter('wp_inline_script_attributes', function($attributes) {
 
-	$attributes['nonce'] = csp_get_nonce();
+	$attributes['nonce'] = kemosite_wordpress_csp_get_nonce();
 	return $attributes;
 
 });
@@ -37,7 +37,7 @@ add_filter('wp_inline_script_attributes', function($attributes) {
 // Add nonce to style tags
 add_filter('wp_style_attributes', function($attributes) {
 
-	$attributes['nonce'] = csp_get_nonce();
+	$attributes['nonce'] = kemosite_wordpress_csp_get_nonce();
 	return $attributes;
 
 });
@@ -49,10 +49,11 @@ add_action('send_headers', function() {
         return; // Skip admin area
     endif;
 
-    $nonce = csp_get_nonce();
+    $nonce = kemosite_wordpress_csp_get_nonce();
 
     header(sprintf(
-        "Content-Security-Policy-Report-Only: " .
+        // "Content-Security-Policy-Report-Only: " .
+        "Content-Security-Policy: " .
         "default-src 'self'; " .
         "script-src 'self' 'nonce-%s'; " .
         "style-src 'self' 'unsafe-inline'; " .

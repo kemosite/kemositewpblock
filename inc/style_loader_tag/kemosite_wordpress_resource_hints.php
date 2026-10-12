@@ -68,6 +68,7 @@ function kemosite_wordpress_resource_hints($hints, $relation_type) {
 			foreach($dns_prefetch_domains as $tag):
 
 	    		$hints[] = array(
+		    		'nonce' => kemosite_wordpress_csp_get_nonce(),
 		    		'href' => $tag
 		    	);
 
@@ -80,6 +81,7 @@ function kemosite_wordpress_resource_hints($hints, $relation_type) {
 			foreach($preconnect_domains as $tag):
 
 	    		$hints[] = array(
+	    			'nonce' => kemosite_wordpress_csp_get_nonce(),
 		    		'href' => $tag
 		    	);
 
@@ -88,6 +90,7 @@ function kemosite_wordpress_resource_hints($hints, $relation_type) {
 	    	foreach($preconnect_domains_cors as $tag):
 
 	    		$hints[] = array(
+	    			'nonce' => kemosite_wordpress_csp_get_nonce(),
 		    		'href' => $tag,
 		    		'crossorigin' => 'same-origin'
 		    	);
@@ -100,6 +103,7 @@ function kemosite_wordpress_resource_hints($hints, $relation_type) {
 
 			// Prefetch theme logo
 	    	$hints[] = array(
+	    		'nonce' => kemosite_wordpress_csp_get_nonce(),
 	    		'as' => 'image',
 	    		'href' => KEMOSITE_THEME_LOGO
 	    	);
@@ -107,6 +111,7 @@ function kemosite_wordpress_resource_hints($hints, $relation_type) {
 	    	foreach($prefetch_style as $tag):
 
 	    		$hints[] = array(
+	    			'nonce' => kemosite_wordpress_csp_get_nonce(),
 		    		'as' => 'style',
 		    		'href' => $wp_styles->registered[$tag]->src,
 		    		'crossorigin' => 'anonymous'
@@ -117,6 +122,7 @@ function kemosite_wordpress_resource_hints($hints, $relation_type) {
 	    	foreach($prefetch_script as $tag):
 
 	    		$hints[] = array(
+	    			'nonce' => kemosite_wordpress_csp_get_nonce(),
 		    		'as' => 'script',
 		    		'href' => $wp_scripts->registered[$tag]->src,
 		    		'crossorigin' => 'anonymous'

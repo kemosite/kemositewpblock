@@ -27,11 +27,11 @@ function kemosite_wordpress_defer_async_scripts( $tag, $handle, $src ) {
 	);
 
 	if ( in_array( $handle, $defer ) ):
-		return '<script src="' . $src . '" defer="defer" type="text/javascript"></script>' . "\n";
+		return '<script nonce="' . kemosite_wordpress_csp_get_nonce() . '" integrity="' . kemosite_wordpress_calculate_sri( $src ) . '" crossorigin="anonymous" src="' . $src . '" defer="defer" type="text/javascript"></script>' . "\n";
 	endif;
 
 	if ( in_array( $handle, $async ) ):
-		return '<script src="' . $src . '" async="async" type="text/javascript"></script>' . "\n";
+		return '<script nonce="' . kemosite_wordpress_csp_get_nonce() . '" integrity="' . kemosite_wordpress_calculate_sri( $src ) . '" crossorigin="anonymous" src="' . $src . '" async="async" type="text/javascript"></script>' . "\n";
 	endif;
 
 	return $tag;

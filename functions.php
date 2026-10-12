@@ -29,6 +29,12 @@ endif;
 
 if ( !defined( 'KEMOSITE_ENABLE_SRI' ) ): define("KEMOSITE_ENABLE_SRI", true ); endif;
 
+// Calculate SRI
+if ( !function_exists('kemosite_wordpress_calculate_sri') ) : require_once get_template_directory() . '/inc/function-helpers/kemosite_wordpress_calculate_sri.php'; endif;
+
+// Function to generate nonce
+if ( !function_exists('kemosite_wordpress_csp_get_nonce') ): require_once get_template_directory() . '/inc/function-helpers/kemosite_wordpress_calculate_nonce.php'; endif;
+
 // Default handling method
 // if ( !function_exists('kemosite_debug_to_console') ): require_once get_template_directory() . '/inc/function-helpers/kemosite_debug_to_console.php'; endif;
 // set_error_handler( 'kemosite_debug_to_console' );
@@ -143,9 +149,6 @@ add_action( 'widgets_init', 'kemosite_wordpress_theme_widgets_init' );
 // Colour Functions
 require_once get_template_directory() . '/inc/function-helpers/function_helpers_colours.php';
 
-// Calculate SRI
-require_once get_template_directory() . '/inc/function-helpers/kemosite_wordpress_calculate_sri.php';
-
 /* [Looks in Page "page_excerpt" field for Excerpt data] */
 if ( !function_exists( 'kemosite_custom_excerpt' ) ) : 
 	require_once get_template_directory() . '/inc/function-helpers/kemosite_custom_excerpt.php';
@@ -171,9 +174,6 @@ function kemosite_wordpress_enqueue_editor_styles() {
 	endif;
 }
 add_action( 'admin_init', 'kemosite_wordpress_enqueue_editor_styles' );
-
-// Calculate Nonce
-require_once get_template_directory() . '/inc/function-helpers/kemosite_wordpress_calculate_nonce.php';
 
 // Enqueue theme styles (view) first
 if ( !function_exists( 'kemosite_wordpress_enqueue_styles' ) ) :

@@ -1,6 +1,10 @@
 export default {
 	"settings": {
-		"custom": {}
+		"custom": {},
+		"background": {
+			"backgroundImage": true,
+			"backgroundSize": true
+		}
 	},
 	"appearanceTools": false,
 	"color": {

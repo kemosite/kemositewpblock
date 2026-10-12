@@ -4,11 +4,44 @@
  * [ENQUEUE SCRIPTS]
  */
 
+function kemosite_wordpress_enqueue_scripts_sri( $html, $handle, $src ) {
+
+	// Hardcoding values stops working when files are located to another server, line installing the theme.
+	// The values have to be re-calculated for each server location.
+	// For this reason, a PHP function to calculate this every time now makes more sense.
+
+	$sri = array(
+		'jquery',
+		'foundation',
+		'foundation-app',
+		'chart-js',
+		'kemosite-wordpress-theme-accessibility',
+		'kemosite-wordpress-theme-gtag',
+		'chart-js-config',
+		'mediaelement',
+	  	'kemosite-wordpress-theme-navigation',
+	  	'kemosite-wordpress-theme-skip-link-focus-fix',
+	  	'foundation-what-input',
+	  	'kemosite-lazy-load-images',
+	  	'kemosite-wordpress-font-colours'
+	);
+
+	if ( in_array( $handle, $sri ) ):
+		// $html = str_replace( '></script>', ' integrity="' . kemosite_wordpress_calculate_sri( $src ) . '" crossorigin="anonymous"></script>', $html );
+		// $html = str_replace( '<script ', '<script nonce="' . kemosite_wordpress_csp_get_nonce() . '" crossorigin="anonymous" ', $html );
+		$html = str_replace( '></script>', ' nonce="' . kemosite_wordpress_csp_get_nonce() . '" integrity="' . kemosite_wordpress_calculate_sri( $src ) . '" crossorigin="anonymous"></script>', $html );
+		return $html;
+	else:
+		return $html;
+	endif;
+
+}
+
 function kemosite_wordpress_enqueue_scripts() {
 
 	// Retrieve Custom Fields from post.
 	$custom_fields = get_post_custom();
-	$theme_version = "6.8.3.3";
+	$theme_version = "7.1.3.1";
 
 	// Performance, if Debug is true
 	if ( WP_DEBUG ):
@@ -36,7 +69,7 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	// Foundation JS Files
 	wp_deregister_script('jquery');
-	wp_register_script('jquery', get_template_directory_uri().'/js/vendor/jquery.min.js', array(), '3.7.1', array( 'in_footer' => true ) );
+	wp_register_script('jquery', get_template_directory_uri().'/js/vendor/jquery.min.js', array(), '4.0.0', array( 'in_footer' => true ) );
 	wp_enqueue_script('jquery');
 
 	wp_deregister_script('foundation-what-input');
@@ -44,11 +77,11 @@ function kemosite_wordpress_enqueue_scripts() {
 	wp_enqueue_script('foundation-what-input');
 
 	wp_deregister_script('foundation');
-	wp_register_script('foundation', get_template_directory_uri().'/js/vendor/foundation.min.js', array('jquery'), '6.8.1', array( 'in_footer' => true ) );
+	wp_register_script('foundation', get_template_directory_uri().'/js/vendor/foundation.min.js', array('jquery'), '6.9.0', array( 'in_footer' => true ) );
 	wp_enqueue_script('foundation');
 
 	wp_deregister_script('foundation-app');
-	wp_register_script('foundation-app', get_template_directory_uri().'/js/app.js', array('foundation'), '6.8.1', array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	wp_register_script('foundation-app', get_template_directory_uri().'/js/app.js', array('foundation'), '6.9.0', array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	wp_enqueue_script('foundation-app');
 
 	// Load Graph.js if declared in page Custom Fields
@@ -56,7 +89,7 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	if(isset($custom_fields['load-chart-js'][0]) && $custom_fields['load-chart-js'][0] == "true"):
 		
-		$chart_js_version = '4.4.3';
+		$chart_js_version = '4.5.1';
 
 		// Chart JS
 		wp_deregister_script('chart-js');
@@ -72,7 +105,7 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	// Mediaelement
 	wp_deregister_script('mediaelement');
-	wp_register_script('mediaelement', get_template_directory_uri().'/js/vendor/mediaelement-and-player.min.js', array(), '7.0.5', array( 'in_footer' => true, 'strategy' => 'async' ) );
+	wp_register_script('mediaelement', get_template_directory_uri().'/js/vendor/mediaelement-and-player.min.js', array(), '7.1.0', array( 'in_footer' => true, 'strategy' => 'async' ) );
 	wp_enqueue_script('mediaelement');
 
 	// Underscores Navigation
@@ -103,38 +136,6 @@ function kemosite_wordpress_enqueue_scripts() {
 
 	if ( defined( KEMOSITE_ENABLE_SRI ) && KEMOSITE_ENABLE_SRI == true ):
 		add_filter( 'script_loader_tag', 'kemosite_wordpress_enqueue_scripts_sri', 10, 3 );
-	endif;
-
-}
-
-function kemosite_wordpress_enqueue_scripts_sri( $html, $handle, $src ) {
-
-	// Hardcoding values stops working when files are located to another server, line installing the theme.
-	// The values have to be re-calculated for each server location.
-	// For this reason, a PHP function to calculate this every time now makes more sense.
-
-	$sri = array(
-		'jquery',
-		'foundation',
-		'foundation-app',
-		'chart-js',
-		'kemosite-wordpress-theme-accessibility',
-		'kemosite-wordpress-theme-gtag',
-		'chart-js-config',
-		'mediaelement',
-	  	'kemosite-wordpress-theme-navigation',
-	  	'kemosite-wordpress-theme-skip-link-focus-fix',
-	  	'foundation-what-input',
-	  	'kemosite-lazy-load-images',
-	  	'kemosite-wordpress-font-colours'
-	);
-
-	if ( in_array( $handle, $sri ) ):
-		// $html = str_replace( '></script>', ' integrity="' . kemosite_wordpress_calculate_sri( $src ) . '" crossorigin="anonymous"></script>', $html );
-		$html = str_replace( '<script ', '<script nonce="' . csp_get_nonce() . '" crossorigin="anonymous" ', $html );
-		return $html;
-	else:
-		return $html;
 	endif;
 
 }
